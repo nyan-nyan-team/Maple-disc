@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :admins
-  devise_for :end_users
+  namespace :admin do
+    devise_for :admins
+  end
+    devise_for :end_users
   namespace :admin do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy]
     resources :order_details, only: [:show, :edit]
