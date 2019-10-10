@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
     devise_for :end_users
   namespace :admin do
-    resources :end_users, only: [:index, :show, :edit, :update, :destroy]
+    resources :end_users, only: [:index, :show, :edit, :update, :delete]
     resources :order_details, only: [:show, :edit]
     resources :orders, only: [:index, :show]
     resources :products, only: [:index, :show, :new, :edit]
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get  'out' => 'end_users#out'
     get  'change' => 'order_details#change'
   end   
-  resources :end_users, only: [:show, :edit, :destroy, :update]
+  resources :end_users, only: [:show, :edit, :delete, :update]
   resources :addresses, only: [:create]
   resources :orders, only: [:index, :show]
   resources :order_details, only: [:index]
