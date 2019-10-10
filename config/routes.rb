@@ -1,5 +1,25 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :admins
   devise_for :end_users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :end_users, only: [:index, :show, :edit, :update, :destroy]
+    resources :order_details, only: [:show, :edit]
+    resources :orders, only: [:index, :show]
+    resources :products, only: [:index, :show, :new, :edit]
+    resources :arrivals, only: [:index, :new, :edit, :create, :update, :delete]
+    resources :artists, only: [:new, :edit, :create, :update, :delete]
+    resources :labels, only: [:new, :edit, :create, :update, :delete]
+    resources :genres, only: [:new, :edit, :create, :update, :delete]
+    get  'top' => 'home#top'
+    get  'out' => 'end_users#out'
+    get  'change' => 'order_details#change'
+  end   
+  resources :end_users, only: [:show, :edit, :destroy, :update]
+  resources :addresses, only: [:create]
+  resources :orders, only: [:index, :show]
+  resources :order_details, only: [:index]
+  resources :cart_products, only: [:edit, :new, :show, :update, :destroy]
+  resources :products, only: [:index, :show]
+  get  'out' => 'end_users#out'
 end
