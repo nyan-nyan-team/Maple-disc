@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genre_id: 1
+  label_id: 1
+  artist_id: 1
+  title: MyString
+  image_id: MyString
+  amount: 1
+  status: 1
+  release: 2019-10-10 07:48:43
+  deleted_at: false
+
+two:
+  genre_id: 1
+  label_id: 1
+  artist_id: 1
+  title: MyString
+  image_id: MyString
+  amount: 1
+  status: 1
+  release: 2019-10-10 07:48:43
+  deleted_at: false
