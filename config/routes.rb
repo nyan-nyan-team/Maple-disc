@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admins
+  devise_for :end_users
   namespace :admin do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy]
     resources :order_details, only: [:show, :edit]
@@ -13,4 +15,11 @@ Rails.application.routes.draw do
     get  'out' => 'end_users#out'
     get  'change' => 'order_details#change'
   end   
+  resources :end_users, only: [:show, :edit, :destroy, :update]
+  resources :addresses, only: [:create]
+  resources :orders, only: [:index, :show]
+  resources :order_details, only: [:index]
+  resources :cart_products, only: [:edit, :new, :show, :update, :destroy]
+  resources :products, only: [:index, :show]
+  get  'out' => 'end_users#out'
 end
