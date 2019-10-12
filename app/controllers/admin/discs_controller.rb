@@ -1,2 +1,2 @@
-class Admin::DiscsController < ApplicationController
+class Admin::DiscsController < Admin::Base
 end

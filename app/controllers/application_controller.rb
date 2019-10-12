@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
         end_user_path(current_end_user.id)
     end
+    def after_sign_in_path_for(resource)
+        admin_path(current_admin.id)
+    end
 
     protected
 	def configure_permitted_parameters
