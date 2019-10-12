@@ -1,4 +1,4 @@
-class Admin::LabelsController < ApplicationController
+class Admin::LabelsController < Admin::Base
 def new
 end
 def edit

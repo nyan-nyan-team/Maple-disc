@@ -1,2 +1,2 @@
-class Admin::MusicsController < ApplicationController
+class Admin::MusicsController < Admin::Base
 end

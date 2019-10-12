@@ -1,4 +1,4 @@
-class Admin::ArrivalsController < ApplicationController
+class Admin::ArrivalsController < Admin::Base
 def index
 end
 def new

@@ -1,4 +1,4 @@
-class Admin::ArtistsController < ApplicationController
+class Admin::ArtistsController < < Admin::Base
 
 def new
 end
