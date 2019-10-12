@@ -1,1 +1,15 @@
+<%# header %>
+<header>
+    <nav>
+        <h1><a href="#">ホーム</a></h1>
+        <ul class="nav-list">
+            <li class="nav-list-item">検索</li>
+            <li class="nav-list-item">ユーザー名</li>
+            <li class="nav-list-item">購入履歴</li>
+            <li class="nav-list-item">カート</li>
+            <li class="nav-list-item"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+        </ul>
+    </nav>
+</header>
+
 <%= content_for?(:content) ? yield(:content) : yield %>
