@@ -13,5 +13,33 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprolets";
 @import "bootstrap";
+
+/* リセットCSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+a {
+    text-decoration: none;
+}
+header {
+    width: 100%;
+    background-color: rgb(252, 161, 44);
+}
+.nav-list {
+    padding-top: 7px;
+}
+.nav-list-item {
+    font-family: sans-serif;
+    list-style: none;
+    display: inline-block;
+
+}
