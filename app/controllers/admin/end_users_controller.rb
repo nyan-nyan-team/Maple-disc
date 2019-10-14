@@ -1,7 +1,10 @@
-class Admin::EndUsersController < ApplicationController
+class Admin::EndUsersController <　Admin::Base
 def index
-end
+    @end_users = EndUser.all
+    @end_user = EndUser.new
+end 
 def show
+    @enduser = EndUser.find(params[:id])
 end
 def edit
 end
