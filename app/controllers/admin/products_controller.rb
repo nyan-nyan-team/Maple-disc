@@ -9,6 +9,7 @@ end
 def new
     @products = Product.all
     @product = Product.new
+    @product.musics.build
 end
 def edit
     @product = Product.find(params[:id])
@@ -25,12 +26,13 @@ def update
     product.update(product_params)
     redirect_to product_path(@product)
 end
+
 def delete
 end
 
 private
 def product_params
-    params.require(:product).permit(:title, :image_id, :explanation)
+    params.require(:product).permit(:title, :image_id, :amount, :explanation, :discs, :musics_attributes: [:id, :destroy])
 end
 
 

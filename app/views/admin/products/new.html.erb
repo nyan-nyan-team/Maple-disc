@@ -7,35 +7,35 @@
 <div>シングル/アルバム名</div>
 <p><%= f.text_field :title %></p>
 
-<%# <div>ディスク</div> %>
+<div>ディスク</div>
 <%# コクーンで追加フォーム %>
 
-<%# <div>収録曲名</div> %>
+<div>収録曲名</div>
 <%# コクーンで追加フォーム %>
 
-<%# <div>新しい商品のアーティスト</div> %>
+<div>新しい商品のアーティスト</div>
 <%# 選ぶ %>
 
 <div>ジャケット画像</div>
 <p><%= f.attachment_field :image_id %></p>
 
-<%# <div>ジャンル</div> %>
+<div>ジャンル</div>
 <%# 選ぶ %>
 
-<%# <div>値段</div> %>
-<%# テキストで入力？ %>
+<div>値段</div>
+<p><%= f.text_field :amount %></p>
 
 <div>説明</div>
 <p><%= f.text_area :explanation %></p>
 
-<%# <div>レーベル</div> %>
+<div>レーベル</div>
 <%# 選ぶ %>
 
-<%# <div>販売ステータス</div> %>
+<div>販売ステータス</div>
 <%# 選ぶ %>
 
-<%# <div>在庫数</div> %>
-<%#  %>
+<div>在庫数</div>
+<%# <% @product.arrival.quantity %>
 
 <ul><%= f.submit '追加' %></ul>
 

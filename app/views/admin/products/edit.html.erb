@@ -17,6 +17,7 @@
 <div>ジャンル</div>
 
 <div>値段</div>
+<p><%= f.text_field :amount %></p>
 
 <div>説明</div>
 <p><%= f.text_area :explanation %></p>
@@ -27,8 +28,8 @@
 
 <div>在庫数</div>
 
-<% end %>
+<%= f.submit '更新' %>
 
-<%# 更新ボタン %>
+<% end %>
 
 <%# 削除ボタン %>

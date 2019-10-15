@@ -16,7 +16,7 @@
 
 
 <h2>商品紹介</h2>
-<%# テキスト %>
+<%= @produst.explanation %>
 
 
-<%= link_to "商品情報編集" , admin_products_path%>
+<%= link_to "商品情報編集" , admin_products_path(@product) %>

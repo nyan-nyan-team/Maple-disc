@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2019_10_10_075100) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "end_user_id"
     t.string "delivery_name"
     t.string "delivery_postal_code"
     t.string "delivery_address"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_075100) do
   end
 
   create_table "cart_products", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "end_user_id"
     t.integer "product_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_075100) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "end_user_id"
     t.integer "purchase_price_total"
     t.integer "payment_method"
     t.string "postage"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_075100) do
     t.integer "amount"
     t.integer "status"
     t.datetime "release"
+    t.string "explanation"
     t.boolean "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
