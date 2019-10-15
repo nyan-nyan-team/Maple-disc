@@ -22,14 +22,25 @@
             <%= @main_address %>
         </td>
     </tr>
-
+    <% @addresses.each do |address| %>
+    <tr>
+        <th>お届け先先住所<%= address.id %></th>
+        <td>
+            <%= address.delivery_name %>様
+            <%= address.delivery_postal_code %>
+            <%= address.delivery_address %>
+        </td>
+    </tr>
+    <% end %>
 </table>
 
+
 <%= link_to edit_end_user_path(@end_user), class: "center-block" do %>
-            <button type="button" class="btn btn-default btn-block">
-                <span class="glyphicon glyphicon-wrench" aria-hidden="true">編集する</span>
-            </button>
+    <button type="button" class="btn btn-default btn-block">
+        <span class="glyphicon glyphicon-wrench" aria-hidden="true">編集する</span>
+    </button>
 <% end %>
+
 
 
 <%# *css
