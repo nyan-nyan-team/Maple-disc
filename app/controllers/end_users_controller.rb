@@ -25,6 +25,9 @@ end
 def out
 end
 def delete
+    end_user = EndUser.find(params[:id])
+    end_user.destroy
+    redirect_to products_index_path
 end
 
 

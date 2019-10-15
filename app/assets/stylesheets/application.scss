@@ -27,12 +27,22 @@
     display: block;
     clear: both;
 }
+
+//フォント
+h1 {
+    font-family: sans-serif;
+    font-size: 20px;
+    color: rgb(41, 29, 18);
+}
+
+//全てのaリンク下線なし
 a {
     text-decoration: none;
 }
+
 header {
     width: 100%;
-    background-color: rgb(252, 161, 44);
+    background-color: rgb(235, 176, 103);
 }
 .nav-list {
     padding-top: 7px;
@@ -41,5 +51,9 @@ header {
     font-family: sans-serif;
     list-style: none;
     display: inline-block;
-
 }
+
+.container {
+    width: 90%;
+}
+

@@ -1,60 +1,48 @@
-<h1>ご登録者樣情報</h1>
-<table>
-    <tr>
-        <th>お名前</th>
-        <td>
-            <%= @full_name_kana %>
-            <%= "#{@full_name}様" %>
-        </td>
-    </tr>
-    <tr>
-        <th>メールアドレス</th>
-        <td><%= @email %></td>
-    </tr>
-    <tr>
-        <th>電話番号</th>
-        <td><%= @phone_number %></td>
-    </tr>
-    <tr>
-        <th>ご登録住所</th>
-        <td>
-            <%= @main_postal_code %>
-            <%= @main_address %>
-        </td>
-    </tr>
-    <% @addresses.each do |address| %>
-    <tr>
-        <th>お届け先先住所<%= address.id %></th>
-        <td>
-            <%= address.delivery_name %>様
-            <%= address.delivery_postal_code %>
-            <%= address.delivery_address %>
-        </td>
-    </tr>
+<div class="container">
+
+    <table>
+        <tr>
+            <h1>ご登録者様情報</h1>
+        </tr>
+        <tr>
+            <th>お名前</th>
+            <td>
+                <%= @full_name_kana %>
+                <%= "#{@full_name}様" %>
+            </td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= @email %></td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td><%= @phone_number %></td>
+        </tr>
+        <tr>
+            <th>ご登録住所</th>
+            <td>
+                <%= @main_postal_code %>
+                <%= @main_address %>
+            </td>
+        </tr>
+        <% @addresses.each do |address| %>
+        <tr>
+            <th>お届け先先住所<%= address.id %></th>
+            <td>
+                <%= address.delivery_name %>様
+                <%= address.delivery_postal_code %>
+                <%= address.delivery_address %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+
+
+    <%= link_to edit_end_user_path(@end_user), class: "center-block" do %>
+        <button type="button" class="btn btn-default btn-block">
+            <span class="glyphicon glyphicon-wrench" aria-hidden="true">編集する</span>
+        </button>
     <% end %>
-</table>
 
-
-<%= link_to edit_end_user_path(@end_user), class: "center-block" do %>
-    <button type="button" class="btn btn-default btn-block">
-        <span class="glyphicon glyphicon-wrench" aria-hidden="true">編集する</span>
-    </button>
-<% end %>
-
-
-
-<%# *css
-table {
- border-collapse: collapse;
- width: 500px;
-}
- 
-th,td {
- border: solid 1px #ccc;
- padding: 5px;
-}
- 
-input {
- box-sizing: border-box;
- width: 100%;
-} %>
+</div>
