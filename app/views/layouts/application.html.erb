@@ -22,6 +22,15 @@
             <li class="nav-list-item">カート</li>
             <li class="nav-list-item"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
         </ul>
+
+        <% elsif admin_signed_in? %>
+        <ul class="nav-list">
+            <li class="nav-list-item">アドミん</li>
+            <li class="nav-list-item"> admin</li>
+            <li class="nav-list-item">購入履歴</li>
+            <li class="nav-list-item">カート</li>
+            <li class="nav-list-item"><%= link_to "ログイン", new_end_user_session_path %></li>
+        </ul>
     
         <% else %>
         <ul class="nav-list">
