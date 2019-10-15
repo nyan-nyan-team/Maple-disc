@@ -1,0 +1,43 @@
+
+<h1>新規商品登録フォーム</h1>
+
+<div>
+<%= form_for(@product) do |f| %>
+
+<div>シングル/アルバム名</div>
+<p><%= f.text_field :title %></p>
+
+<%# <div>ディスク</div> %>
+<%# コクーンで追加フォーム %>
+
+<%# <div>収録曲名</div> %>
+<%# コクーンで追加フォーム %>
+
+<%# <div>新しい商品のアーティスト</div> %>
+<%# 選ぶ %>
+
+<div>ジャケット画像</div>
+<p><%= f.attachment_field :image_id %></p>
+
+<%# <div>ジャンル</div> %>
+<%# 選ぶ %>
+
+<%# <div>値段</div> %>
+<%# テキストで入力？ %>
+
+<div>説明</div>
+<p><%= f.text_area :explanation %></p>
+
+<%# <div>レーベル</div> %>
+<%# 選ぶ %>
+
+<%# <div>販売ステータス</div> %>
+<%# 選ぶ %>
+
+<%# <div>在庫数</div> %>
+<%#  %>
+
+<ul><%= f.submit '追加' %></ul>
+
+<% end %>
+</div>

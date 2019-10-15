@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :edit, :update, :delete]
     resources :order_details, only: [:show, :edit]
     resources :orders, only: [:index, :show]
-    resources :products, only: [:index, :show, :new, :edit]
+    resources :products, only: [:index, :show, :new, :edit, :create, :update, :delete]
     resources :arrivals, only: [:index, :new, :edit, :create, :update, :delete]
     resources :artists, only: [:new, :edit, :create, :update, :delete]
     resources :labels, only: [:new, :edit, :create, :update, :delete]
