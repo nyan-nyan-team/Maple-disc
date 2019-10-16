@@ -26,6 +26,15 @@
     display: block;
     clear: both;
 }
+//グレーの線　<hr>でどこでも使えます。
+hr {
+    height: 1px;
+    border: none;
+    border-top: 1px #E0E0E0 solid;
+}
+
+
+
 //-------------------header用-------------------
 header {
     width: 100%;
@@ -77,9 +86,6 @@ table {
     border:thin solid rgb(179, 174, 167);
     color: rgb(41, 29, 18);
 }
-table th {
-    height: 40px;
-}
-table td {
+table th td {
     height: 40px;
 }

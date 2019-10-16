@@ -1,4 +1,5 @@
 class CartProductsController < ApplicationController
+    before_action :authenticate_end_user!
 def edit
 end
 def new
@@ -9,5 +10,4 @@ def update
 end
 def destroy
 end
-
 end

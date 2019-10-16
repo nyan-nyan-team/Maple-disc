@@ -5,8 +5,13 @@
         <tr>
             <th>お名前</th>
             <td>
-                <%= @full_name_kana %>
                 <%= "#{@full_name}様" %>
+            </td>
+        </tr>
+        <tr>
+            <th>名前(カタカナ)</th>
+            <td>
+                <%= @full_name_kana %>
             </td>
         </tr>
         <tr>
@@ -20,7 +25,7 @@
         <tr>
             <th>ご登録住所</th>
             <td>
-                <%= @main_postal_code %>
+                <%= "〒 #{@main_postal_code}" %><br>
                 <%= @main_address %>
             </td>
         </tr>
@@ -28,9 +33,9 @@
         <tr>
             <th>お届け先住所<%= i + 1 %></th>
             <td>
-                <%= address.delivery_name %>様
-                <%= address.delivery_postal_code %>
-                <%= address.delivery_address %>
+            <%= "〒 #{address.delivery_postal_code}" %><br>
+            <%= address.delivery_address %><br>
+            <%= address.delivery_name %>様
             </td>
         </tr>
         <% end %>
