@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>namespace - end_user</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 <body>
 
 <%# header %>
@@ -13,9 +13,9 @@
 
 <header>
     <nav>
-        <h1><a href="#">ホーム</a></h1>
         <% if end_user_signed_in? %>
         <ul class="nav-list">
+            <li><a href="#" class="home">ホーム</a></h1></li>
             <li class="nav-list-item">検索</li>
             <li class="nav-list-item">ユーザー名</li>
             <li class="nav-list-item">購入履歴</li>

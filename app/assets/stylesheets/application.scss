@@ -14,22 +14,31 @@
  *= require_self
  */
 @import "bootstrap";
+//リセットCSS
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+//clearfixも一応書いておきます
 .clearfix::after {
     content: "";
     display: block;
     clear: both;
 }
-a {
-    text-decoration: none;
+//グレーの線　<hr>でどこでも使えます。
+hr {
+    height: 1px;
+    border: none;
+    border-top: 1px #E0E0E0 solid;
 }
+
+
+
+//-------------------header用-------------------
 header {
     width: 100%;
-    background-color: rgb(252, 161, 44);
+    background-color: rgb(235, 176, 103);
 }
 .nav-list {
     padding-top: 7px;
@@ -38,5 +47,45 @@ header {
     font-family: sans-serif;
     list-style: none;
     display: inline-block;
+}
+//----------------------------------------------
 
-} 
+
+//-----------------フォント----------------------
+h1 {
+    font-family: sans-serif;
+    font-size: 20px;
+    color: rgb(41, 29, 18);
+    text-align: center;
+}
+
+//----------------------------------------------
+
+//bootstrap用（大枠としても使えます）
+.container {
+    width: 90%;
+}
+
+//ボタン
+.btn {
+    border:thin solid rgb(179, 174, 167);
+    text-align: center;
+}
+//ボタン中央寄せ用のdiv(btn自体だけだとmargin autoもtextaline:centerも効かない）
+.button_wrapper {
+    text-align: center;
+}
+
+//全てのaリンク下線なし
+a {
+    text-decoration: none;
+}
+
+table {
+    margin: 0 auto;
+    border:thin solid rgb(179, 174, 167);
+    color: rgb(41, 29, 18);
+}
+table th td {
+    height: 40px;
+}
