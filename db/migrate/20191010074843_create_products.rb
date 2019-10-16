@@ -9,6 +9,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :amount
       t.integer :status
       t.datetime :release
+      t.string :explanation
       t.boolean :deleted_at
 
       t.timestamps
