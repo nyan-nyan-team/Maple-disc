@@ -1,1 +1,7 @@
+<div class= "contauner">
 <h1>本当にこのユーザーを退会させますか？</h1>
+<div>
+<%= link_to "中止する", edit_admin_end_user_path(@enduser) %>
+</div>
+<%= link_to "退会させる", admin_end_user_path(@enduser.id), method: :delete %>
+<div>

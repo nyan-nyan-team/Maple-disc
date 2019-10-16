@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :labels, only: [:new, :edit, :create, :update, :destroy]
     resources :genres, only: [:new, :edit, :create, :update, :destroy]
     get  'top' => 'home#top'
-    get  'out' => 'end_users#out'
+    get  'out/end_users/:id', to: 'end_users#out', as: :out
     get  'change' => 'order_details#change'
   end   
   resources :end_users, only: [:show, :edit, :destroy, :update] do 
