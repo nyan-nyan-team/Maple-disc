@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     root 'products#index'
-    devise_for :admins
-    devise_for :end_users
+    devise_for :admins, controllers: {
+      sessions:      'admins/sessions',
+      passwords:     'admins/password',
+      registrations: 'admins/registrations'
+    }
+    devise_for :end_users, controllers: {
+      sessions:      'end_users/sessions',
+      password:      'end_users/password',
+      registrations: 'end_users/registrations'
+    }
   namespace :admin do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy]
     resources :order_details, only: [:show, :edit]
