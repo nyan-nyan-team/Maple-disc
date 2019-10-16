@@ -9,7 +9,8 @@ end
 def new
     @products = Product.all
     @product = Product.new
-    @product.musics.build
+    @disc = @product.discs.build
+    @music = @disc.musics.build
 end
 def edit
     @product = Product.find(params[:id])
@@ -32,7 +33,7 @@ end
 
 private
 def product_params
-    params.require(:product).permit(:title, :image_id, :amount, :explanation, :discs, :musics_attributes: [:id, :destroy])
+    params.require(:product).permit(:title, :image_id, :amount, :explanation, discs_attributes: [:id, :explanation, :done, :_destroy, musics_attributes: [:id, :explanation, :_destroy]])
 end
 
 

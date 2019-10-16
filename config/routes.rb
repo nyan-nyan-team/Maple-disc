@@ -4,19 +4,21 @@ Rails.application.routes.draw do
     devise_for :admins
     devise_for :end_users
   namespace :admin do
-    resources :end_users, only: [:index, :show, :edit, :update, :delete]
+    resources :end_users, only: [:index, :show, :edit, :update, :destroy]
     resources :order_details, only: [:show, :edit]
     resources :orders, only: [:index, :show]
-    resources :products, only: [:index, :show, :new, :edit, :create, :update, :delete]
-    resources :arrivals, only: [:index, :new, :edit, :create, :update, :delete]
-    resources :artists, only: [:new, :edit, :create, :update, :delete]
-    resources :labels, only: [:new, :edit, :create, :update, :delete]
-    resources :genres, only: [:new, :edit, :create, :update, :delete]
+
+    resources :products, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+    resources :arrivals, only: [:index, :new, :edit, :create, :update, :destroy]
+    resources :artists, only: [:new, :edit, :create, :update, :destroy]
+    resources :labels, only: [:new, :edit, :create, :update, :destroy]
+    resources :genres, only: [:new, :edit, :create, :update, :destroy]
+
     get  'top' => 'home#top'
     get  'out' => 'end_users#out'
     get  'change' => 'order_details#change'
   end   
-  resources :end_users, only: [:show, :edit, :delete, :update] do 
+  resources :end_users, only: [:show, :edit, :destroy, :update] do 
     resources :addresses, only: [:create]
   end
   resources :orders, only: [:index, :show]

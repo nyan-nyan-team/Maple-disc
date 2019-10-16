@@ -1,0 +1,41 @@
+<div class="container">
+<h1>ユーザー詳細画面</h1>
+<table class= "table">
+ <tr>
+   <th>名前(漢字)</th>
+       <th>
+       <%= @enduser.last_name %>
+       <%= @enduser.first_name %>
+       </th>
+ </tr>
+  <tr>
+       <th>名前(カタカナ)</th>
+       <th>
+       <%= @enduser.last_name_kana %>
+       <%= @enduser.first_name_kana %>
+       </th>
+ </tr>
+ <tr>
+       <th>郵便番号</th>
+       <th>
+       <%= @enduser.main_postal_code %>
+       </th>
+ </tr>
+ <tr>
+       <th>住所</th>
+       <th>
+       <%= @enduser.main_address %>
+       </th>
+ </tr>
+ <tr>
+      <th>クレジットカード情報</th>
+</tr>
+<tr>
+      <th>電話番号</th>
+      <th>
+      <%= @enduser.phone_number%> 
+</table>
+<%= link_to "編集画面へ", edit_admin_end_user_path(@enduser) %>
+<%= link_to "受注履歴一覧へ", admin_orders_path %>
+</div>
+

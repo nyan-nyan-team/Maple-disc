@@ -8,7 +8,8 @@
 <p><%= f.text_field :title %></p>
 
 <div>ディスク</div>
-<%# コクーンで追加フォーム %>
+<%= render 'form', product: @product %>
+<%= link_to 'Back', new_admin_product_path %>
 
 <div>収録曲名</div>
 <%# コクーンで追加フォーム %>
