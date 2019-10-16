@@ -15,11 +15,13 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy]
     resources :order_details, only: [:show, :edit]
     resources :orders, only: [:index, :show]
-    resources :products, only: [:index, :show, :new, :edit]
+
+    resources :products, only: [:index, :show, :new, :edit, :create, :update, :destroy]
     resources :arrivals, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :artists, only: [:new, :edit, :create, :update, :destroy]
     resources :labels, only: [:new, :edit, :create, :update, :destroy]
     resources :genres, only: [:new, :edit, :create, :update, :destroy]
+
     get  'top' => 'home#top'
     get  'out/end_users/:id', to: 'end_users#out', as: :out
     get  'change' => 'order_details#change'

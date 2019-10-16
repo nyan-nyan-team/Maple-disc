@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_075100) do
     t.integer "amount"
     t.integer "status"
     t.datetime "release"
+    t.string "explanation"
     t.boolean "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

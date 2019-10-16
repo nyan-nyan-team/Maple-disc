@@ -1,0 +1,35 @@
+
+<h1>商品の編集画面</h1>
+
+<%= form_for(@product) do |f| %>
+<div>シングル/アルバム名</div>
+<p><%= f.text_field :title %></p>
+
+<div>ディスク</div>
+
+<div>収録曲名</div>
+
+<div>新しい商品のアーティスト</div>
+
+<div>ジャケット画像</div>
+<p><%= f.attachment_field :image_id %></p>
+
+<div>ジャンル</div>
+
+<div>値段</div>
+<p><%= f.text_field :amount %></p>
+
+<div>説明</div>
+<p><%= f.text_area :explanation %></p>
+
+<div>レーベル</div>
+
+<div>販売ステータス</div>
+
+<div>在庫数</div>
+
+<%= f.submit '更新' %>
+
+<% end %>
+
+<%# 削除ボタン %>
