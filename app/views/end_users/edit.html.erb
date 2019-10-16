@@ -1,54 +1,62 @@
-<h1>マイページ編集</h1>
+<div class="container">
+    <h1>マイページ編集</h1>
 
-<%= form_for(@end_user) do |f| %>
-<table>
-        <tr>
-        <th>お名前</th>
-        <td>
-            <%= f.text_field :last_name, autofocus: true %>
-            <%= f.text_field :first_name, autofocus: true %>
-        </td>
-        </tr>
-        <tr>
-        <th>お名前カナ</th>
-        <td>
-            <%= f.text_field :last_name_kana %>
-            <%= f.text_field :first_name_kana %>
-        </td>
-        </tr>
-        <tr>
-        <th>メールアドレス</th>
-        <td><%= f.text_field :email %></td>
-        </tr>
-        <tr>
-        <th>電話番号</th>
-        <td><%= f.text_field :phone_number %></td>
-        </tr>
-</table>
-<%= f.submit 'この内容で更新する' %>
-<% end %>
+    <%= form_for(@end_user) do |f| %>
+        <table border="1" style="border-collapse: collapse">
+                <tr>
+                <th>お名前</th>
+                <td>
+                    <%= f.text_field :last_name, autofocus: true %>
+                    <%= f.text_field :first_name, autofocus: true %>
+                </td>
+                </tr>
+                <tr>
+                <th>お名前カナ</th>
+                <td>
+                    <%= f.text_field :last_name_kana %>
+                    <%= f.text_field :first_name_kana %>
+                </td>
+                </tr>
+                <tr>
+                <th>メールアドレス</th>
+                <td><%= f.text_field :email %></td>
+                </tr>
+                <tr>
+                <th>電話番号</th>
+                <td><%= f.text_field :phone_number %></td>
+                </tr>
+        </table>
+        <div class="button_wrapper">
+            <%= f.submit 'この内容で更新する' %>
+        </div>
+    <% end %>
 
-<br><br>
+    <br><br>
+    <h1>お届け先住所追加</h1>
+    <%= form_for [@end_user, @newaddress] do |f| %>
+        <table>
+            <tr>
+                <th>お届け先郵便番号</th>
+                <td><%= f.text_field :delivery_postal_code %></td>
+            </tr>
+            <tr>
+                <th>お届け先住所</th>
+                <td><%= f.text_field :delivery_address %></td>
+            </tr>
+            <tr>
+                <th>お届け先お名前</th>
+                <td><%= f.text_field :delivery_name %></td>
+            </tr>
+        </table>
+            <div class="button_wrapper">
+                <%= f.submit '追加' %>
+            </div>
+    <% end %>
 
-<h1>お届け先住所追加</h1>
-<%= form_for [@end_user, @newaddress] do |f| %>
-    <table>
-        <tr>
-            <th>お届け先郵便番号</th>
-            <td><%= f.text_field :delivery_postal_code %></td>
-            <th>お届け先住所</th>
-            <td><%= f.text_field :delivery_address %></td>
-            <th>お届け先お名前</th>
-            <td><%= f.text_field :delivery_name %></td>
-        </tr>
-    </table>
-    <%= f.submit '追加' %>
-<% end %>
-
-<%= link_to out_path, class: "center-block" do %>
-    <button type="button" class="btn btn-default btn-block">
-        <span class="glyphicon glyphicon-wrench" aria-hidden="true">退会する</span>
-    </button>
-<% end %>
-
+    <%= link_to out_path(@end_user), class: "center-block" do %>
+        <div class="button_wrapper">
+            <button type="button" class="btn btn-default">退会する</button>
+        </div>
+    <% end %>
+</div>
 

@@ -1,9 +1,7 @@
 <div class="container">
 
-    <table>
-        <tr>
-            <h1>ご登録者様情報</h1>
-        </tr>
+    <table border="1" style="border-collapse: collapse">
+    <h1>ご登録者様情報</h1>
         <tr>
             <th>お名前</th>
             <td>
@@ -26,9 +24,9 @@
                 <%= @main_address %>
             </td>
         </tr>
-        <% @addresses.each do |address| %>
+        <% @addresses.each_with_index do |address,i| %>
         <tr>
-            <th>お届け先先住所<%= address.id %></th>
+            <th>お届け先住所<%= i + 1 %></th>
             <td>
                 <%= address.delivery_name %>様
                 <%= address.delivery_postal_code %>
@@ -38,11 +36,9 @@
         <% end %>
     </table>
 
-
     <%= link_to edit_end_user_path(@end_user), class: "center-block" do %>
-        <button type="button" class="btn btn-default btn-block">
-            <span class="glyphicon glyphicon-wrench" aria-hidden="true">編集する</span>
-        </button>
+        <div class="button_wrapper">
+            <button type="button" class="btn btn-default">編集する</button>
+        </div>
     <% end %>
-
 </div>

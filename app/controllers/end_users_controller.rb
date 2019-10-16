@@ -24,10 +24,10 @@ def create
 end
 def out
 end
-def delete
+def destroy
     end_user = EndUser.find(params[:id])
     end_user.destroy
-    redirect_to products_index_path
+    redirect_to root_path
 end
 
 
