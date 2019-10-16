@@ -1,13 +1,13 @@
 <div class="nested-fields well well-compact">
 <div class="form-group">
-<%= f.label :explanation %>
-<%= f.number_field :explanation %><br>
+<%= f.label :disc_number %>
+<%= f.number_field :disc_number %><br>
 <%= link_to_remove_association "remove disc", f %>
 </div>
 
 <div class="musics">
 <%= f.fields_for :musics do |music| %>
-<%= render 'music_fields', f: item %>
+<%= render 'music_fields', f: music %>
 <% end %>
 <div class="links">
 <%= link_to_add_association "add music", f, :musics %>
