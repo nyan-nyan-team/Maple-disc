@@ -6,8 +6,8 @@
                 <tr>
                 <th>お名前</th>
                 <td>
-                    <%= f.text_field :last_name, autofocus: true %>
-                    <%= f.text_field :first_name, autofocus: true %>
+                    <%= f.text_field :last_name %>
+                    <%= f.text_field :first_name %>
                 </td>
                 </tr>
                 <tr>
@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                 <th>電話番号</th>
-                <td><%= f.text_field :phone_number %></td>
+                <td><%= f.text_field :phone_number, placeholder: "電話番号" %></td>
                 </tr>
         </table>
         <div class="button_wrapper">
@@ -41,11 +41,11 @@
             </tr>
             <tr>
                 <th>お届け先住所</th>
-                <td><%= f.text_field :delivery_address %></td>
+                <td><%= f.text_field :delivery_address, placeholder: "○○県○○市○○○"%></td>
             </tr>
             <tr>
                 <th>お届け先お名前</th>
-                <td><%= f.text_field :delivery_name %></td>
+                <td><%= f.text_field :delivery_name, placeholder: "              　　　 様" %></td>
             </tr>
         </table>
             <div class="button_wrapper">
