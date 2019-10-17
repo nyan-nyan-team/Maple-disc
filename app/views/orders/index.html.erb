@@ -3,7 +3,9 @@
     <div class="row">
         <div class="col-sm-5">
             <h1>配送ステータス　変数入れる</h1>
-            <div class="image">商品の写真入れる</div>
+            <div class="image">商品の写真入れる
+                <%# <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'80x80' %>
+            </div>
         </div>
         <div class="col-sm-7">
             <h1>購入日：変数入れる</h1>
@@ -40,13 +42,14 @@
     <div class="row">
         <div class="col-sm-5">
             <table>
+            <%#= @orders.each do |order| %>
                 <tr>
                     <th>お支払い方法<th>
-                    <td>変数入れる</td>
+                    <td><%#= order.payment_method %></td>
                 </tr>
                 <tr>
                     <th>発送先<th>
-                    <td>変数入れる</td>
+                    <td><%#= order.delivery_name %></td>
                 </tr>
                 <tr>
                     <th>合計枚数<th>
@@ -54,12 +57,13 @@
                 </tr>
                 <tr>
                     <th>送料<th>
-                    <td>変数入れる</td>
+                    <td>¥500</td>
                 </tr>
                 <tr>
                     <th>購入価格総計<th>
-                    <td>変数入れる</td>
+                    <td><%#= order.purchase_price_total %></td>
                 </tr>
+            <%# end %>
             </table>
         </div>
     </div>  <%#rowの閉じタグ%>
