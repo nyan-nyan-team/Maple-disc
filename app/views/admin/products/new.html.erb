@@ -7,7 +7,7 @@
 <%= render 'form', product: @product %>
 
 <div>ジャケット画像</div>
-<p><%= f.attachment_field :image_id %></p>
+<p><%= f.attachment_field :image %></p>
 
 <div>新しい商品のアーティスト</div>
 <%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>

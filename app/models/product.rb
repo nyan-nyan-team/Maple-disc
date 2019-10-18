@@ -2,7 +2,7 @@ class Product < ApplicationRecord
     enum status: [['---',""],['売り切れ', 1],['販売中', 2]]
 
     validates :title, :explanation ,:amount , presence: true
-    attachment :image_id
+    attachment :image
 
     has_many :discs, inverse_of: :product
     accepts_nested_attributes_for :discs , reject_if: :all_blank , allow_destroy: true
