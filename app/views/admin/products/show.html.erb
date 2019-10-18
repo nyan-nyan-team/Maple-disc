@@ -1,22 +1,45 @@
 
 <h2>商品詳細</h2>
 
-<%# image %>
-<%# <%= attachment_image_tag @product, :image_id, :fill, 100, 100, fallback: "default_user.jpg" , size:'100x100'  %>
+<div>
+<%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+</div>
 
-<%# <%= @products.title %>
-<%# <%= @products.amount %>
-<%# <%= @products.artist_id %>
-<%# <%= @products.label_id %>
-<%# <%= @products.genre_id %>
+<div>商品名</div>
+<%= @product.title %>
+
+<div>価格</div>
+<%= @product.amount %>
+
+<div>アーティスト</div>
+<%= @product.artist.artist_name %>
+
+<div>レーベル</div>
+<%= @product.label.label_name %>
+
+<div>ジャンル</div>
+<%= @product.genre.genre_name %>
 
 
-<%# <h2>曲一覧</h2>
-<%= @product.disc.music.music_name %>
+<div>ディスク名</div>
+<% @product.discs.each do |disc| %> 
+<%= disc.disc_number %>
+<div>収録曲一覧</div>
+<% disc.musics.each do |music| %> 
+<%= music.music_name %> 
+<% end %> 
+<% end %> 
 
 
-<h2>商品紹介</h2>
-<%# <%= @produsts.explanation %>
+<div>商品紹介</div>
+<div>
+<%= @product.explanation %>
+</div>
 
+<div>
+<%= @product.status %>
+</div>
 
-<%= link_to "商品情報編集" , admin_products_path(@product) %>
+<div>
+<%= link_to "商品の情報を編集する" , edit_admin_product_path(@product) %>
+</div>
