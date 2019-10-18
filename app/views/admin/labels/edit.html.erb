@@ -1,0 +1,12 @@
+<h1>ラベル情報編集</h1>
+
+<%= form_for([:admin, @label]) do |f| %>
+
+<P>ラベル名</P>
+<%= f.text_field :label_name %>
+
+<%= f.submit '更新' %>
+
+<%# <%= "削除" %>
+
+<% end %>

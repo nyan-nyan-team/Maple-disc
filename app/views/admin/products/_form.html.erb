@@ -1,22 +1,21 @@
 <%= form_for @product do |f| %>
 <div class="field">
-<%= f.label :title, "title" %>
+<%= f.label :title, "シングル/アルバム名" %>
 <%= f.text_field :title %>
 </div>
 <div class="field">
-<%= f.label :explanation, "explanation" %>
+<%= f.label :explanation, "商品説明" %>
 <%= f.text_field :explanation %>
 </div>
 
-<h3>discs</h3>
+<h4>ディスクの登録</h4>
 <div id="discs">
 <%= f.fields_for :discs do |disc| %>
 <%= render 'disc_fields', f: disc %>
 <% end %>
 <div class="links">
 
-<%= link_to_add_association 'add disc',f,:discs %>
+<%= link_to_add_association 'ディスク追加欄を増やす',f,:discs %>
 </div>
-<%= f.submit %>
-</div>
+
 <% end %>

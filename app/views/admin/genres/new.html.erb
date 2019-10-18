@@ -1,1 +1,26 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
 <h1>ジャンル追加フォーム</h1>
+
+<h2>追加済みジャンル一覧</h2>
+
+<div>
+<% @genres.each do |genre| %>
+<%= genre.genre_name %>
+<%= link_to 'edit' , edit_admin_genre_path(genre) %>
+<% end %>
+</div>
+
+<h2>ジャンル追加</h2>
+<div>
+<%= form_for([:admin, @genre]) do |f| %>
+<p><%= f.text_field :genre_name %></p>
+<ul><%= f.submit 'ジャンルを追加する' %></ul>
+<% end %>
+</div>
+
+<div>
+<%= link_to "戻る" , new_admin_product_path %>
+</div>

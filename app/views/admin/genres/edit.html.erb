@@ -1,0 +1,12 @@
+<h1>ジャンル情報編集</h1>
+
+<%= form_for([:admin, @genre]) do |f| %>
+
+<P>ジャンル名</P>
+<%= f.text_field :genre_name %>
+
+<%= f.submit '更新' %>
+
+<%# <%= "削除" %>
+
+<% end %>
