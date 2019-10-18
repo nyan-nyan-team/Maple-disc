@@ -1,0 +1,26 @@
+<div class= "container">
+<div class= "page-header">
+<h1>入荷履歴一覧</h1>
+</div>
+<div class="list-group">
+<table class= "table">
+<% @arrivals.each do |arrival| %>
+<tr>
+    <th>商品名</th>
+</tr>
+    <th><%= arrival.product.title %></th>
+    <th><%= arrival.quantity %></th>
+    <th><%= arrival.arrival_date %></th>
+    <th><%= link_to edit_admin_arrival_path(arrivl) do %>
+    <i>編集</i>
+    <% end %>
+    </th>
+
+</tr>
+<% end %>
+</table>
+<%= paginate @arrivals %>
+<%= link_to "入荷情報追加", new_admin_arrival_path %>
+</div>
+</div>
+

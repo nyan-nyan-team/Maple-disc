@@ -1,0 +1,19 @@
+<%= form_tag([:admin, arrival]) do |arrival| %>
+    <div class= "field">
+    <p>シングル/アルバム名</p>
+    <%= arrival.select :product_id, Product.all.map {|p| [p.title, p.id]} %>
+    </div>
+    <br>
+    <div class= "field">
+    <p>数量</p>
+    <%= arrival.text_field :quantity %>
+    </div><br>
+    <div class= "field">
+    <p>入荷日時</p>
+    <%= arrival.date_select :arrival_date, {}, class: 'form-control'%>
+    </div>
+    <%= arrival.submit %>
+
+<% end %>
+
+
