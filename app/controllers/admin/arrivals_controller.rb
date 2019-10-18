@@ -10,10 +10,10 @@ def new
 
 end 
 def edit
-    @arrivals = Arrival.find(params[:id])
+    @arrival = Arrival.find(params[:id])
 end
 def create
-    @arrival = Arrival.new
+    @arrival = Arrival.new(arrival_params)
     if
     @arrival.save
     redirect_to admin_arrivals_path
@@ -44,3 +44,4 @@ def arrival_params
 end
 
 end
+

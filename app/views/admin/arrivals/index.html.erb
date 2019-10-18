@@ -7,15 +7,18 @@
 <% @arrivals.each do |arrival| %>
 <tr>
     <th>商品名</th>
+    <th>数量</th>
+    <th>入荷日時</th>
+    <th></th>
 </tr>
-    <th><%= arrival.product.title %></th>
-    <th><%= arrival.quantity %></th>
-    <th><%= arrival.arrival_date %></th>
-    <th><%= link_to edit_admin_arrival_path(arrivl) do %>
+<tr>
+    <td><%= arrival.product.title %></td>
+    <td><%= arrival.quantity %></td>
+    <td><%= arrival.arrival_date %></td>
+    <td><%= link_to edit_admin_arrival_path(arrival) do %>
     <i>編集</i>
     <% end %>
-    </th>
-
+    </td>
 </tr>
 <% end %>
 </table>

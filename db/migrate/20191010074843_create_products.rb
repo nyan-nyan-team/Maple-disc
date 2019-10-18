@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :image_id
       t.integer :amount
-      t.integer :status
+      t.integer :status, default: 0, null: false, limit: 2
       t.datetime :release
       t.string :explanation
       t.boolean :deleted_at

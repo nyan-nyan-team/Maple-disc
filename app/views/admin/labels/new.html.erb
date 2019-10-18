@@ -1,1 +1,26 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
 <h1>レーベル追加フォーム</h1>
+
+<h2>追加済みレーベル一覧</h2>
+
+<div>
+<% @labels.each do |label| %>
+<%= label.label_name %>
+<%= link_to 'edit' , edit_admin_label_path(label) %>
+<% end %>
+</div>
+
+<h2>レーベル追加</h2>
+<div>
+<%= form_for([:admin, @label]) do |f| %>
+<p><%= f.text_field :label_name %></p>
+<ul><%= f.submit 'レーベルを追加する' %></ul>
+<% end %>
+</div>
+
+<div>
+<%= link_to "戻る" , new_admin_product_path %>
+</div>

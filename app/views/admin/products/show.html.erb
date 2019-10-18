@@ -2,21 +2,21 @@
 <h2>商品詳細</h2>
 
 <%# image %>
-<%= attachment_image_tag @product, :image_id, :fill, 100, 100, fallback: "default_user.jpg" , size:'100x100'  %>
+<%# <%= attachment_image_tag @product, :image_id, :fill, 100, 100, fallback: "default_user.jpg" , size:'100x100'  %>
 
-<%= @product.title %>
-<%= @product.amount %>
-<%= @product.artist_id %>
-<%= @product.label_id %>
-<%= @product.genre_id %>
+<%# <%= @products.title %>
+<%# <%= @products.amount %>
+<%# <%= @products.artist_id %>
+<%# <%= @products.label_id %>
+<%# <%= @products.genre_id %>
 
 
-<h2>曲一覧</h2>
+<%# <h2>曲一覧</h2>
 <%= @product.disc.music.music_name %>
 
 
 <h2>商品紹介</h2>
-<%= @produst.explanation %>
+<%# <%= @produsts.explanation %>
 
 
 <%= link_to "商品情報編集" , admin_products_path(@product) %>
