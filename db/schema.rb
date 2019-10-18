@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_075100) do
+ActiveRecord::Schema.define(version: 2019_10_17_090900) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_10_10_075100) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "arrival_date"
   end
 
   create_table "artists", force: :cascade do |t|

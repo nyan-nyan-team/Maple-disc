@@ -2,43 +2,41 @@
 <h1>新規商品登録フォーム</h1>
 
 <div>
-<%= form_for(@product) do |f| %>
+<%= form_for([:admin, @product]) do |f| %>
 
-<div>シングル/アルバム名</div>
-<p><%= f.text_field :title %></p>
-
-<div>ディスク</div>
 <%= render 'form', product: @product %>
-<%= link_to 'Back', new_admin_product_path %>
-
-<div>収録曲名</div>
-<%# コクーンで追加フォーム %>
-
-<div>新しい商品のアーティスト</div>
-<%# 選ぶ %>
 
 <div>ジャケット画像</div>
-<p><%= f.attachment_field :image_id %></p>
+<p><%= f.attachment_field :image %></p>
+
+<div>新しい商品のアーティスト</div>
+<%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
+<div>
+<%= link_to "アーティストの追加" , new_admin_artist_path %>
+</div>
 
 <div>ジャンル</div>
-<%# 選ぶ %>
+<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+<div>
+<%= link_to "ジャンルの追加" , new_admin_genre_path %>
+</div>
+
+<div>レーベル</div>
+<%= f.collection_select :label_id, Label.all, :id, :label_name %>
+<div>
+<%= link_to "レーベルの追加" , new_admin_label_path %>
+</div>
 
 <div>値段</div>
 <p><%= f.text_field :amount %></p>
 
-<div>説明</div>
-<p><%= f.text_area :explanation %></p>
-
-<div>レーベル</div>
-<%# 選ぶ %>
+<%# <div>在庫数</div> %>
+<%# <%= f.text_field :product %>
 
 <div>販売ステータス</div>
-<%# 選ぶ %>
+<%= f.select :status, Product.statuses.keys, {}, class: "select-default" %>
 
-<div>在庫数</div>
-<%# <% @product.arrival.quantity %>
-
-<ul><%= f.submit '追加' %></ul>
+<ul><%= f.submit '新規商品の登録をする' %></ul>
 
 <% end %>
 </div>

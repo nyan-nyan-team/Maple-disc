@@ -3,37 +3,45 @@ class Admin::ProductsController < Admin::Base
 def index
     @products = Product.all
 end 
+
 def show
-    @products = Product.all
+    @product = Product.find(params[:id])
 end
+
 def new
     @products = Product.all
     @product = Product.new
     @disc = @product.discs.build
     @music = @disc.musics.build
+    @arrival = Arrival.new
 end
 def edit
+    
     @product = Product.find(params[:id])
 end
 
 def create
     product = Product.new(product_params)
     product.save
-    redirect_to product_path(@product)
+    redirect_to admin_product_path(product)
 end
 
 def update
     product = Product.find(params[:id])
     product.update(product_params)
-    redirect_to product_path(@product)
+    redirect_to admin_product_path(product)
 end
 
-def delete
+def destroy
+    product = product.find(params[:id])
+    product.destroy
+    redirect_to admin_product_path
 end
 
+# :image_idが足りないが入れると”image_id_id_will_change!”というエラーが出る
 private
 def product_params
-    params.require(:product).permit(:title, :image_id, :amount, :explanation, discs_attributes: [:id, :explanation, :done, :_destroy, musics_attributes: [:id, :explanation, :_destroy]])
+    params.require(:product).permit(:id, :title, :image, :artist_id, :genre_id, :label_id, :amount, :explanation, :status, discs_attributes: [:id, :disc_number, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
 end
 
 

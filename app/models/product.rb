@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+    enum status: [['---',""],['売り切れ', 1],['販売中', 2]]
+
     validates :title, :explanation ,:amount , presence: true
     attachment :image
 
@@ -8,6 +10,7 @@ class Product < ApplicationRecord
     belongs_to :artist 
     belongs_to :genre
     belongs_to :label
-
+    has_many :arrivals
     has_many :cart_products
+
 end

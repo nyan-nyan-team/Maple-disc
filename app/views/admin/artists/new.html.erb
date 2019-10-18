@@ -1,1 +1,26 @@
+<% if flash[:notice] %>
+<p><%= flash[:notice] %></p>
+<% end %>
+
 <h1>アーティスト追加フォーム</h1>
+
+<h2>追加済みアーティスト一覧</h2>
+
+<div>
+<% @artists.each do |artist| %>
+<%= artist.artist_name %>
+<%= link_to 'edit' , edit_admin_artist_path(artist) %>
+<% end %>
+</div>
+
+<h2>アーティスト追加</h2>
+<div>
+<%= form_for([:admin, @artist]) do |f| %>
+<p><%= f.text_field :artist_name %></p>
+<ul><%= f.submit 'アーティストを追加する' %></ul>
+<% end %>
+</div>
+
+<div>
+<%= link_to "戻る" , new_admin_product_path %>
+</div>
