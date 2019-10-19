@@ -7,19 +7,41 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Artist.create!(
-    artist_name: '加藤ミリヤ'
+    [
+        {
+            artist_name: '加藤ミリヤ'
+        },
+        {
+            artist_name: '米酢げんし'
+        }
+    ]
 )
 
 Genre.create!(
-    genre_name: 'POP'
+    [
+        {
+            genre_name: 'POP'
+        },
+        {
+            genre_name: 'POP'
+        }
+    ]
 )
 
 Label.create!(
-    label_name: 'avex'
+    [
+        {
+            label_name: 'avex'
+        },
+        {
+            label_name: 'sony music'
+        }
+    ]
 )
 
 Product.create!(
-    artist_id: 1,
+    [
+        {artist_id: 1,
     genre_id: 1,
     label_id: 1,
     title: 'このままずっと朝まで',
@@ -27,6 +49,17 @@ Product.create!(
     status: 1,
     release: '発売日だよ',
     explanation: '曲の説明とか'
+        },
+        {artist_id: 2,
+        genre_id: 2,
+        label_id: 2,
+        title: 'レモン',
+        amount: 1500,
+        status: 1,
+        release: '発売日だよ',
+        explanation: '曲の説明とか'
+        }
+    ]
 )
 
 EndUser.create!(
@@ -42,7 +75,16 @@ EndUser.create!(
 )
 
 CartProduct.create!(
-    end_user_id: 1,
-    product_id: 1,
-    quantity: '5'
+    [
+        {
+            end_user_id: 1,
+            product_id: 1,
+            quantity: '5'
+        },
+        {
+            end_user_id: 1,
+            product_id: 2,
+            quantity: '3'
+        }
+    ]
 )
