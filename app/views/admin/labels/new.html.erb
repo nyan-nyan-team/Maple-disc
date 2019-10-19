@@ -9,7 +9,8 @@
 <div>
 <% @labels.each do |label| %>
 <%= label.label_name %>
-<%= link_to 'edit' , edit_admin_label_path(label) %>
+<%= link_to '編集' , edit_admin_label_path(label) %>
+<%= link_to '削除' , admin_label_path(label), method: :delete %>
 <% end %>
 </div>
 

@@ -10,35 +10,97 @@
 
 <%# header %>
 
-
 <header>
     <nav>
         <% if end_user_signed_in? %>
         <ul class="nav-list">
             <li><a href="#" class="home">ホーム</a></h1></li>
+            <%# 検索機能実装場所 %>
             <li class="nav-list-item">検索</li>
-            <li class="nav-list-item">ユーザー名</li>
-            <li class="nav-list-item">購入履歴</li>
-            <li class="nav-list-item">カート</li>
-            <li class="nav-list-item"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+            <li class="nav-list-item">
+            <span>
+            お客様情報
+            <%# <%= link_to "お客様ご登録情報" , end_user_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            購入履歴
+            <%# <%= link_to "購入履歴" , orders_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            カート
+            <%# <%= link_to "カート" , edit_cart_product_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+            </span>
+            </li>
         </ul>
 
         <% elsif admin_signed_in? %>
         <ul class="nav-list">
-            <li class="nav-list-item">アドミん</li>
-            <li class="nav-list-item"> admin</li>
-            <li class="nav-list-item">購入履歴</li>
-            <li class="nav-list-item">カート</li>
-            <li class="nav-list-item"><%= link_to "ログイン", new_end_user_session_path %></li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "新規商品追加" , new_admin_product %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "販売商品一覧" , admin_products_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "入荷履歴" , admin_arrivals_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "ユーザ情報" , admin_end_users_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "注文一覧" , admin_order_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </span>
+            </li>
         </ul>
     
         <% else %>
         <ul class="nav-list">
+        <%# 検索機能実装場所 %>
             <li class="nav-list-item">検索</li>
-            <li class="nav-list-item">ユーザー名</li>
-            <li class="nav-list-item">購入履歴</li>
-            <li class="nav-list-item">カート</li>
-            <li class="nav-list-item"><%= link_to "ログイン", new_end_user_session_path %></li>
+
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "ユーザ名", new_end_user_session_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "購入履歴", new_end_user_session_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "カート", new_end_user_session_path %>
+            </span>
+            </li>
+            <li class="nav-list-item">
+            <span>
+            <%= link_to "ログイン", new_end_user_session_path %>
+            </span>
+            </li>
         </ul>
         <% end %>
     </nav>
