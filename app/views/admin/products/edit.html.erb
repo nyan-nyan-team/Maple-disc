@@ -40,7 +40,7 @@
 </p>
 
 <p>
-<%= link_to "商品の削除", admin_products_path,method: :delete, date: { confirm: '本当に削除しますか？'} %>
+<%= link_to "商品の削除", admin_product_path(@product), method: :delete %>
 </p>
 
 <% end %>

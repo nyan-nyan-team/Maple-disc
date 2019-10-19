@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_090900) do
     t.string "title"
     t.string "image_id"
     t.integer "amount"
-    t.integer "status", limit: 2, default: 0, null: false
+    t.integer "status"
     t.datetime "release"
     t.string "explanation"
     t.boolean "deleted_at"

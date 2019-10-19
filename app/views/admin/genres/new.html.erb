@@ -9,7 +9,8 @@
 <div>
 <% @genres.each do |genre| %>
 <%= genre.genre_name %>
-<%= link_to 'edit' , edit_admin_genre_path(genre) %>
+<%= link_to '編集' , edit_admin_genre_path(genre) %>
+<%= link_to '削除' , admin_genre_path(genre), method: :delete %>
 <% end %>
 </div>
 

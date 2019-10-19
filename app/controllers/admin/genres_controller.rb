@@ -17,7 +17,10 @@ def update
     redirect_to new_admin_genre_path
 end
 
-def delete
+def destroy
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to new_admin_genre_path
 end
 
 private

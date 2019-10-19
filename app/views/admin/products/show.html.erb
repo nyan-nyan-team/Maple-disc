@@ -11,6 +11,17 @@
 <div>価格</div>
 <%= @product.amount %>
 
+<div>在庫数</div>
+<%# <% @product.arrivals.quantity %>
+<%# arrival quantity all - order  all =  %>
+
+<div>販売状況</div>
+<%# <% if @product.arrivals.quantity == 0 %>
+<%# <div>売り切れ</div> %>
+<%# <% else %>
+<%# <div>販売中</div> %>
+<%# <% end %>
+
 <div>アーティスト</div>
 <%= @product.artist.artist_name %>
 
