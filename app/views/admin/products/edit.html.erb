@@ -32,10 +32,16 @@
 <%# <div>在庫数</div> %>
 <%# <%= f.text_field :product %>
 
-<div>販売ステータス</div>
-<%= f.select :status, Product.statuses.keys, {}, class: "select-default" %>
+<%# <div>販売ステータス</div>
+<p><%= f.select :status, Product.statuses.keys, {}, class: "select-default" %>
 
-<ul><%= f.submit '商品情報を更新する' %></ul>
+<p>
+<%= f.submit '商品情報を更新する' %>
+</p>
+
+<p>
+<%= link_to "商品の削除", admin_products_path,method: :delete, date: { confirm: '本当に削除しますか？'} %>
+</p>
 
 <% end %>
 </div>
