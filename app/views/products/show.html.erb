@@ -1,3 +1,53 @@
 <div class= "container">
-<h1>商品詳細</h1>>
+<h1>商品詳細</h1>
+<div class= "row">
+<div class= "col-sm-4">
+<div>
+<%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+</div>
+</div>
+<%= form_for(@product, url: {controller: "cart_products", action: "create"}) do |product| %> 
+<div class= "col-sm-8">
+<%= render "カートに追加", product: product %>
+<%# <% product.number_field :quantity %> 
+<% end %> 
+</div>
+
+<div class= "container">
+<hr>
+<div>商品名</div>
+<%= @product.title %>
+
+<div>価格</div>
+<%= @product.amount %>
+
+<div>アーティスト</div>
+<%= @product.artist.artist_name %>
+
+<div>レーベル</div>
+<%= @product.label.label_name %>
+
+<div>ジャンル</div>
+<%= @product.genre.genre_name %>
+
+
+<div>ディスク名</div>
+<% @product.discs.each do |disc| %> 
+<%= disc.disc_number %>
+<div>収録曲一覧</div>
+<% disc.musics.each do |music| %> 
+<%= music.music_name %> 
+<% end %> 
+<% end %> 
+
+
+<div>商品紹介</div>
+<div>
+<%= @product.explanation %>
+</div>
+
+<div>
+<%= @product.status %>
+</div>
+
 </div>

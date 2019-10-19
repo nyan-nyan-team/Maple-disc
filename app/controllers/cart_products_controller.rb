@@ -13,5 +13,10 @@ def destroy
     @cart_product = CartProduct.find(params[:id])
     @cart_product.destroy
     redirect_to cart_products_path
+end 
+def create
+    cart_product = CartProduct.new(current_end_user.products.cart_products)
+    cart_product.save
+    redirect_to cart_products_path
 end
 end

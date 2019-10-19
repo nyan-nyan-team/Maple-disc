@@ -9,8 +9,9 @@
 <div>
 
 <%# <th>売り切れ表示</th> %>
-<%= link_to>
+<%= link_to product_path(product) do %>
 <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+<% end %>
 <br>
 <%= product.title %>
 <br>

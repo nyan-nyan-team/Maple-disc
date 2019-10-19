@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:index, :show, :new, :create]
   resources :order_details, only: [:index]
-  resources :cart_products, only: [:index, :update, :destroy]
+  resources :cart_products, only: [:index, :update, :create, :destroy]
   resources :products, only: [:index, :show]
   get  'out' => 'end_users#out'
   post '/orders/confirm', to: 'orders#confirm', as: :confirm_order
