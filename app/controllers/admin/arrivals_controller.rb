@@ -3,7 +3,6 @@ class Admin::ArrivalsController < Admin::Base
 def index
     @arrival = Arrival.new
     @arrivals = Arrival.page(params[:page]).per(PER)
-
 end
 def new
     @arrival = Arrival.new

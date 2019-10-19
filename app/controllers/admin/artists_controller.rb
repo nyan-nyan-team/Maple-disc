@@ -21,7 +21,10 @@ def update
     redirect_to new_admin_artist_path
 end
 
-def delete
+def destroy
+    artist = Artist.find(params[:id])
+    artist.destroy
+    redirect_to new_admin_artist_path
 end
 
 private
