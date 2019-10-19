@@ -6,7 +6,7 @@
             <% total_price = 0 %>
             <% current_end_user.cart_products.each do |cart_product|%>
                 <div>
-                    <%= attachment_image_tag cart_product.product.image, :fill, 80, 80, format: 'jpeg', class: "img-circle pull-left profile-img" %>
+                    <%= attachment_image_tag cart_product.product.image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>
                     <h2>シングル/アルバム名</h2>
                     <%= cart_product.product.title %>
                     <hr>
@@ -19,23 +19,31 @@
                         <%= f.submit 'この内容で更新する' %>
                     <% end %>
                     <hr>
-                        <h2>小計（税込）</h2>
+                    <h2>金額</h2>
+                    ¥ <%= cart_product.product.amount %>
+                    <h2>枚数</h2>
+                    <%= cart_product.quantity %> 枚
+                    <%# <h2>合計枚数</h2> %>
+                    <% total_quantity += cart_product.quantity %>
+                    <h2>小計（税込）</h2>
                     ¥ <%= cart_product.product.amount * cart_product.quantity %>
-                        <h2>合計枚数</h2>
-                    <%= total_quantity += cart_product.quantity %>
-                        <h2>合計金額</h2>
-                    <%= total_price += cart_product.product.amount * cart_product.quantity %>
+                    <%# <h2>合計金額</h2> %>
+                    <% total_price += cart_product.product.amount * cart_product.quantity %>
                 </div>
+                <hr>
+                <%= link_to "削除する", cart_product_path(cart_product), method: :delete, class: "btn btn-danger" %>
             <% end %>
         </div>
         <div class="col-sm-4">
             <h2>合計枚数</h2>
-            <%= total_quantity %>
+            <%= total_quantity %> 枚
             <h2>合計（税込）</h2>
-            <%= total_price %>
+            ¥ <%= total_price %>
             </tr>
             <h2>送料</h2>
             <h2>+ ¥500</h2>
+            <h2>総計（税込）</h2>
+            ¥ <%= total_price + 500 %>
         </div>
         <hr>
         <div class="button_wrapper">
