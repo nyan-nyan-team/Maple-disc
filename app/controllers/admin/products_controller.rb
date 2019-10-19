@@ -6,7 +6,6 @@ end
 
 def show
     @product = Product.find(params[:id])
-    @products = Product.all
 end
 
 def new
@@ -17,6 +16,7 @@ def new
     @arrival = Arrival.new
 end
 def edit
+    
     @product = Product.find(params[:id])
 end
 
@@ -41,7 +41,7 @@ end
 # :image_idが足りないが入れると”image_id_id_will_change!”というエラーが出る
 private
 def product_params
-    params.require(:product).permit(:id, :title, :artist_id, :genre_id, :label_id, :amount, :explanation, :status, discs_attributes: [:id, :explanation, :done, :_destroy, musics_attributes: [:id, :explanation, :_destroy]])
+    params.require(:product).permit(:id, :title, :image, :artist_id, :genre_id, :label_id, :amount, :explanation, :status, discs_attributes: [:id, :disc_number, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
 end
 
 

@@ -4,7 +4,7 @@
 <table>
 <thead>
 <tr>
-<th class="table_image_id"></th>
+<th class="table_image"></th>
 <th class="table_id"></th>
 <th class="table_title"></th>
 <th class="table_artist_id"></th>
@@ -15,15 +15,27 @@
 </thead>
 
 <tbody>
+<tr>
 <% @products.each do |product| %>
-<tr><%= product.image_id %></tr>
-<tr><%= product.id %></tr>
-<tr><%= product.title %></tr>
-<tr><%= product.artist_id %></tr>
-<tr><%= product.amount %></tr>
-<tr><%= product.arrival.quantity %></tr>
+<td>
+<div><%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %></div>
+</td>
+<td>
+<div><%= product.id %></div>
+</td>
+<td>
+<div><%= product.title %></div>
+</td>
+<td>
+<div><%= product.artist.artist_name %></div>
+</td>
+<td>
+<div>価格 | ¥<%= product.amount %><div>
+</td>
+<%# <tr><%= product.arrival.quantity %>
 <%# <% 売り切れ表示 %>
 <% end %>
+</tr>
 </tbody>
 </table>
 
