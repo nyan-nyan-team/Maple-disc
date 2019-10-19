@@ -23,7 +23,7 @@ class Product < ApplicationRecord
     belongs_to :genre
     belongs_to :label
     has_many :arrivals
-    has_many :order_detail
+    has_many :order_details
     has_many :cart_products
 
 end
