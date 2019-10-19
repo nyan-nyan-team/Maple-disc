@@ -1,6 +1,7 @@
 class CartProductsController < ApplicationController
     before_action :authenticate_end_user!
-def edit
+def index
+    @cart_product = current_end_user.cart_products
 end
 def update
     cart_product = CartProduct.find(params[:id])
@@ -9,5 +10,8 @@ def update
     redirect_to edit_cart_product_path(current_end_user.id)
 end
 def destroy
+    @cart_product = CartProduct.find(params[:id])
+    @cart_product.destroy
+    redirect_to cart_products_path
 end
 end
