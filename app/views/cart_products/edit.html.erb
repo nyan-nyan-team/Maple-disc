@@ -21,8 +21,10 @@
                     <hr>
                         <h2>小計（税込）</h2>
                     ¥ <%= cart_product.product.amount * cart_product.quantity %>
-                    <% total_quantity += cart_product.quantity %>
-                    <% total_price += cart_product.product.amount * cart_product.quantity %>
+                        <h2>合計枚数</h2>
+                    <%= total_quantity += cart_product.quantity %>
+                        <h2>合計金額</h2>
+                    <%= total_price += cart_product.product.amount * cart_product.quantity %>
                 </div>
             <% end %>
         </div>
@@ -37,7 +39,7 @@
         </div>
         <hr>
         <div class="button_wrapper">
-        <%= link_to new_cart_product_path, class: "center-block" do %>
+        <%= link_to new_order_path, class: "center-block" do %>
                 <button type="button" class="btn btn-default">レジに進む</button>
         </div>
         <% end %>

@@ -22,9 +22,9 @@ Product.create!(
     artist_id: 1,
     genre_id: 1,
     label_id: 1,
-    title: 'タイトルだよ',
-    amount: '金額だよ',
-    status: 'ステータスだよ',
+    title: 'このままずっと朝まで',
+    amount: 1500,
+    status: 1,
     release: '発売日だよ',
     explanation: '曲の説明とか'
 )
