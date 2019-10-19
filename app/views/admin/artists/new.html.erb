@@ -9,7 +9,8 @@
 <div>
 <% @artists.each do |artist| %>
 <%= artist.artist_name %>
-<%= link_to 'edit' , edit_admin_artist_path(artist) %>
+<%= link_to '編集' , edit_admin_artist_path(artist) %>
+<%= link_to '削除' , admin_artist_path(artist), method: :delete %>
 <% end %>
 </div>
 

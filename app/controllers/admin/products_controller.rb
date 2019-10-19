@@ -33,15 +33,14 @@ def update
 end
 
 def destroy
-    product = product.find(params[:id])
+    product = Product.find(params[:id])
     product.destroy
-    redirect_to admin_product_path
+    redirect_to admin_products_path
 end
 
-# :image_idが足りないが入れると”image_id_id_will_change!”というエラーが出る
 private
 def product_params
-    params.require(:product).permit(:id, :title, :image, :artist_id, :genre_id, :label_id, :amount, :explanation, :status, discs_attributes: [:id, :disc_number, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
+    params.require(:product).permit(:id, :title, :image, :artist_id, :genre_id, :label_id, :amount, :explanation, :status, :destroy, discs_attributes: [:id, :disc_number, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
 end
 
 

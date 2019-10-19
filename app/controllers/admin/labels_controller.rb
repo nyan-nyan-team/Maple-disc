@@ -17,7 +17,10 @@ def update
     redirect_to new_admin_label_path
 end
 
-def delete
+def destroy
+    label = Label.find(params[:id])
+    label.destroy
+    redirect_to new_admin_label_path
 end
 
 private

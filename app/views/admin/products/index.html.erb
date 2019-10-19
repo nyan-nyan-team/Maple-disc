@@ -11,6 +11,7 @@
 <th class="table_amount"></th>
 <th class="table_quantity"></th>
 <%# <th>売り切れ表示</th> %>
+<th></th>
 </tr>
 </thead>
 
@@ -32,8 +33,15 @@
 <td>
 <div>価格 | ¥<%= product.amount %><div>
 </td>
+<td>
+<div>在庫数</div>
+</td>
 <%# <tr><%= product.arrival.quantity %>
 <%# <% 売り切れ表示 %>
+<td>
+<%# 全体をボタン形式にできたら %>
+<%= link_to "詳細", admin_product_path(product) %>
+</td>
 <% end %>
 </tr>
 </tbody>
