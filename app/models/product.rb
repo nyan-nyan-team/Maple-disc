@@ -12,5 +12,6 @@ class Product < ApplicationRecord
     belongs_to :label
     has_many :arrivals
     has_many :cart_products
+    has_many :order_details
 
 end

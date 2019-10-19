@@ -41,14 +41,15 @@ Label.create!(
 
 Product.create!(
     [
-        {artist_id: 1,
-    genre_id: 1,
-    label_id: 1,
-    title: 'このままずっと朝まで',
-    amount: 1500,
-    status: 1,
-    release: '発売日だよ',
-    explanation: '曲の説明とか'
+        {
+        artist_id: 1,
+        genre_id: 1,
+        label_id: 1,
+        title: 'このままずっと朝まで',
+        amount: 1500,
+        status: 1,
+        release: '発売日だよ',
+        explanation: '曲の説明とか'
         },
         {artist_id: 2,
         genre_id: 2,
@@ -88,3 +89,21 @@ CartProduct.create!(
         }
     ]
 )
+
+Order.create!(
+    end_user_id: 1,
+    purchase_price_total: 5000,
+    payment_method: 1,
+    postage: 500,
+    delivery_name: 'テストテスコ',
+    delivery_postal_code: 333333,
+    delivery_address: 'テスト県テス市',
+    delivery_status: 0
+)
+
+OrderDetail.create!(
+    order_id: 1,
+    product_id: 1,
+    purchase_price: 6000
+)
+

@@ -2,69 +2,28 @@
 <h1>購入履歴一覧</h1>
     <div class="row">
         <div class="col-sm-5">
-            <h1>配送ステータス　変数入れる</h1>
-            <div class="image">商品の写真入れる
-                <%# <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'80x80' %>
-            </div>
+            <% current_end_user.orders.each do |order|%>
+                <h1>配送ステータス:<%= order.delivery_status %></h1>
+                <div class="image">商品の写真入れる
+                    <%= attachment_image_tag order.order_details.product.image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>
+                </div>
         </div>
         <div class="col-sm-7">
-            <h1>購入日：変数入れる</h1>
-            <table>
-                <tr>
-                    <th>シングル/アルバム名<th>
-                    <td>変数入れる</td>
-                </tr>
-                <tr>
-                    <th>アーティスト名<th>
-                    <td>変数入れる</td>
-                </tr>
-                <tr>
-                    <th>レーベル名<th>
-                    <td>変数入れる</td>
-                </tr>
-                <tr>
-                    <th>枚数<th>
-                    <td>変数入れる</td>
-                </tr>
-                <tr>
-                    <th>値段<th>
-                    <td>変数入れる</td>
-                </tr>
-            </table>
+            <h1>購入日：?????変数入れる</h1>
+                <h2>シングル/アルバム名<h2>
+                <%= order.order_details.product.title %>
+                <h2>アーティスト名<h2>
+                <%= order.order_details.product.artist.artist_name %>
+                <h2>レーベル名<h2>
+                <%= order.order_details.product.label.label_name %>
+                <h2>枚数<h2>
+                <%= order.order_details.purchase_quantity %>
+                <h2>値段<h2>
+                <%= order.order_details.purchase_price %>
+            <% end %>
         </div>
     </div>  <%#rowの閉じタグ%>
     <br>
     <hr>
     <br>
-</div>  <%#containerの閉じタグ%>
-
-<div class="container">
-    <div class="row">
-        <div class="col-sm-5">
-            <table>
-            <%#= @orders.each do |order| %>
-                <tr>
-                    <th>お支払い方法<th>
-                    <td><%#= order.payment_method %></td>
-                </tr>
-                <tr>
-                    <th>発送先<th>
-                    <td><%#= order.delivery_name %></td>
-                </tr>
-                <tr>
-                    <th>合計枚数<th>
-                    <td>変数入れる</td>
-                </tr>
-                <tr>
-                    <th>送料<th>
-                    <td>¥500</td>
-                </tr>
-                <tr>
-                    <th>購入価格総計<th>
-                    <td><%#= order.purchase_price_total %></td>
-                </tr>
-            <%# end %>
-            </table>
-        </div>
-    </div>  <%#rowの閉じタグ%>
 </div>  <%#containerの閉じタグ%>
