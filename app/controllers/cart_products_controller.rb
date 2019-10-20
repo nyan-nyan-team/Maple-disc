@@ -7,7 +7,7 @@ def update
     cart_product = CartProduct.find(params[:id])
     cart_product.quantity =  params[:cart_product][:quantity].to_i
     cart_product.save
-    redirect_to edit_cart_product_path(current_end_user.id)
+    redirect_to cart_products_path
 end
 def destroy
     @cart_product = CartProduct.find(params[:id])
