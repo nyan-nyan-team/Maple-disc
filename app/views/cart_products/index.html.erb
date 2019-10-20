@@ -10,12 +10,20 @@
                     <h2>シングル/アルバム名</h2>
                     <%= cart_product.product.title %>
                     <hr>
-                    <h2>在庫ありかどうかの表示</h2>
-                    <%= cart_product.product.status %>
+                    <%# 在庫数の計算式です。 %>
+                    <% productquantity = cart_product.product.total_arrival_quantity - cart_product.product.total_order_detail_quantity %>
+                    <div>在庫数：<%= productquantity %></div>
+                    <hr>
+                    <div>販売状況</div>
+                    <% if productquantity == 0 %>
+                    <div>売り切れ</div>
+                    <% else %>
+                    <div>販売中</div>
+                    <% end %>
                     <hr>
                     <%= form_for cart_product, url: "/cart_products/#{cart_product.id}" ,method: :PUT do |f| %>
                         <h2>数量</h2>
-                        <%= f.number_field :quantity %>
+                        <%= f.number_field :quantity, min: 0,max: productquantity %>
                         <%= f.submit 'この内容で更新する' %>
                     <% end %>
                     <hr>

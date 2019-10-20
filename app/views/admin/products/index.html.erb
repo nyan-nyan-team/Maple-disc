@@ -19,7 +19,9 @@
 <tr>
 <% @products.each do |product| %>
 <td>
-<div><%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %></div>
+<%= link_to admin_product_path(product) do %>
+<%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+<% end %>
 </td>
 <td>
 <div><%= product.id %></div>
@@ -35,7 +37,7 @@
 </td>
 <td>
 <div>在庫数</div>
-<% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
+<% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
 <%= productquantity %>
 </td>
 <td>
@@ -44,10 +46,6 @@
 <% else %>
 <div>販売中</div>
 <% end %>
-</td>
-<td>
-<%# 全体をボタン形式にできたら %>
-<%= link_to "詳細", admin_product_path(product) %>
 </td>
 <% end %>
 </tr>
