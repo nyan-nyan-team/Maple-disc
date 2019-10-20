@@ -10,8 +10,8 @@
 <th class="table_artist_id"></th>
 <th class="table_amount"></th>
 <th class="table_quantity"></th>
-<%# <th>売り切れ表示</th> %>
-<th></th>
+<th class="table_status"></th>
+<th class="rable_show_link"></th>
 </tr>
 </thead>
 
@@ -35,9 +35,16 @@
 </td>
 <td>
 <div>在庫数</div>
+<% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
+<%= productquantity %>
 </td>
-<%# <tr><%= product.arrival.quantity %>
-<%# <% 売り切れ表示 %>
+<td>
+<% if productquantity == 0 %>
+<div>売り切れ</div>
+<% else %>
+<div>販売中</div>
+<% end %>
+</td>
 <td>
 <%# 全体をボタン形式にできたら %>
 <%= link_to "詳細", admin_product_path(product) %>

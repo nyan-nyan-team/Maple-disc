@@ -119,3 +119,8 @@ OrderDetail.create!(
     ]
 )
 
+Arrival.create!(
+    product_id: 1,
+    quantity: 30
+)
+
