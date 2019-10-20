@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       registrations: 'end_users/registrations'
     }
   namespace :admin do
-    resources :end_users, only: [:index, :show, :edit, :update, :destroy]
-    resources :order_details, only: [:index, :show, :edit]
+    resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
+    resources :order_details, only: [:index]
+    end
     resources :orders, only: [:index, :show]
 
     resources :products, only: [:index, :show, :new, :edit, :create, :update, :destroy]
