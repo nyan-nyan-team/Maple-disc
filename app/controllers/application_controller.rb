@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_end_user!, only: [:edit, :update, :destroy, :new, :create]
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :set_search
     def after_sign_in_path_for(resource)
         end_user_path(current_end_user.id)
     end
 
+    def set_search
+        @q = Product.ransack(params[:q])
+    end
     
     # def after_sign_in_path_for(resource)
     #     admin_path(current_admin.id)
