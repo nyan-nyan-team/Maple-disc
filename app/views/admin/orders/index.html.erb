@@ -23,12 +23,13 @@
                     </div>
                     <div class="col-sm-3">
                     </div>
+
+            <div class= "button-wrapper">
+                <%= link_to "受注履歴詳細へ", admin_order_path(order.id), class: 'btn btn-danger' %>
+            </div>
                 <% end %>
             <% end %>
             <%= paginate @orders %>
-            <div class= "button-wrapper">
-                <%#= link_to "受注履歴詳細へ", admin_order_detail_path(), class: 'btn btn-danger' %>
-            </div>
             <br>
         </div>
     </div>

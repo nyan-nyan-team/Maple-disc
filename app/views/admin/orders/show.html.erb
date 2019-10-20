@@ -4,11 +4,39 @@
 <div class="col-sm-12">
 <div>
 <h2>受注日 :<%= @order.updated_at %></h2>
+<% total_quantity = 0 %>
 <% @order.order_details.each do |detail| %>
 <%= attachment_image_tag detail.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %> 
 </div>
-<h2>シングル/アルバム名 :<%= detail.product.title %>
+<h2>シングル/アルバム名 : <%= detail.product.title %>
 
-<h2>アーティスト名 :<%= detail.product.artist.artist_name %>
+<h2>アーティスト名 : <%= detail.product.artist.artist_name %>
+<h2>レーベル名 :<%= detail.product.label.label_name %>
+<h2>値段 : <%= detail.purchase_price %> (税込)</h2>
+<h2>購入枚数 : <%= detail.quantity %></h2>
+<% total_quantity += detail.quantity %>
 </div>
 <% end %>
+</div>
+<div class="col-sm-4">
+<h2>合計枚数</h2>
+<%= total_quantity %> 枚
+<h2>小計</h2>
+¥<%= @order.purchase_price_total %> (税込)
+<h2>送料</h2>
+¥<%= @order.postage %>
+<h2>購入価格総計</h2>
+¥<%= @order.purchase_price_total + 500 %>(税込)
+<h2>購入者名</h2>
+<%= @order.delivery_name %>
+<h2>郵便番号</h2>
+<%= @order.delivery_postal_code %>
+<h2>お届け先住所</h2>
+<%= @order.delivery_address %>
+<h2>配送ステータス</h2>
+<%= @order.delivery_status %>
+<h2>支払い方法</h2>
+<%= @payment %>
+</div>
+</div>
+</div>
