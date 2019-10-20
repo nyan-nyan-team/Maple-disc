@@ -25,5 +25,6 @@ class Product < ApplicationRecord
     has_many :arrivals
     has_many :order_details
     has_many :cart_products
+    has_many :order_details
 
 end
