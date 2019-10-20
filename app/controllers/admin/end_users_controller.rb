@@ -18,6 +18,7 @@ def out
     @enduser = EndUser.find(params[:id])
     @end_user = EndUser.new
 end
+
 def update
     @enduser = EndUser.find(params[:id])
     if @enduser.update(end_user_params)
