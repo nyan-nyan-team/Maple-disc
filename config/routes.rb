@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     }
   namespace :admin do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy]
-    resources :order_details, only: [:show, :edit]
+    resources :order_details, only: [:index, :show, :edit]
     resources :orders, only: [:index, :show]
 
     resources :products, only: [:index, :show, :new, :edit, :create, :update, :destroy]
