@@ -15,7 +15,7 @@ def destroy
     redirect_to cart_products_path
 end 
 def create
-    cart_product = CartProduct.new(current_end_user.products.cart_products)
+    cart_product = CartProduct.new(end_user_id: current_end_user.id, product_id: params[:cart_product][:product_id], quantity: params[:cart_product][:quantity] )
     cart_product.save
     redirect_to cart_products_path
 end

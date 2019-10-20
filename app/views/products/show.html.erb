@@ -6,10 +6,11 @@
 <%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
 </div>
 </div>
-<%= form_for(@product, url: {controller: "cart_products", action: "create"}) do |product| %> 
+<%= form_for(@cart_product, url: cart_products_path, method: :POST) do |product| %> 
 <div class= "col-sm-8">
-<%= render "カートに追加", product: product %>
-<%# <% product.number_field :quantity %> 
+<%= product.hidden_field :product_id, value: @product.id %>
+<%= product.number_field :quantity %>
+<%= product.submit "カートに追加" %>
 <% end %> 
 </div>
 
