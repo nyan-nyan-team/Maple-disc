@@ -16,7 +16,16 @@
         <ul class="nav-list">
             <li><a href="#" class="home">ホーム</a></h1></li>
             <%# 検索機能実装場所 %>
-            <li class="nav-list-item">検索</li>
+            <li class="nav-list-item">
+            <dl class="searchbox">
+                <%= search_form_for @q do |f|%>
+                <dt><%= f.text_field :title_cont, placeholder: "商品名" %></dt>
+                <%# <dd><%= f.search_field :title_cont %>
+                <dd><%= f.submit ("検索") , class: 'search-btn' %></dd>
+
+                <% end %>
+            </dl>
+            </li>
             <li class="nav-list-item">
             <span>
             お客様情報

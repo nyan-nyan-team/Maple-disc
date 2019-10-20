@@ -3,8 +3,14 @@ class ProductsController < ApplicationController
     PER = 4
 def index
     @product = Product.new
-    @products = Product.page(params[:page]).per(PER)
-end 
+    if params[:q]
+        @products = @q.result.page(params[:page]).per(PER)
+    else
+        @products = Product.page(params[:page]).per(PER)
+
+    end 
+end
+
 def show
     @product = Product.find(params[:id])
     @cart_product = CartProduct.new
