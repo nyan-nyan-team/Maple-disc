@@ -2,7 +2,7 @@
 <h2>商品詳細</h2>
 
 <div>
-<%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+<%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'200x200' %>
 </div>
 
 <div>商品名</div>
@@ -11,20 +11,16 @@
 <div>価格</div>
 <%= @product.amount %>
 
-<div>在庫数</div>
-<%# <% @product.arrivals.quantity %>
-<%# arrival quantity all - order detail quantity all =  product quantity %>
-<%# @product = Product.find(params[:id]) %>
-<%# @product.total_arrival_quantity %>
-<% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
-<%= productquantity %>
+<%# <div>在庫数</div> %>
+<%# productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
+<%#= productquantity %>
 
-<div>販売状況</div>
-<% if productquantity == 0 %>
-<div>売り切れ</div>
-<% else %>
-<div>販売中</div>
-<% end %>
+<%# <div>販売状況</div> %>
+<%# if productquantity == 0 %>
+<%# <div>売り切れ</div> %>
+<%# else %>
+<%# <div>販売中</div> %>
+<%# end %>
 
 <div>アーティスト</div>
 <%= @product.artist.artist_name %>
