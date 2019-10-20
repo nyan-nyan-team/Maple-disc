@@ -42,23 +42,24 @@ Label.create!(
 Product.create!(
     [
         {
-        artist_id: 1,
-        genre_id: 1,
-        label_id: 1,
-        title: 'このままずっと朝まで',
-        amount: 1500,
-        status: 1,
-        release: '発売日だよ',
-        explanation: '曲の説明とか'
+            artist_id: 1,
+            genre_id: 1,
+            label_id: 1,
+            title: 'このままずっと朝まで',
+            amount: 1500,
+            status: 1,
+            release: '発売日だよ',
+            explanation: '曲の説明とか'
         },
-        {artist_id: 2,
-        genre_id: 2,
-        label_id: 2,
-        title: 'レモン',
-        amount: 1500,
-        status: 1,
-        release: '発売日だよ',
-        explanation: '曲の説明とか'
+        {
+            artist_id: 2,
+            genre_id: 2,
+            label_id: 2,
+            title: 'レモン',
+            amount: 1500,
+            status: 1,
+            release: '発売日だよ',
+            explanation: '曲の説明とか'
         }
     ]
 )
@@ -102,8 +103,19 @@ Order.create!(
 )
 
 OrderDetail.create!(
-    order_id: 1,
-    product_id: 1,
-    purchase_price: 6000
+    [
+        {
+            order_id: 1,
+            product_id: 1,
+            purchase_price: 6000,
+            quantity: 3
+        },
+        {
+            order_id: 1,
+            product_id: 2,
+            purchase_price: 3000,
+            quantity: 3
+        }
+    ]
 )
 

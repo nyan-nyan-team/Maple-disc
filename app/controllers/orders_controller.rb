@@ -1,7 +1,18 @@
 class OrdersController < ApplicationController
     before_action :authenticate_end_user!
+    # PER = 1
     def index
-        
+        # @order = Order.page(params[:page]).per(PER)
+        @orders = current_end_user.orders.page(params[:page]).per(2)
+        @delivery_status = params[:delivery_status].to_i
+        case @delivery_status
+        when 0
+            @delivery_status = '受付'
+        when 1
+            @delivery_status = '商品準備中'
+        when 2
+            @delivery_status = '出荷済'
+        end
     end
     def show
         

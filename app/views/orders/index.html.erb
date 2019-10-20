@@ -1,29 +1,33 @@
 <div class="container">
-<h1>購入履歴一覧</h1>
     <div class="row">
-        <div class="col-sm-5">
-            <% current_end_user.orders.each do |order|%>
-                <h1>配送ステータス:<%= order.delivery_status %></h1>
-                <div class="image">商品の写真入れる
-                    <%= attachment_image_tag order.order_details.product.image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>
-                </div>
-        </div>
-        <div class="col-sm-7">
-            <h1>購入日：?????変数入れる</h1>
-                <h2>シングル/アルバム名<h2>
-                <%= order.order_details.product.title %>
-                <h2>アーティスト名<h2>
-                <%= order.order_details.product.artist.artist_name %>
-                <h2>レーベル名<h2>
-                <%= order.order_details.product.label.label_name %>
-                <h2>枚数<h2>
-                <%= order.order_details.purchase_quantity %>
-                <h2>値段<h2>
-                <%= order.order_details.purchase_price %>
+        <h1>購入履歴一覧</h1>
+        <div class="page-header">
+            <% @orders.each do |order| %>
+                <h2>配送ステータス:<%= @delivery_status %></h2>
+                <h2>購入日：<%= order.updated_at %></h2>
+                <% order.order_details.each do |detail| %>
+                    <div class="col-sm-6">
+                        <div class="image">
+                            <%= attachment_image_tag detail.product, :image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>    
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h2>シングル/アルバム名<h2>
+                        <%= detail.product.title %>
+                        <h2>アーティスト名<h2>
+                        <%= detail.product.artist.artist_name %>
+                        <h2>レーベル名<h2>
+                        <%= detail.product.label.label_name %>                
+                        <h2>枚数<h2>
+                        <%= detail.quantity %>
+                        <h2>値段<h2>
+                        <%= detail.purchase_price %>
+                    </div>
+                <% end %>
+                <hr>
             <% end %>
+            <br>
+            <%= paginate @orders %>
         </div>
-    </div>  <%#rowの閉じタグ%>
-    <br>
-    <hr>
-    <br>
+    </div>
 </div>  <%#containerの閉じタグ%>
