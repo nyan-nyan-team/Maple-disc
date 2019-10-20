@@ -35,18 +35,15 @@
 </td>
 <td>
 <div>在庫数</div>
+<% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
+<%= productquantity %>
 </td>
-<%# <tr><%= product.arrival.quantity %>
-<%# <% 売り切れ表示 %>
-<%# productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
-<%#= productquantity %>
 <td>
-<%# <div>販売状況</div> %>
-<%# if productquantity == 0 %>
-<%# <div>売り切れ</div> %>
-<%# else %>
-<%# <div>販売中</div> %>
-<%# end %>
+<% if productquantity == 0 %>
+<div>売り切れ</div>
+<% else %>
+<div>販売中</div>
+<% end %>
 </td>
 <td>
 <%# 全体をボタン形式にできたら %>
