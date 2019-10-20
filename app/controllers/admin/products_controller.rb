@@ -38,6 +38,7 @@ def destroy
     redirect_to admin_products_path
 end
 
+
 private
 def product_params
     params.require(:product).permit(:id, :title, :image, :artist_id, :genre_id, :label_id, :amount, :explanation, :status, :destroy, discs_attributes: [:id, :disc_number, :_destroy, musics_attributes: [:id, :music_name, :_destroy]])
