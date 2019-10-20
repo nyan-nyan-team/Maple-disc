@@ -1,1 +1,14 @@
-w
+<div class= "container">
+<h1>受注履歴詳細</h1>
+<div class="row">
+<div class="col-sm-12">
+<div>
+<h2>受注日 :<%= @order.updated_at %></h2>
+<% @order.order_details.each do |detail| %>
+<%= attachment_image_tag detail.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %> 
+</div>
+<h2>シングル/アルバム名 :<%= detail.product.title %>
+
+<h2>アーティスト名 :<%= detail.product.artist.artist_name %>
+</div>
+<% end %>

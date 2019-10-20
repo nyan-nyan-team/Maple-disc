@@ -18,12 +18,7 @@ def out
     @enduser = EndUser.find(params[:id])
     @end_user = EndUser.new
 end
-def order_index
-    @order = Order.all
-end
-def order_show
-    @order = Order.find(params[:id])
-end
+
 def update
     @enduser = EndUser.find(params[:id])
     if @enduser.update(end_user_params)

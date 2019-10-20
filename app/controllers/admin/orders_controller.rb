@@ -1,6 +1,7 @@
 class Admin::OrdersController < Admin::Base
 def index
     @orders = Order.all.page(params[:page]).per(1)
+    @order = Order.new
 
     @delivery_status = params[:delivery_status].to_i
     case @delivery_status
@@ -13,6 +14,8 @@ def index
     end
 end
 def show
+    @order = Order.find(params[:id])
+    @orders = Order.all
 end
 
 end
