@@ -14,6 +14,14 @@
  *= require_self
  */
 @import "bootstrap";
+
+
+
+//フォント　font-family: 'Noto Sans JP', sans-serif;
+
+
+
+
 //リセットCSS
 * {
     margin: 0;
@@ -33,6 +41,11 @@ hr {
     border-top: 1px #E0E0E0 solid;
 }
 
+//ふわっとさせるアニメーション
+.effect div {
+    // margin: auto;
+    transition: .5s;
+}
 
 
 //-------------------header用-------------------
@@ -44,7 +57,7 @@ header {
     padding-top: 7px;
 }
 .nav-list-item {
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     list-style: none;
     display: inline-block;
 }
@@ -53,13 +66,14 @@ header {
 
 //-----------------フォント----------------------
 h1 {
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 20px;
+    font-style: bold;
     color: rgb(41, 29, 18);
     text-align: center;
 }
 h2 {
-    font-family: sans-serif;
+    font-family: 'Noto Sans JP', sans-serif;
     font-size: 15px;
     color: rgb(41, 29, 18);
 }

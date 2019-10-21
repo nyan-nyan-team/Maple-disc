@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
 </head>
 <body>
 
@@ -14,33 +15,31 @@
     <nav>
         <% if end_user_signed_in? %>
         <ul class="nav-list">
-            <li><a href="#" class="home">ホーム</a></h1></li>
+            <li><a><%= link_to "ホーム" , products_path %></a></li>
             <%# 検索機能実装場所 %>
             <li class="nav-list-item">
             <dl class="searchbox">
                 <%= search_form_for @q do |f|%>
                 <dt><%= f.text_field :title_cont, placeholder: "商品名" %></dt>
                 <dd><%= f.submit ("検索") , class: 'search-btn' %></dd>
-
                 <% end %>
             </dl>
             </li>
             <li class="nav-list-item">
-            <span>
-            ようこそ★<%= current_end_user.first_name %>さん
-            <%# <%= link_to "お客様ご登録情報" , end_user_path %>
+            <span>            
+            <%= link_to end_user_path(current_end_user.id) do %>
+            <p>ようこそ★<%= current_end_user.first_name %>さん</p>
+            <% end %>
             </span>
             </li>
             <li class="nav-list-item">
             <span>
-            購入履歴
-            <%# <%= link_to "購入履歴" , orders_path %>
+            <%= link_to "購入履歴" , orders_path %>
             </span>
             </li>
             <li class="nav-list-item">
             <span>
-            カート
-            <%# <%= link_to "カート" , edit_cart_product_path %>
+            <%= link_to "カート" , cart_products_path %>
             </span>
             </li>
             <li class="nav-list-item">
@@ -115,5 +114,8 @@
 </header>
 
 <%= content_for?(:content) ? yield(:content) : yield %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/562ca3c57a.js" crossorigin="anonymous"></script>
 </body>
 </html>
