@@ -1,5 +1,5 @@
 class Admin::ArrivalsController < Admin::Base
-    PER = 2
+    PER = 5
 def index
     @arrival = Arrival.new
     @arrivals = Arrival.page(params[:page]).per(PER)
@@ -39,7 +39,7 @@ end
 
 private
 def arrival_params
-    params.require(:arrival).permit(:product_id, :quantity, :arrival_date)
+    params.require(:arrival).permit(:product_id, :quantity, :arrival_date, :arrival_time)
 end
 
 end
