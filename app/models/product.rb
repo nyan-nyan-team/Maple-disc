@@ -5,6 +5,10 @@ class Product < ApplicationRecord
         total_arrival_quantity = 0
         arrivals.each do |arrival|
         total_arrival_quantity = arrival.quantity + total_arrival_quantity
+            unless arrival.quantity.nil?
+                total_arrival_quantity = arrival.quantity + total_arrival_quantity
+
+            end
         end
         total_arrival_quantity
     end
