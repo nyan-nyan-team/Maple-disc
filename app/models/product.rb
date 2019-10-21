@@ -12,7 +12,10 @@ class Product < ApplicationRecord
     def total_order_detail_quantity
         total_order_detail_quantity = 0
         order_details.each do |order_detail|
-        total_order_detail_quantity = order_detail.quantity + total_order_detail_quantity
+            unless order_detail.quantity.nil?
+                total_order_detail_quantity = order_detail.quantity + total_order_detail_quantity
+        
+            end
         end
         total_order_detail_quantity
     end
@@ -32,3 +35,4 @@ class Product < ApplicationRecord
     has_many :order_details
 
 end
+
