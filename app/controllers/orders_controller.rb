@@ -51,7 +51,9 @@ class OrdersController < ApplicationController
             current_end_user.cart_products.each do |cart_product|
                 order_detail = @order.order_details.build(
                     product_id: cart_product.product.id,
-                    purchase_price: cart_product.quantity * cart_product.product.amount
+                    purchase_price: cart_product.quantity * cart_product.product.amount,
+                    quantity: cart_product.quantity
+                    # binding.pry
                 )
                 order_detail.save
                 cart_product.destroy

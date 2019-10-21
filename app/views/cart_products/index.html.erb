@@ -32,7 +32,7 @@
                     <h2>枚数</h2>
                     <%= cart_product.quantity %> 枚
                     <%# <h2>合計枚数</h2> %>
-                    <% total_quantity += cart_product.quantity %>
+                    <% total_quantity = cart_product.quantity + total_quantity%>
                     <h2>小計（税込）</h2>
                     ¥ <%= cart_product.product.amount * cart_product.quantity %>
                     <%# <h2>合計金額</h2> %>
