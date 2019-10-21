@@ -22,7 +22,7 @@
 <div>
     <% total_price = 0 %>
     <% current_end_user.cart_products.each do |cart_product|%>
-        <%= attachment_image_tag cart_product.product.image, :fill, 80, 80, format: 'jpeg', class: "img-circle pull-left profile-img" %>
+        <%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
             <h2>シングル/アルバム名</h2>
             <%= cart_product.product.title %>
             <hr>
