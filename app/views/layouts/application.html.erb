@@ -5,115 +5,111 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=japanese" rel="stylesheet">
 </head>
 <body>
 
 <%# header %>
 
 <header>
-    <nav>
-        <% if end_user_signed_in? %>
-        <ul class="nav-list">
-            <li><a href="#" class="home">ホーム</a></h1></li>
-            <%# 検索機能実装場所 %>
-            <li class="nav-list-item">
+    <div class="container">
+        <nav>
+
+            <% if end_user_signed_in? %>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                    <span>            
+                    <%= link_to end_user_path(current_end_user.id) do %>
+                    <p>ようこそ、<br>
+                    <%= current_end_user.first_name %>さん</p>
+                    <% end %>
+                    </span>
+                </li>
+                <li class="nav-list-item">
+                    <span>
+                    <%= link_to "購入履歴" , orders_path %>
+                    </span>
+                </li>
+                <li class="nav-list-item">
+                    <div class="logo"><%= link_to image_tag("logo.png", width: 100, alt: "logo"), products_path, data: { "turbolinks" => "false" } %>
+                </li>
+                <li class="nav-list-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <%= link_to "カート" , cart_products_path %>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+                </span>
+                </li>
+            </ul>
+
+            <% elsif admin_signed_in? %>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "新規商品追加" , new_admin_product %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "販売商品一覧" , admin_products_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "入荷履歴" , admin_arrivals_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ユーザ情報" , admin_end_users_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "注文一覧" , admin_order_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </span>
+                </li>
+            </ul>
+        
+            <% else %>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "新規登録", new_end_user_resistration_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                    <div class="logo"><%= link_to image_tag("logo.png", width: 100, alt: "logo"), products_path, data: { "turbolinks" => "false" } %>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ログイン", new_end_user_session_path %>
+                </span>
+                </li>
+            </ul>
+            <% end %>
+
+                    <%# 検索機能実装場所 %>
             <dl class="searchbox">
                 <%= search_form_for @q do |f|%>
                 <dt><%= f.text_field :title_cont, placeholder: "商品名" %></dt>
                 <dd><%= f.submit ("検索") , class: 'search-btn' %></dd>
-
                 <% end %>
             </dl>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            ようこそ★<%= current_end_user.first_name %>さん
-            <%# <%= link_to "お客様ご登録情報" , end_user_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            購入履歴
-            <%# <%= link_to "購入履歴" , orders_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            カート
-            <%# <%= link_to "カート" , edit_cart_product_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
-            </span>
-            </li>
-        </ul>
-
-        <% elsif admin_signed_in? %>
-        <ul class="nav-list">
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "新規商品追加" , new_admin_product %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "販売商品一覧" , admin_products_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "入荷履歴" , admin_arrivals_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "ユーザ情報" , admin_end_users_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "注文一覧" , admin_order_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-            </span>
-            </li>
-        </ul>
-    
-        <% else %>
-        <ul class="nav-list">
-        <%# 検索機能実装場所 %>
-            <li class="nav-list-item">検索</li>
-
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "ユーザ名", new_end_user_session_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "購入履歴", new_end_user_session_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "カート", new_end_user_session_path %>
-            </span>
-            </li>
-            <li class="nav-list-item">
-            <span>
-            <%= link_to "ログイン", new_end_user_session_path %>
-            </span>
-            </li>
-        </ul>
-        <% end %>
-    </nav>
+        </nav>
+    </div>
 </header>
 
 <%= content_for?(:content) ? yield(:content) : yield %>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/562ca3c57a.js" crossorigin="anonymous"></script>
 </body>
 </html>
