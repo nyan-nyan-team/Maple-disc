@@ -1,5 +1,5 @@
 class Admin::OrderDetailsController < Admin::Base
-    PER = 1
+    PER = 4
 def index
     @order = Order.page(params[:page]).per(PER)
 end
