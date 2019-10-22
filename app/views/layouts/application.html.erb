@@ -82,7 +82,7 @@
             <ul class="nav-list">
                 <li class="nav-list-item">
                 <span>
-                <%= link_to "新規登録", new_end_user_resistration_path %>
+                <%= link_to "新規登録", new_end_user_registration_path %>
                 </span>
                 </li>
                 <li class="nav-list-item">
@@ -96,7 +96,7 @@
             </ul>
             <% end %>
 
-                    <%# 検索機能実装場所 %>
+            <%# 検索機能実装場所 %>
             <dl class="searchbox">
                 <%= search_form_for @q do |f|%>
                 <dt><%= f.text_field :title_cont, placeholder: "商品名" %></dt>

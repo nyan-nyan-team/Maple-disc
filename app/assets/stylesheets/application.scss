@@ -52,6 +52,10 @@ hr {
     border:thin solid rgb(179, 174, 167);
     text-align: center;
 }
+.btn:hover {
+    transform: translateY(2px) translateX(2px);
+    transition-duration: 0.1s;
+}
 //ボタン中央寄せ用のdiv(btn自体だけだとmargin autoもtextaline:centerも効かない）
 .button_wrapper {
     text-align: center;
@@ -61,6 +65,11 @@ hr {
 .center{
     margin: 0 auto;
 }
+
+.pagination {
+    justify-content: center;
+}
+
 //----------------------------------------------
 
 //-----------------フォント----------------------
@@ -80,18 +89,18 @@ h2 {
 //----------------------------------------------
 
 table{
-    border: 1px solid #ccc;
+    border: 1px solid rgb(226, 214, 202);
     border-collapse: separate;
     border-radius: 5px;
     border-spacing: 0;
     margin: 0 auto;
     th, td {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgb(226, 214, 202);
     padding: 10px 20px;
     }
     th {
-    border-right: 1px solid #ccc;
-    background: #EEE;
+    border-right: 1px solid rgb(226, 214, 202);
+    background: rgb(245, 239, 233);
     }
     tr{
     &:first-child{
@@ -172,9 +181,6 @@ dl.searchbox dd{
     color:#FFF;
 }
 
-.search-btn:hover {
-    background:rgb(161, 143, 126);
-}
 //--------------------------------------------
 
 
@@ -198,4 +204,14 @@ a:hover {
 .logo:hover {
     transform: translateY(2px) translateX(2px);
     transition-duration: 0.1s;
+}
+
+
+input[type="text"], input[type="password"], input[type="email"] {
+    border-radius:8px;
+    border-color: rgb(226, 214, 202);
+}
+
+submit[type="cubmit"] {
+    border-radius:8px;
 }
