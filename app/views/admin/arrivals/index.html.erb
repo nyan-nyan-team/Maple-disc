@@ -1,6 +1,6 @@
 <div class= "container">
 <div class= "page-header">
-<h1>入荷履歴一覧</h1>
+<h1><strong>入荷履歴一覧</strong></h1>
 </div>
 <div class="list-group">
 <table class= "table">
@@ -22,8 +22,11 @@
 </tr>
 <% end %>
 </table>
+<div class="center">
 <%= paginate @arrivals %>
-<%= link_to "入荷情報追加", new_admin_arrival_path %>
+</div>
+<div class="button_wrapper">
+<%= link_to "入荷情報追加", new_admin_arrival_path, class: 'btn' %>
 </div>
 </div>
 

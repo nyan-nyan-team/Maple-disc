@@ -17,7 +17,7 @@
 
 
 
-//フォント　font-family: 'Noto Sans JP', sans-serif;
+//フォント　font-family: 'M PLUS Rounded 1c', sans-serif;
 
 
 
@@ -40,52 +40,14 @@ hr {
     border: none;
     border-top: 1px #E0E0E0 solid;
 }
-
-//ふわっとさせるアニメーション
-.effect div {
-    // margin: auto;
-    transition: .5s;
-}
-
-
-//-------------------header用-------------------
-header {
-    width: 100%;
-    background-color: rgb(235, 176, 103);
-}
-.nav-list {
-    padding-top: 7px;
-}
-.nav-list-item {
-    font-family: 'Noto Sans JP', sans-serif;
-    list-style: none;
-    display: inline-block;
-}
-//----------------------------------------------
-
-
-//-----------------フォント----------------------
-h1 {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 20px;
-    font-style: bold;
-    color: rgb(41, 29, 18);
-    text-align: center;
-}
-h2 {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-size: 15px;
-    color: rgb(41, 29, 18);
-}
-
-//----------------------------------------------
-
 //bootstrap用（大枠としても使えます）
 .container {
     width: 90%;
 }
 
-//ボタン
+
+//-----------------中央寄せ----------------------
+//ボタン 中央寄せ
 .btn {
     border:thin solid rgb(179, 174, 167);
     text-align: center;
@@ -95,30 +57,107 @@ h2 {
     text-align: center;
 }
 
-//全てのaリンク下線なし
-a {
-    text-decoration: none;
-}
-
-table {
+//中央寄せしたい時
+.center{
     margin: 0 auto;
-    border:thin solid rgb(179, 174, 167);
+}
+//----------------------------------------------
+
+//-----------------フォント----------------------
+h1 {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 20px;
+    font-style: bold;
+    color: rgb(41, 29, 18);
+    text-align: center;
+}
+h2 {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 15px;
     color: rgb(41, 29, 18);
 }
-table th td {
-    height: 40px;
+
+//----------------------------------------------
+
+// table {
+//     margin: 0 auto;
+//     border:thin solid rgb(179, 174, 167);
+//     color: rgb(41, 29, 18);
+//     border-collapse: separate;
+//     border-radius: 8px;
+// }
+// table th td {
+//     height: 50px;
+// }
+
+
+table{
+    border: 1px solid #ccc;
+    border-collapse: separate;
+    border-radius: 5px;
+    border-spacing: 0;
+    margin: 0 auto;
+    th, td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+    }
+    th {
+    border-right: 1px solid #ccc;
+    background: #EEE;
+    }
+    tr{
+    &:first-child{
+        th{
+        border-radius: 5px 0 0 0;
+        }
+        td{
+        border-radius: 0 5px 0 0 ;
+        }
+    }
+    &:last-child{
+        th{
+        border-bottom: none;
+        border-radius: 0 0 0 5px;
+        }
+        td{
+        border-bottom: none;
+        border-radius: 0 0 5px 0;
+        }
+    }
+    }
 }
+
+
+//-------------------header用-------------------
+header {
+    width: 100%;
+}
+ul {
+    display: flex;
+    padding-top: 15px;
+
+    li {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    list-style: none;
+    margin: auto;
+    }
+}
+//----------------------------------------------
+
+
 
 //-------------------検索ボックス-------------------
 dl.searchbox {
     width: 200px;
     position:relative;
-    background-color:white;
-    // border:1px solid 
+    // background-color:rgb(255, 255, 255);
+    border:2px solid;
     border-radius:8px;
+    border-color: rgb(226, 214, 202);
+    margin-left: auto;
 }
 dl.searchbox dt{
-    padding:3px;
+    padding:0px;
 }
 dl.searchbox dt input{
     width:70%;
@@ -129,22 +168,46 @@ dl.searchbox dt input{
 }
 dl.searchbox dd{
     position:absolute;
-    top:3px;
-    right:1px;
+    top:0px;
+    bottom:0px;
+    right:0px;
     width:30%;
 }
 .search-btn{
     display:block;
-    background:#aaa;
+    background:rgb(226, 214, 202);
     width:100%;
     height:25px;
     line-height:25px;
     border:none;
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 0px 6px 0px 6x;
     color:#FFF;
 }
 
 .search-btn:hover {
-    background:#f0b661;
+    background:rgb(161, 143, 126);
 }
 //--------------------------------------------
+
+
+//全てのaリンク下線なし
+a {
+    color:rgb(41, 29, 18);
+    text-decoration:none;
+}
+//マウスがリンクに乗っている時　色薄くなります。 
+a:hover {
+    color:rgb(161, 143, 126);
+    text-decoration:none;
+}
+
+//ふわっとさせるアニメーション
+.effect div {
+    // margin: auto;
+    transition: .5s;
+}
+
+.logo:hover {
+    transform: translateY(2px) translateX(2px);
+    transition-duration: 0.1s;
+}

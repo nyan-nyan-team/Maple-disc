@@ -1,54 +1,43 @@
+<div class="container">
+    <div class="page-header">
+        <h2>商品一覧</h2>
+        <br>
+    </div>
+    <div class="row">
+        
+            <% @products.each do |product| %>
+            <div class="col-md-3">
+                    
+                <%= link_to admin_product_path(product) do %>
+                <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                <% end %>
+                <br>
+                <%= product.id %>
+                <br>
+                <%= product.title %>
+                <br>
+                <%= product.artist.artist_name %>
+                <br>
+                <div>価格 | ¥<%= product.amount %></div>
+                <br>
+                <div>在庫数</div>
+                <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                <%= productquantity %>
+                <br>
+                <% if productquantity == 0 %>
+                <div>売り切れ</div>
+                <% else %>
+                <div>販売中</div>
+                <% end %>
+                <br>
+                <hr>
+            </div>
+        
+        <% end %>
+    </div>
+</div>
 
-<h2>商品一覧</h2>
+<%= paginate @products %>
 
-<table>
-<thead>
-<tr>
-<th class="table_image"></th>
-<th class="table_id"></th>
-<th class="table_title"></th>
-<th class="table_artist_id"></th>
-<th class="table_amount"></th>
-<th class="table_quantity"></th>
-<th class="table_status"></th>
-<th class="rable_show_link"></th>
-</tr>
-</thead>
 
-<tbody>
-<tr>
-<% @products.each do |product| %>
-<td>
-<%= link_to admin_product_path(product) do %>
-<%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
-<% end %>
-</td>
-<td>
-<div><%= product.id %></div>
-</td>
-<td>
-<div><%= product.title %></div>
-</td>
-<td>
-<div><%= product.artist.artist_name %></div>
-</td>
-<td>
-<div>価格 | ¥<%= product.amount %><div>
-</td>
-<td>
-<div>在庫数</div>
-<% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
-<%= productquantity %>
-</td>
-<td>
-<% if productquantity == 0 %>
-<div>売り切れ</div>
-<% else %>
-<div>販売中</div>
-<% end %>
-</td>
-<% end %>
-</tr>
-</tbody>
-</table>
 
