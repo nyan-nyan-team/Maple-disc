@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
     enum status: [['---',""],['売り切れ', 1],['販売中', 2]]
-
+    acts_as_paranoid
     def total_arrival_quantity
         total_arrival_quantity = 0
         arrivals.each do |arrival|

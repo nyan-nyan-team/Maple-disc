@@ -3,7 +3,8 @@
         <h1>商品一覧</h1>
         <br>
         <div class= "row">
-            <% @products.each do |product| %>
+            <% @products.each_with_index do |product, i| %>
+                <% if i >= 4 %>
                     <div class= "col-md-3">
                         <div class="effect">
                             <div>
@@ -32,8 +33,36 @@
                             </div>
                         </div>
                     </div>
+                <% else %>
+                    <div class= "col-md-3">
+                        <div>
+                            <%= link_to product_path(product) do %>    
+                                <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                            <% end %>
+                            <br>
+                            <%= product.title %>
+                            <br>
+                            <%= product.artist.artist_name %>
+                            <br>
+                            <p>価格 | ¥<%= product.amount %></p>
+                            <br>
+                            <p>在庫数</p>
+                            <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                            <%= productquantity %>
+                            <br>
+                            <p>販売状況</p>
+                            <% if productquantity == 0 %>
+                                <p>売り切れ</p>
+                            <% else %>
+                                <p>販売中</p>
+                            <% end %>
+                            <br>
+                            <hr>
+                        </div>
+                    </div>
+                <% end %>
             <% end %>
         </div>
-        <%= paginate @products %>
+    <%= paginate @products %>
     </div>
 </div>
