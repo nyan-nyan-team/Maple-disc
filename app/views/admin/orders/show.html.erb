@@ -8,7 +8,7 @@
     </div>
 
         <div class="col-md-4">
-            <h2>受注日 : <%= @order.updated_at %></h2>
+            <h2>受注日 : <%= @order.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
             <% total_quantity = 0 %>
             <% @order.order_details.each do |detail| %>
             <hr>

@@ -5,12 +5,12 @@
     <div class="page-header">
         <div class="row">
             <% @orders.each do |order| %>
-            <% order.order_details.each do |detail| %>
+            <% order.order_details.each do |detail| %> 
                 <div class="col-sm-3">
                     <figure>
                     <div class="card img-thumbnail px-3 py-4 center">
                         <h2>配送ステータス:<%= @delivery_status %></h2>
-                        <h2>購入日：<%= order.updated_at %></h2>
+                        <h2>購入日：<%= order.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
                         
                             <img class="card-img-top">
                             <%= attachment_image_tag detail.product, :image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>
