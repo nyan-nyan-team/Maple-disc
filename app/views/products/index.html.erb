@@ -15,16 +15,11 @@
                                     <% end %>
                                     <br>
                                     <div class="card-body px-1 py-1">
-                                        <%= product.title %>
-                                        <br>
-                                        <%= product.artist.artist_name %>
-                                        <br>
+                                        <h2 class="card-title"><%= product.title %></h2>
+                                        <h2 class="card-title"><%= product.artist.artist_name %></h2>
                                         <h2 class="card-title">価格 | ¥<%= product.amount %></h2>
-                                        <br>
-                                        <h2 class="card-title">在庫数<h2>
-                                        <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
-                                        <%= productquantity %>枚
-                                        <br>
+                                        <h2 class="card-title">在庫数:<% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                        <%= productquantity %>枚<h2>
                                         <h2 class="card-title">販売状況<h2>
                                         <% if productquantity == 0 %>
                                             <h2 class="card-title soldout">売り切れ<h2>
@@ -49,16 +44,11 @@
                                 <% end %>
                                 <br>
                                 <div class="card-body px-1 py-1">
-                                    <%= product.title %>
-                                    <br>
-                                    <%= product.artist.artist_name %>
-                                    <br>
+                                    <h2 class="card-title"><%= product.title %></h2>
+                                    <h2 class="card-title"><%= product.artist.artist_name %></h2>
                                     <h2 class="card-title">価格 | ¥<%= product.amount %><h2>
-                                    <br>
-                                    <h2 class="card-title">在庫数<h2>
-                                    <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
-                                    <%= productquantity %>枚
-                                    <br>
+                                    <h2 class="card-title">在庫数:<% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                    <%= productquantity %>枚<h2>
                                     <h2 class="card-title">販売状況<h2>
                                     <% if productquantity == 0 %>
                                         <h2 class="card-title soldout">売り切れ<h2>
