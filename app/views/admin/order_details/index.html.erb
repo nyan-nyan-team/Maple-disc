@@ -1,21 +1,37 @@
 <div class= "container">
-<div class="page-header">
-    <h1>個人ユーザー受注履歴</h1>
-    <% @order.each do |order| %>
-    <div>
-    <h2>受注id :<%= order.id %></h2>
-    <h2>購入日時 :<%= order.updated_at %></h2>
-    <h2>購入者 :<%= order.delivery_name %></h2>
-    <% order.order_details.each do |detail| %>
-    <h2>シングル/アルバム名 :<%= detail.product.title %>
-    <h2>受注枚数 :<%= detail.quantity %>
-    <% end %>
-    <h2>商品合計金額 :<%= order.purchase_price_total %></h2>
-    <%= link_to "受注履歴詳細へ", admin_order_path(order.id) %> 
-    <hr>
-    <% end %>
-    <%= paginate @order %>
+    <div class="page-header">
+        <h1>個人ユーザー受注履歴</h1>
     </div>
+    <hr>
+    <br>
+    <div class="row">
+        <% @order.each do |order| %>
+            <div class="col-sm-3">
+                <div class="card px-3 py-3 center">
+                    
+                    <h2>受注id :<%= order.id %></h2>
+                    <hr>
+                    <h2>購入日時 :<%= order.updated_at %></h2>
+                    <hr>
+                    <h2>購入者 :<%= order.delivery_name %></h2>
+                    <hr>
+                        <h2>シングル/アルバム名 : <%= order.order_details.first.product.title %>
+                        <hr>
+                        <h2>受注枚数 : <%= order.order_details.first.quantity %>枚
+                        <hr>
+                        <h2>商品合計金額 :¥<%= order.purchase_price_total %></h2>
+                        <hr>
+                        <div class="button-wrapper">
+                            <%= link_to "受注履歴詳細へ", admin_order_path(order.id), class: 'btn'  %> 
+                        </div>
+                    
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="pagination">
+    <%= paginate @order %>
 </div>
 
 

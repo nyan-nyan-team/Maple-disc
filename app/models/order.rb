@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+    # acts_as_paranoid
     has_many :order_details, dependent: :destroy
     belongs_to :end_user
     enum payment_methods: {銀行振込: 0,クレジットカード支払い: 1, 代引き: 2}

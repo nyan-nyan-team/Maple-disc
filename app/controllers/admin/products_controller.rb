@@ -1,7 +1,7 @@
 class Admin::ProductsController < Admin::Base
 PER = 3
 def index
-    @products = Product.page(params[:page]).per(PER)
+    @products = Product.with_deleted.page(params[:page]).per(PER)
 end 
 
 def show
