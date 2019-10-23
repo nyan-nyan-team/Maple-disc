@@ -28,7 +28,7 @@ def update
         render
     end
 end
-def destory
+def destroy
     arrival = Arrival.find(params[:id])
     if arrival.destroy
     redirect_to admin_arrivals_path

@@ -1,21 +1,26 @@
 <div class= "container">
-<h1>入荷情報編集</h1>
-<%= form_for([:admin, @arrival]) do |arrival| %>
-<div class= "field">
-<p>シングル/アルバム名</p>
-<%= arrival.select :product_id, Product.all.map {|p| [p.title, p.id]} %>
-</div><br>
-<div class= "field">
-<p>数量</p>
-<%= arrival.number_field :quantity %>
-</div><br>
-<div class= "field">
-<p>入荷日時</p>
-<%= arrival.datetime_select :arrival_time, {}, class: 'form-control'%>
-</div><br>
+    <h1>入荷情報編集</h1>
+    <%= form_for([:admin, @arrival]) do |arrival| %>
+        <div class= "field">
+            <p>シングル/アルバム名</p>
+            <%= arrival.select :product_id, Product.all.map {|p| [p.title, p.id]} %>
+        </div><br>
+        <div class= "field">
+            <p>数量</p>
+            <%= arrival.number_field :quantity %>
+        </div><br>
+        <div class= "field">
+            <p>入荷日時</p>
+            <%= arrival.datetime_select :arrival_time, class: 'form-control'%>
+        </div><br>
 
-<%= arrival.submit %>
+        <%= arrival.submit %>
 
-<% end %>
+        <div class= "button-wrapper">
+            <%= link_to "削除する", admin_arrival_path(@arrival), method: :delete, class: 'btn' %>
+        </div>
+        <div>
+            <%= link_to "戻る", admin_arrivals_path %>
+    <% end %>
 </div>
 
