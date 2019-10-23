@@ -10,9 +10,7 @@
 <body>
 
 <%# header %>
-
 <header>
-<div class="maple"><%= image_tag("maple.jpg", alt: "image")%></div>
     <div class="container">
         <nav>
 
@@ -107,6 +105,7 @@
         </nav>
     </div>
 </header>
+
 
 <%= content_for?(:content) ? yield(:content) : yield %>
 

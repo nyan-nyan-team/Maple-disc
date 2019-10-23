@@ -44,6 +44,45 @@ hr {
 .container {
     width: 90%;
 }
+//全てのaリンク下線なし
+a {
+    color:rgb(37, 18, 7);
+    text-decoration:none;
+}
+//マウスがリンクに乗っている時　色薄くなります。 
+a:hover {
+    color:rgb(161, 143, 126);
+    text-decoration:none;
+}
+
+.logo:hover {
+    transform: translateY(2px) translateX(2px);
+    transition-duration: 0.1s;
+}
+
+//カード
+.card {
+    margin : 0 auto;
+}
+//ふわっとさせるアニメーション
+.effect div {
+    // margin: auto;
+    transition: .5s;
+}
+
+//テキストフィールド
+input[type="text"], input[type="password"], input[type="email"] {
+    border-radius:8px;
+    border-color: rgb(226, 214, 202);
+}
+submit[type="cubmit"] {
+    border-radius:8px;
+}
+
+//売り切れの時、赤
+.soldout {
+    color: red;
+}
 
 
 //-----------------中央寄せ----------------------
@@ -88,6 +127,7 @@ h2 {
 
 //----------------------------------------------
 
+//table　丸角-----------------------------------
 table{
     border: 1px solid rgb(226, 214, 202);
     border-collapse: separate;
@@ -123,13 +163,12 @@ table{
     }
     }
 }
+//----------------------------------------------
 
 
 //-------------------header用-------------------
 header {
     width: 100%;
-    position: relative;
-    
 }
 ul {
     display: flex;
@@ -186,50 +225,7 @@ dl.searchbox dd{
 
 //--------------------------------------------
 
-
-//全てのaリンク下線なし
-a {
-    color:rgb(37, 18, 7);
-    text-decoration:none;
-}
-//マウスがリンクに乗っている時　色薄くなります。 
-a:hover {
-    color:rgb(161, 143, 126);
-    text-decoration:none;
-}
-
-//ふわっとさせるアニメーション
-.effect div {
-    // margin: auto;
-    transition: .5s;
-}
-
-.logo:hover {
-    transform: translateY(2px) translateX(2px);
-    transition-duration: 0.1s;
-}
-
-//カード
-.card {
-    margin : 0 auto;
-}
-
-
-
-
-input[type="text"], input[type="password"], input[type="email"] {
-    border-radius:8px;
-    border-color: rgb(226, 214, 202);
-}
-
-submit[type="cubmit"] {
-    border-radius:8px;
-}
-.soldout {
-    color: red;
-}
-
-
+//-----------------------商品キラキラ-----------------------
 figure {
     width: 100%;
     margin: 0;
@@ -266,18 +262,4 @@ figure:hover::before {
     left: 125%;
     }
 }
-
-
-// .black {
-//     width:50px;
-//     height: 10000px;
-//     background-color: rgb(201, 64, 64);
-//     position: absolute;
-//     top: 0;
-// }
-
-.maple {
-    width: 100%;
-    position: absolute;
-    opacity: 0.3;
-}
+//--------------------------------------------
