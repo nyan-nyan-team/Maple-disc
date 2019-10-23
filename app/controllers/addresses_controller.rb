@@ -1,4 +1,6 @@
 class AddressesController < ApplicationController
+    before_action :authenticate_end_user!
+
 def create
     @end_user = EndUser.find(params[:end_user_id])
     @newaddress = Address.new(address_params)
