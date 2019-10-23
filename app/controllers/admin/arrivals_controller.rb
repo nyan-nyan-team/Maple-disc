@@ -1,4 +1,6 @@
 class Admin::ArrivalsController < Admin::Base
+    #before_action :authenticate_admin!
+
     PER = 5
 def index
     @arrival = Arrival.new

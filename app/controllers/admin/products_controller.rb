@@ -1,4 +1,5 @@
 class Admin::ProductsController < Admin::Base
+    #before_action :authenticate_admin!
 
 def index
     @products = Product.all

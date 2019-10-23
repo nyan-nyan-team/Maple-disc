@@ -1,4 +1,6 @@
 class Admin::OrdersController < Admin::Base
+    #before_action :authenticate_admin!
+
 def index
     @orders = Order.all.page(params[:page]).per(1)
     @order = Order.new

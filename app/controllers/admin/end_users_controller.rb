@@ -1,4 +1,5 @@
 class Admin::EndUsersController < Admin::Base
+    #before_action :authenticate_admin!
     PER = 2
 
 def index
