@@ -15,11 +15,14 @@
         </div><br>
 
         <%= arrival.submit %>
+        <br>
+        <br>
 
         <div class= "button-wrapper">
-            <%= link_to "削除する", admin_arrival_path(@arrival), method: :delete, class: 'btn' %>
+            <%= link_to "削除する", admin_arrival_path(@arrival), method: :delete, data: {confirm: '本当に削除しますか？'}, class: 'btn' %>
         </div>
         <div>
+        <br>
             <%= link_to "戻る", admin_arrivals_path %>
     <% end %>
 </div>

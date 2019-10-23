@@ -29,7 +29,7 @@ def update
     end
 end
 def destroy
-    arrival = Arrival.find(params[:id])
+    arrival = Arrival.find_by(id:params[:id])
     if arrival.destroy
     redirect_to admin_arrivals_path
     else
