@@ -28,8 +28,8 @@ def update
         render
     end
 end
-def destory
-    arrival = Arrival.find(params[:id])
+def destroy
+    arrival = Arrival.find_by(id:params[:id])
     if arrival.destroy
     redirect_to admin_arrivals_path
     else
