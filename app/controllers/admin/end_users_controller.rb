@@ -4,11 +4,13 @@ class Admin::EndUsersController < Admin::Base
 
 def index
     @end_user = EndUser.new
-    @end_users = EndUser.page(params[:page]).per(PER)
+    @end_users = EndUser.with_deleted.page(params[:page]).per(PER)
 end 
 
+
+
 def show
-    @enduser = EndUser.find(params[:id])
+    @enduser = EndUser.with_deleted.find(params[:id])
     @end_user = EndUser.new
 end
 def edit

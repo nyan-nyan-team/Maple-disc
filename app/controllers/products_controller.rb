@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-    #before_action :authenticate_end_user!
+    before_action :authenticate_end_user!
+    PER = 12
     
-    PER = 4
 def index
     @product = Product.new
     if params[:q]

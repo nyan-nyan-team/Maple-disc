@@ -1,8 +1,10 @@
 class Admin::ProductsController < Admin::Base
     #before_action :authenticate_admin!
 
+PER = 3
+
 def index
-    @products = Product.all
+    @products = Product.with_deleted.page(params[:page]).per(PER)
 end 
 
 def show

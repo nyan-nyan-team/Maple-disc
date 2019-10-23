@@ -3,9 +3,11 @@
 <%= form_for([:admin, @arrival]) do |arrival| %>
     <div class= "field">
     <p>シングル/アルバム名</p>
+    
     <%= arrival.select :product_id, Product.all.map {|p| [p.title, p.id]} %>
     </div><br>
     <div class= "field">
+    <hr>
     <p>数量</p>
     <%= arrival.number_field :quantity %>
     </div><br>

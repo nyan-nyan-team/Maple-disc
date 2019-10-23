@@ -1,37 +1,41 @@
 <div class="container">
     <h1>購入履歴一覧</h1>
+    <br>
+    <br>
     <div class="page-header">
         <div class="row">
             <% @orders.each do |order| %>
-                <div class="col-sm-12">
-                    <h2>配送ステータス:<%= @delivery_status %></h2>
-                    <h2>購入日：<%= order.updated_at %></h2>
+                <div class="col-sm-3">
+                    <figure>
+                    <div class="card img-thumbnail px-3 py-4 center">
+                        <h2>配送ステータス:<%= @delivery_status %></h2>
+                        <h2>購入日：<%= order.updated_at %></h2>
+                        <% order.order_details.each do |detail| %>
+                            <img class="card-img-top">
+                            <%= attachment_image_tag detail.product, :image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>
+                                <div class="card-body px-1 py-4">
+                                    <h2 class="card-title">シングル/アルバム名<h2>
+                                    <%= detail.product.title %>
+                                    <h2 class="card-title">アーティスト名<h2>
+                                    <%= detail.product.artist.artist_name %>
+                                    <h2 class="card-title">レーベル名<h2>
+                                    <%= detail.product.label.label_name %>                
+                                    <h2 class="card-title">枚数<h2>
+                                    <%= detail.quantity %>
+                                    <h2 class="card-title">値段<h2>
+                                    <%= detail.purchase_price %>
+                                </div>
+                        <br>
+                    </div><!-- /.card -->
+                    </figure>
                 </div>
-                <% order.order_details.each do |detail| %>
-                    <div class="col-sm-2">
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="image">
-                            <%= attachment_image_tag detail.product, :image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>    
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <h2>シングル/アルバム名<h2>
-                        <%= detail.product.title %>
-                        <h2>アーティスト名<h2>
-                        <%= detail.product.artist.artist_name %>
-                        <h2>レーベル名<h2>
-                        <%= detail.product.label.label_name %>                
-                        <h2>枚数<h2>
-                        <%= detail.quantity %>
-                        <h2>値段<h2>
-                        <%= detail.purchase_price %>
-                    </div>
-                <% end %>
-                <hr>
             <% end %>
-            <%= paginate @orders %>
-            <br>
-        </div>
+            <% end %>
+        </div><!-- /.row -->
     </div>
 </div>  <%#containerの閉じタグ%>
+<div class="pagination">
+<%= paginate @orders %>
+</div>
+
+

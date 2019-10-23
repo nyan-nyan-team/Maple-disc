@@ -2,30 +2,32 @@
     <h1>マイページ編集</h1>
 
     <%= form_for(@end_user) do |f| %>
-        <table border="1" style="border-collapse: collapse">
+        <table>
                 <tr>
-                <th>お名前</th>
-                <td>
-                    <%= f.text_field :last_name %>
-                    <%= f.text_field :first_name %>
-                </td>
+                    <th>お名前</th>
+                    <td>
+                        <%= f.text_field :last_name %>
+                        <%= f.text_field :first_name %>
+                    </td>
                 </tr>
                 <tr>
-                <th>お名前カナ</th>
-                <td>
-                    <%= f.text_field :last_name_kana %>
-                    <%= f.text_field :first_name_kana %>
-                </td>
+                    <th>お名前カナ</th>
+                    <td>
+                        <%= f.text_field :last_name_kana %>
+                        <%= f.text_field :first_name_kana %>
+                    </td>
                 </tr>
                 <tr>
-                <th>メールアドレス</th>
-                <td><%= f.text_field :email %></td>
+                    <th>メールアドレス</th>
+                    <td><%= f.text_field :email %></td>
                 </tr>
                 <tr>
-                <th>電話番号</th>
-                <td><%= f.text_field :phone_number, placeholder: "電話番号" %></td>
+                    <th>電話番号</th>
+                    <td><%= f.text_field :phone_number, placeholder: "電話番号" %></td>
                 </tr>
         </table>
+        <br>
+
         <div class="button_wrapper">
             <%= f.submit 'この内容で更新する' %>
         </div>
@@ -48,14 +50,17 @@
                 <td><%= f.text_field :delivery_name, placeholder: "              　　　 様" %></td>
             </tr>
         </table>
+            <br>
+
             <div class="button_wrapper">
                 <%= f.submit '追加' %>
             </div>
     <% end %>
-
+    <br>
+    <br>
     <%= link_to out_path(@end_user), class: "center-block" do %>
         <div class="button_wrapper">
-            <button type="button" class="btn btn-default">退会する</button>
+            <button type="button" class="btn btn-danger">退会する</button>
         </div>
     <% end %>
 </div>

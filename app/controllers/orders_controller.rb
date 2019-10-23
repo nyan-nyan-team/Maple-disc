@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     before_action :authenticate_end_user!
     
     def index
-        @orders = current_end_user.orders.page(params[:page]).per(2)
+        @orders = current_end_user.orders.page(params[:page]).per(3)
         @delivery_status = params[:delivery_status].to_i
         case @delivery_status
         when 0

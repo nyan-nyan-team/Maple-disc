@@ -2,36 +2,87 @@
     <div class="page-header">
         <h1>商品一覧</h1>
         <br>
+        <div class= "row">
+            <% @products.each_with_index do |product, i| %>
+                <% if i >= 4 %>
+                    <div class= "col-md-3">
+                        <div class="effect">
+                            <div>
+                                <%= link_to product_path(product) do %>
+                                <figure>
+                                <div class="card img-thumbnail px-1 py-1 center">  
+                                    <img class="card-img-top　center-block"><%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                                    <% end %>
+                                    <br>
+                                    <div class="card-body px-1 py-1">
+                                        <%= product.title %>
+                                        <br>
+                                        <%= product.artist.artist_name %>
+                                        <br>
+                                        <h2 class="card-title">価格 | ¥<%= product.amount %></h2>
+                                        <br>
+                                        <h2 class="card-title">在庫数<h2>
+                                        <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                        <%= productquantity %>枚
+                                        <br>
+                                        <h2 class="card-title">販売状況<h2>
+                                        <% if productquantity == 0 %>
+                                            <h2 class="card-title soldout">売り切れ<h2>
+                                        <% else %>
+                                            <h2 class="card-title">販売中<h2>
+                                        <% end %>
+                                    </div>
+
+                                </div>
+                                </figure>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+            <% else %>
+                    <div class= "col-md-3">
+                        <div>
+                            <%= link_to product_path(product) do %>
+                            <figure>
+                            <div class="card img-thumbnail px-1 py-1 center">
+                                <img class="card-img-top　center-block"><%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                                <% end %>
+                                <br>
+                                <div class="card-body px-1 py-1">
+                                    <%= product.title %>
+                                    <br>
+                                    <%= product.artist.artist_name %>
+                                    <br>
+                                    <h2 class="card-title">価格 | ¥<%= product.amount %><h2>
+                                    <br>
+                                    <h2 class="card-title">在庫数<h2>
+                                    <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                    <%= productquantity %>枚
+                                    <br>
+                                    <h2 class="card-title">販売状況<h2>
+                                    <% if productquantity == 0 %>
+                                        <h2 class="card-title soldout">売り切れ<h2>
+                                    <% else %>
+                                        <h2 class="card-title">販売中<h2>
+                                    <% end %>
+                                </div>
+                                
+                            </div>
+                            </figure>
+                            <br>
+                        </div>
+                    </div>
+            <% end %>
+            <% end %>
+        </div> <%#rowの閉じタグ%>
     </div>
-    <div class= "row">
-        <% @products.each do |product| %>
-        <div class= "col-md-3">
-            <div>
-                <%= link_to product_path(product) do %>
-                <%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
-                <% end %>
-                <br>
-                <%= product.title %>
-                <br>
-                <%= product.artist.artist_name %>
-                <br>
-                <div>価格 | ¥<%= product.amount %></div>
-                <br>
-                <div>在庫数</div>
-                <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
-                <%= productquantity %>
-                <br>
-                <div>販売状況</div>
-                <% if productquantity == 0 %>
-                <div>売り切れ</div>
-                <% else %>
-                <div>販売中</div>
-                <% end %>
-                <br>
-                <hr>
-            </div>
-        </div>
-        <% end %>
-        <%= paginate @products %>
-    </div>
+</div> <%#containerの閉じタグ%>
+
+<div class="pagination">
+<%= paginate @products %>
 </div>
+
+
+
+
+

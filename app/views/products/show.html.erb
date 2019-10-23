@@ -1,66 +1,77 @@
 <div class= "container">
-<h1>商品詳細</h1>
-<div class= "row">
-<div class= "col-sm-4">
-<div>
-<%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
-</div>
-</div>
-<%# 在庫数の計算式です。 %>
-<% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
+    <h1>商品詳細</h1>
+    <br><br>
+    <div class= "row">        
+        
+            <div class="col-md-4">
+                <%= attachment_image_tag @product, :image, :fill, 300, 300, fallback: "default_product.jpg" , size:'300x300' %>
+            </div>
+                <div class="col-md-4">
+                    <%# 在庫数の計算式です。 %>
+                    
+                    <% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
 
-<%= form_for(@cart_product, url: cart_products_path, method: :POST) do |product| %> 
-<div class= "col-sm-8">
-<%= product.hidden_field :product_id, value: @product.id %>
-<%= product.number_field :quantity, min: 0,max: productquantity %>
-<br><br>
-<%= product.submit "カートに追加" %>
-<% end %> 
-</div>
-</div>
+                    
+                    
+                    <hr>
+                    <div>商品名: <%= @product.title %></div>
 
-<div class= "container">
-<hr>
-<div>商品名</div>
-<%= @product.title %>
+                    <hr>
+                    <div>価格:¥ <%= @product.amount %></div>
 
-<div>価格</div>
-<%= @product.amount %>
+                    <hr>
+                    <div>在庫数: <%= productquantity %></div>
+                    
+                    <hr>
+                    <div>販売状況: <% if productquantity == 0 %>
+                    売り切れ
+                    <% else %>
+                    販売中
+                    <% end %>
+                    </div>
+                    
+                    <hr>
+                    <div>アーティスト: <%= @product.artist.artist_name %></div>
 
-<div>在庫数</div>
-<%= productquantity %>
+                    <hr>
+                    <div>レーベル: <%= @product.label.label_name %></div>
 
-<div>販売状況</div>
-<% if productquantity == 0 %>
-<div>売り切れ</div>
-<% else %>
-<div>販売中</div>
-<% end %>
+                    <hr>
+                    <div>ジャンル: <%= @product.genre.genre_name %></div>
 
-<div>アーティスト</div>
-<%= @product.artist.artist_name %>
+                    <hr>
+                    <div>ディスク名:
+                    <% @product.discs.each do |disc| %> 
+                    <%= disc.disc_number %>
+                    </div>
 
-<div>レーベル</div>
-<%= @product.label.label_name %>
+                    <hr>
+                    <div>収録曲一覧:
+                    <% disc.musics.each do |music| %> 
+                    <%= music.music_name %> 
+                    </div>
+                    <% end %> 
+                    <% end %> 
 
-<div>ジャンル</div>
-<%= @product.genre.genre_name %>
+                    <hr>
+                    <div>商品紹介:
+                    <%= @product.explanation %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <%= form_for(@cart_product, url: cart_products_path, method: :POST) do |product| %> 
+                    <hr>
+                    <div>数量
+                        <%= product.hidden_field :product_id, value: @product.id %>
+                        <%= product.number_field :quantity, min: 0,max: productquantity %>
+                    </div>
 
-
-<div>ディスク名</div>
-<% @product.discs.each do |disc| %> 
-<%= disc.disc_number %>
-<div>収録曲一覧</div>
-<% disc.musics.each do |music| %> 
-<%= music.music_name %> 
-<% end %> 
-<% end %> 
-
-
-<div>商品紹介</div>
-<div>
-<%= @product.explanation %>
-</div>
-
-
+                    <hr>
+                    <div>
+                        <%= product.submit "カートに追加" %>
+                        <% end %>
+                    </div>
+                </div>
+        </div>
+    </div>
 </div>
