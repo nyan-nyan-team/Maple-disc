@@ -81,3 +81,7 @@ gem 'jquery-rails'
 gem 'cocoon'
 gem 'pry-byebug'
 gem 'pry-rails'
+
+gem 'database_cleaner'
+gem 'faker-japanese'
+gem 'gimei'
