@@ -1,4 +1,6 @@
 
+<body>
+
 <h1>新規商品登録フォーム</h1>
 
 <div>
@@ -9,23 +11,113 @@
 <div>ジャケット画像</div>
 <p><%= f.attachment_field :image %></p>
 
-<div>新しい商品のアーティスト</div>
+
+<div>アーティストを選択</div>
 <%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
-<div>
-<%= link_to "アーティストの追加" , new_admin_artist_path %>
+
+<div class="artist_button create_artist_button">アーティストを追加する</div>
+
+<div class="artist_modal_wrapper">
+    <div class="artist_modal artist_modal_content">
+        <p class="text-right">
+        <span class="fa_wrapper"><%= fa_icon "times" %></span>
+        </p>
+        <h1>アーティスト追加フォーム</h1>
+        <h2>追加済みアーティスト一覧</h2>
+        <div>
+            <% @artists.each do |artist| %>
+            <%= artist.artist_name %>
+            <%#= link_to '編集' , admin_artist_path(artist), method: PUT %>
+            <%= link_to '削除' , admin_artist_path(artist), method: :delete %>
+            <% end %>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>アーティスト追加</h2>
+        <div>
+            <%= form_for([:admin, @artist], url: admin_artists_path, method: :POST) do |f| %>
+            <p><%= f.text_field :artist_name %></p>
+            <p><%= f.submit 'アーティストを追加する' %></p>
+            <% end %>
+        </div>
+    </div>
 </div>
 
-<div>ジャンル</div>
+<div>ジャンルを選択</div>
 <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-<div>
-<%= link_to "ジャンルの追加" , new_admin_genre_path %>
+
+<div class="new_button genre_button">ジャンルを追加する</div>
+
+<div class="genre_modal_wrapper">
+    <div class="genre_modal genre_modal_content">
+        <p class="text-right">
+        <span class="fa_wrapper"><%= fa_icon "times" %></span>
+        </p>
+        <h1>ジャンル追加フォーム</h1>
+        <h2>追加済みジャンル一覧</h2>
+        <div>
+            <% @genres.each do |genre| %>
+            <%= genre.genre_name %>
+            <%# <%= link_to '編集' , edit_admin_genre_path(genre) %>
+            <%= link_to '削除' , admin_genre_path(genre), method: :delete %>
+            <% end %>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>ジャンル追加</h2>
+        <div>
+            <%= form_for([:admin, @genre], url: admin_genres_path, method: :POST) do |f| %>
+            <p><%= f.text_field :genre_name %></p>
+            <p><%= f.submit 'ジャンルを追加する' %></p>
+            <% end %>
+        </div>
+    </div>
 </div>
 
 <div>レーベル</div>
 <%= f.collection_select :label_id, Label.all, :id, :label_name %>
-<div>
-<%= link_to "レーベルの追加" , new_admin_label_path %>
+
+<div class="new_button label_button">ラベルを追加する</div>
+
+<div class="label_modal_wrapper">
+    <div class="label_modal label_modal_content">
+        <p class="text-right">
+        <span class="fa_wrapper"><%= fa_icon "times" %></span>
+        </p>
+        <h1>レーベル追加フォーム</h1>
+        <h2>追加済みレーベル一覧</h2>
+        <div>
+            <% @labels.each do |label| %>
+            <%= label.label_name %>
+            <%# <%= link_to '編集' , edit_admin_label_path(label) %>
+            <%= link_to '削除' , admin_label_path(label), method: :delete %>
+            <% end %>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h2>レーベル追加</h2>
+        <div>
+            <%= form_for([:admin, @label], url: admin_labels_path, method: :POST) do |f| %>
+            <p><%= f.text_field :label_name %></p>
+            <p><%= f.submit 'レーベルを追加する' %></p>
+            <% end %>
+        </div>
+    </div>
 </div>
+
+
+<%#= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
+<%#= link_to "アーティストの追加" , new_admin_artist_path %>
+<%# 
+<div>ジャンル</div>
+<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+<%# <%= link_to "ジャンルの追加" , new_admin_genre_path %>
+<%# 
+<div>レーベル</div>
+<%= f.collection_select :label_id, Label.all, :id, :label_name %>
 
 <div>値段</div>
 <p><%= f.text_field :amount %></p>
@@ -40,3 +132,5 @@
 
 <% end %>
 </div>
+
+</body>
