@@ -29,7 +29,7 @@ $(function () {
             if (scroll > imgPos - windowHeight + windowHeight / 5) {
                 $("div", this).css("opacity", "1");
             } else {
-                $("div".this).css("opacity", "0");
+                $("div", this).css("opacity", "0");
             }
         });
     });

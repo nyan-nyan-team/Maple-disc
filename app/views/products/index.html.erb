@@ -1,3 +1,4 @@
+<div class="black"></div>
 <div class= "container">
     <div class="page-header">
         <h1>商品一覧</h1>
@@ -9,27 +10,30 @@
                         <div class="effect">
                             <div>
                                 <%= link_to product_path(product) do %>
+                                
                                 <figure>
-                                <div class="card img-thumbnail px-1 py-1 center">  
-                                    <img class="card-img-top　center-block"><%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                                
+                                <div class="card px-2 py-1 text-center">  
+                                    <img class="card-img-top"><%= attachment_image_tag product, :image, :fill, 170, 170, fallback: "default_product.jpg" , size:'170x170' %>
                                     <% end %>
                                     <br>
-                                    <div class="card-body px-1 py-1">
+                                    <hr>
+                                    <div class="box">
                                         <%= product.title %>
                                         <br>
                                         <%= product.artist.artist_name %>
                                         <br>
                                         <h2 class="card-title">価格 | ¥<%= product.amount %></h2>
                                         <br>
-                                        <h2 class="card-title">在庫数<h2>
+                                        <h2 class="card-title">在庫数
                                         <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
-                                        <%= productquantity %>枚
+                                        <%= productquantity %>枚</h2>
                                         <br>
                                         <h2 class="card-title">販売状況<h2>
                                         <% if productquantity == 0 %>
                                             <h2 class="card-title soldout">売り切れ<h2>
                                         <% else %>
-                                            <h2 class="card-title">販売中<h2>
+                                            <h2 class="card-title sale">販売中<h2>
                                         <% end %>
                                     </div>
 
@@ -44,28 +48,30 @@
                         <div>
                             <%= link_to product_path(product) do %>
                             <figure>
-                            <div class="card img-thumbnail px-1 py-1 center">
-                                <img class="card-img-top　center-block"><%= attachment_image_tag product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                            <div class="card px-2 py-1 text-center">
+                                <img class="card-img-top"><%= attachment_image_tag product, :image, :fill, 170, 170, fallback: "default_product.jpg" , size:'170x170' %>
                                 <% end %>
                                 <br>
-                                <div class="card-body px-1 py-1">
+                                <hr>
+                                <div class="box">
                                     <%= product.title %>
                                     <br>
                                     <%= product.artist.artist_name %>
                                     <br>
                                     <h2 class="card-title">価格 | ¥<%= product.amount %><h2>
                                     <br>
-                                    <h2 class="card-title">在庫数<h2>
+                                    <h2 class="card-title">在庫数
                                     <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
-                                    <%= productquantity %>枚
+                                    <%= productquantity %>枚</h2>
                                     <br>
                                     <h2 class="card-title">販売状況<h2>
                                     <% if productquantity == 0 %>
                                         <h2 class="card-title soldout">売り切れ<h2>
                                     <% else %>
-                                        <h2 class="card-title">販売中<h2>
+                                        <h2 class="card-title sale">販売中<h2>
                                     <% end %>
                                 </div>
+                                
                                 
                             </div>
                             </figure>
