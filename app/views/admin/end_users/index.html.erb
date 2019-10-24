@@ -1,26 +1,25 @@
 <div class= "container">
-<div class="page-header">
-    <h1>ユーザー情報一覧</h1>
-        </div>
-<div class="list-group">
- <table class= "table">
-    <% @end_users.each do |user| %>
-    <tr>
-    <th>
-        <%= user.last_name %>
-        <%= user.first_name %>
-    </th>
-    <th><%= link_to admin_end_user_path(user) do %>
-        <i>show</i>
-            <% end %>
-
-    </th>
-    </tr>
-    <% end %>
-    </table>
-    <%= paginate @end_users %>
+    <div class="page-header">
+        <h1>ユーザー情報一覧</h1>
     </div>
-
+    <div class="list-group">
+        <table class= "table">
+            <% @end_users.each do |user| %>
+            <tr>
+            <th>
+                <%= user.last_name %>
+                <%= user.first_name %>
+            </th>
+            <th><%= link_to admin_end_user_path(user) do %>
+                <i>show</i>
+                <% end %>
+            </th>
+            </tr>
+        <% end %>
+        </table>
+    <div class="pagination">
+        <%= paginate @end_users %>
+    </div>
 </div>
 
 

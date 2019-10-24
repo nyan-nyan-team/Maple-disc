@@ -2,6 +2,8 @@ class CartProduct < ApplicationRecord
     belongs_to :end_user
     belongs_to :product
 
+    validates :quantity, :numericality => { :greater_than_or_equal_to => 1 }, presence: true
+
     def total_arrival_quantity
         total_arrival_quantity = 0
         arrivals.each do |arrival|
@@ -19,4 +21,5 @@ class CartProduct < ApplicationRecord
         end
         total_order_detail_quantity
     end
+
 end
