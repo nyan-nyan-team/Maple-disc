@@ -9,7 +9,7 @@
     <div class= "field">
     <hr>
     <p>数量</p>
-    <%= arrival.number_field :quantity %>
+    <%= arrival.number_field :quantity, min: 1, value: 1 %>
     </div><br>
     <div class= "field">
     <p>入荷日時</p>

@@ -44,6 +44,49 @@ hr {
 .container {
     width: 90%;
 }
+//全てのaリンク下線なし
+a {
+    color:rgb(37, 18, 7);
+    text-decoration:none;
+}
+//マウスがリンクに乗っている時　色薄くなります。 
+a:hover {
+    color:rgb(161, 143, 126);
+    text-decoration:none;
+}
+
+.logo:hover {
+    transform: translateY(2px) translateX(2px);
+    transition-duration: 0.1s;
+}
+
+//カード
+.card {
+    margin : 0 auto;
+}
+//ふわっとさせるアニメーション
+.effect div {
+    // margin: auto;
+    transition: .5s;
+}
+
+//テキストフィールド
+input[type="text"], input[type="password"], input[type="email"] {
+    border-radius:8px;
+    border-color: rgb(226, 214, 202);
+}
+submit[type="cubmit"] {
+    border-radius:8px;
+}
+
+//売り切れの時、赤
+.soldout {
+    color: red;
+}
+//販売中　緑
+.sale {
+    color: rgb(54, 255, 47);
+}
 
 
 //-----------------中央寄せ----------------------
@@ -70,6 +113,9 @@ hr {
     justify-content: center;
 }
 
+.box {
+    text-align: left;
+}
 //----------------------------------------------
 
 //-----------------フォント----------------------
@@ -88,6 +134,7 @@ h2 {
 
 //----------------------------------------------
 
+//table　丸角-----------------------------------
 table{
     border: 1px solid rgb(226, 214, 202);
     border-collapse: separate;
@@ -123,12 +170,16 @@ table{
     }
     }
 }
+//----------------------------------------------
 
 
 //-------------------header用-------------------
 header {
     width: 100%;
-    
+    background-image: url("header.png");
+    background-size: cover;
+    top: 0;
+
 }
 ul {
     display: flex;
@@ -154,6 +205,7 @@ dl.searchbox {
     border-radius:8px;
     border-color: rgb(226, 214, 202);
     margin-left: auto;
+    top:50px;
 }
 dl.searchbox dt{
     padding:0px;
@@ -185,50 +237,7 @@ dl.searchbox dd{
 
 //--------------------------------------------
 
-
-//全てのaリンク下線なし
-a {
-    color:rgb(37, 18, 7);
-    text-decoration:none;
-}
-//マウスがリンクに乗っている時　色薄くなります。 
-a:hover {
-    color:rgb(161, 143, 126);
-    text-decoration:none;
-}
-
-//ふわっとさせるアニメーション
-.effect div {
-    // margin: auto;
-    transition: .5s;
-}
-
-.logo:hover {
-    transform: translateY(2px) translateX(2px);
-    transition-duration: 0.1s;
-}
-
-//カード
-.card {
-    margin : 0 auto;
-}
-
-
-
-
-input[type="text"], input[type="password"], input[type="email"] {
-    border-radius:8px;
-    border-color: rgb(226, 214, 202);
-}
-
-submit[type="cubmit"] {
-    border-radius:8px;
-}
-.soldout {
-    color: red;
-}
-
-
+//-----------------------商品キラキラ-----------------------
 figure {
     width: 100%;
     margin: 0;
@@ -268,14 +277,4 @@ figure:hover::before {
 
 
 
-.haitmitsu {
-    width: 100%;
-}
 
-.box {
-    text-align: left;
-}
-
-.sale {
-    color: rgb(54, 255, 47);
-}

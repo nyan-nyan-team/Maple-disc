@@ -23,7 +23,7 @@
                     <hr>
                     <%= form_for cart_product, url: "/cart_products/#{cart_product.id}" ,method: :PUT do |f| %>
                         <h2>数量</h2>
-                        <%= f.number_field :quantity, min: 0,max: productquantity %>
+                        <%= f.number_field :quantity, min: 0,max: productquantity, value: 1 %>
                         <%= f.submit 'この内容で更新する' %>
                     <% end %>
                     <hr>
