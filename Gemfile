@@ -62,7 +62,7 @@ group :test do
   gem "factory_bot_rails"
     gem 'rspec-parameterized'
     gem 'faker', '~> 2.0.0'
-    gem 'shoulda-matchers'
+    gem 'shoulda-matchers', require: false
     gem 'rails-controller-testing'
 end
 
