@@ -14,7 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require jquery_ujs
+
 //= require bootstrap-sprockets
 //= require_tree .
 //= require cocoon
@@ -33,6 +33,43 @@ $(function () {
             }
         });
     });
+
+    $(document).on('click','.artist_button', function(){
+        $('.artist_modal_wrapper').show();
+        $('.artist_modal').show();
+        $('.create_artist_modal').show();
+    })
+    $(document).on('click', '.fa_wrapper', function(){
+        $('.artist_modal_wrapper').hide();
+        $('.artist_modal').hide();
+        $('.artist_modal_content').hide();
+    })
+
+    $(document).on('click','.genre_button', function(){
+        $('.genre_modal_wrapper').show();
+        $('.genre_modal').show();
+        $('.create_genre_modal').show();
+    })
+    $(document).on('click', '.fa_wrapper', function(){
+        $('.genre_modal_wrapper').hide();
+        $('.genre_modal').hide();
+        $('.genre_modal_content').hide();
+    })
+
+    $(document).on('click','.label_button', function(){
+        $('.label_modal_wrapper').show();
+        $('.label_modal').show();
+        $('.create_label_modal').show();
+    })
+    $(document).on('click', '.fa_wrapper', function(){
+        $('.label_modal_wrapper').hide();
+        $('.label_modal').hide();
+        $('.label_modal_content').hide();
+    })
+
+
+
+
 });
 
 

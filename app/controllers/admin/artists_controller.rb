@@ -11,21 +11,21 @@ end
 def create
     artist = Artist.new(artist_params)
     if artist.save
-    redirect_to new_admin_artist_path , notice:"アーティストを追加しました！"
+    redirect_to new_admin_product_path , notice:"アーティストを追加しました！"
     else
-    render new_admin_artist_path , notice:"追加に失敗しました。"
+    render new_admin_product_path , notice:"追加に失敗しました。"
     end
 end
 def update
     artist = Artist.find(params[:id])
     artist.update(artist_params)
-    redirect_to new_admin_artist_path
+    redirect_to new_admin_product_path
 end
 
 def destroy
     artist = Artist.find(params[:id])
     artist.destroy
-    redirect_to new_admin_artist_path
+    redirect_to new_admin_product_path
 end
 
 private

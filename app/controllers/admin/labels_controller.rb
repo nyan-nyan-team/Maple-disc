@@ -11,18 +11,18 @@ end
 def create
     label = Label.new(label_params)
     label.save
-    redirect_to new_admin_label_path
+    redirect_to new_admin_product_path
 end
 def update
     label = Label.find(params[:id])
     label.update(label_params)
-    redirect_to new_admin_label_path
+    redirect_to new_admin_product_path
 end
 
 def destroy
     label = Label.find(params[:id])
     label.destroy
-    redirect_to new_admin_label_path
+    redirect_to new_admin_product_path
 end
 
 private

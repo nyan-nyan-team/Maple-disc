@@ -17,6 +17,12 @@ def new
     @disc = @product.discs.build
     @music = @disc.musics.build
     @arrival = Arrival.new
+    @artists = Artist.all
+    @artist = Artist.new
+    @genres = Genre.all
+    @genre = Genre.new
+    @labels = Label.all
+    @label = Label.new
 end
 def edit
     

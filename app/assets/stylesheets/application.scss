@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 @import "bootstrap";
 
@@ -271,3 +272,145 @@ figure:hover::before {
 .haitmitsu {
     width: 100%;
 }
+
+//-------------------アーティストモーダル用-------------------
+
+.artist_button{
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid black;
+    padding: 5px;
+    opacity: .6;
+    transition: .3s;
+}
+
+.artist_modal_wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: .7;
+    display: none;
+}
+
+.artist_modal{
+    position: absolute;
+    background-color: #fff;
+    width: 450px;
+    height: 350px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 100px auto 0;
+    border: 1px solid #eee;
+    display: none;
+    text-align: right;
+}
+
+.artist_modal_content{
+    display: none;
+    text-align: center;
+}
+
+//-------------------ジャンルモーダル用-------------------
+
+.genre_button{
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid black;
+    padding: 5px;
+    opacity: .6;
+    transition: .3s;
+}
+
+.genre_modal_wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: .7;
+    display: none;
+}
+
+.genre_modal{
+    position: absolute;
+    background-color: #fff;
+    width: 450px;
+    height: 350px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 100px auto 0;
+    border: 1px solid #eee;
+    display: none;
+    text-align: right;
+}
+
+.genre_modal_content{
+    display: none;
+    text-align: center;
+}
+
+//-------------------レーベルモーダル用-------------------
+
+
+.label_button{
+    display: inline-block;
+    cursor: pointer;
+    border: 2px solid black;
+    padding: 5px;
+    opacity: .6;
+    transition: .3s;
+}
+
+.label_modal_wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: .7;
+    display: none;
+}
+
+.label_modal{
+    position: absolute;
+    background-color: #fff;
+    width: 450px;
+    height: 350px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 100px auto 0;
+    border: 1px solid #eee;
+    display: none;
+    text-align: right;
+}
+
+.label_modal_content{
+    display: none;
+    text-align: center;
+}
+
+
+
+//-------------------すべてのモーダル用-------------------
+
+.button:hover{
+    opacity: 1;
+}
+
+.fa_wrapper{
+    cursor: pointer;
+    padding: 10px;
+}
+
+//--------------------------------------------
