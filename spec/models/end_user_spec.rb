@@ -14,10 +14,23 @@ RSpec.describe EndUser, "モデルに関するテスト", type: :model do
         it "CartProductモデルを複数持っている" do
         end
     end
+
     describe '実際に保存してみる' do
         context "保存できない場合" do
-            it "passwordが空欄" do
-                expect(FactoryBot.build(:end_user, :no_password)).to_not be_vaild
+            it "first_nameが空欄" do
+                expect(FactoryBot.create(:end_user, :no_farst_name)).to_not be_valid
+            end
+            it "last_nameが空欄" do
+                expect(FactoryBot.create(:end_user, :no_last_name)).to_not be_valid
+            end
+            it "first_name_kanaが空欄" do
+                expect(FactoryBot.create(:end_user, :no_farst_name_kana)).to_not be_valid
+            end
+            it "last_name_kanaが空欄" do
+                expect(FactoryBot.create(:end_user, :no_last_name_kana)).to_not be_valid
+            end
+            it "main_postal_codeが7文字以下" do
+                expect(FactoryBot.create(:end_user, :no_main_postal_code)).to_not be_valid
             end
         end
     end

@@ -1,4 +1,4 @@
 FactoryBot.define do
-    factory :artists do
+    factory :artist do
     end
 end
