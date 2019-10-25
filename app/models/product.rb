@@ -24,7 +24,9 @@ class Product < ApplicationRecord
         total_order_detail_quantity
     end
 
-    validates :title, :explanation ,:amount , presence: true
+    validates :title, presence: true
+    # validates :explanation, presence: true
+    # validates :amount, presence: true
     attachment :image
 
     has_many :discs, inverse_of: :product
