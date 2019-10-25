@@ -1,7 +1,8 @@
 FactoryBot.define do
+
+
     factory :product do
-        association :artist
-        association :label
-        association :genre
+        sequence(:title) { |n| "title#{n}" }
+        sequence(:explanation) { |n| "product#{n}" }
+        end
     end
-end
