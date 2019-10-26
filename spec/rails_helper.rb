@@ -72,3 +72,15 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+
+
+
+
+
+
+require 'devise'
+RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type => :controller
+  config.include ControllerMacros, :type => :controller
+end

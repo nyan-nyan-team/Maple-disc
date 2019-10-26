@@ -1,6 +1,6 @@
 <div class="container">
 
-<h1>ご登録者様情報</h1>
+<h1>----マイページ----</h1>
 <br>
 <br>
     <table>
@@ -44,9 +44,12 @@
     </table>
     <br>
     <br>
-    <%= link_to edit_end_user_path(@end_user), class: "center-block" do %>
-        <div class="button_wrapper">
-            <button type="button" class="btn btn-default">編集する</button>
-        </div>
-    <% end %>
+    <div class="button_wrapper">
+        <%= link_to "マイページを編集する", edit_end_user_path(@end_user), class: "btn btn-default" %>
+    </div>    
+    <br>
+    <br>
+    <div class="button_wrapper">
+        <%= link_to "購入履歴をみる", orders_path, class: "btn btn-info"  %>
+    </div> 
 </div>

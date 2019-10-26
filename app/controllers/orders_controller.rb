@@ -12,13 +12,16 @@ class OrdersController < ApplicationController
         when 2
             @delivery_status = '出荷済'
         end
+        
     end
     def show
         
     end
     def confirm
+        # @address_id = params[:address_id].to_i
         if params[:address].to_i != 0
             @address = Address.find(params[:address].to_i)
+            # @address = @address_id
         end
 
         @payment_num = params[:payment_method].to_i
@@ -54,7 +57,7 @@ class OrdersController < ApplicationController
                     product_id: cart_product.product.id,
                     purchase_price: cart_product.quantity * cart_product.product.amount,
                     quantity: cart_product.quantity
-                    # binding.pry
+                    
                 )
                 order_detail.save
                 cart_product.destroy

@@ -1,63 +1,72 @@
 <div class="container">
 <h1>カート内商品編集</h1>
+<br>
+<br>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-6">
             <% total_quantity = 0 %>
             <% total_price = 0 %>
             <% current_end_user.cart_products.each do |cart_product|%>
                 <div>
                     <%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100'  %>
-                    <h2>シングル/アルバム名</h2>
-                    <%= cart_product.product.title %>
+                    <br>
+                    <br>
+                    <%# <h2>シングル/アルバム名</h2> %>
+                    <h2><%= cart_product.product.title %></h2>
                     <hr>
                     <%# 在庫数の計算式です。 %>
-                    <% productquantity = cart_product.product.total_arrival_quantity - cart_product.product.total_order_detail_quantity %>
-                    <div>在庫数：<%= productquantity %></div>
+                    <%= productquantity = cart_product.arrivals.sum(:quantity) - cart_product.order_details.sum(:quantity) %>
+                    <h2>在庫数：<%= productquantity %>枚</h2>
                     <hr>
-                    <div>販売状況</div>
+                    <h2>販売状況</h2>
                     <% if productquantity == 0 %>
-                    <div>売り切れ</div>
+                    <h2 class="card-title soldout">売り切れ<h2>
                     <% else %>
-                    <div>販売中</div>
+                    <h2 class="card-title sale">販売中</h2>
                     <% end %>
+                    <hr>
+                    <h2>金額：¥ <%= cart_product.product.amount %>（税込）</h2> 
                     <hr>
                     <%= form_for cart_product, url: "/cart_products/#{cart_product.id}" ,method: :PUT do |f| %>
                         <h2>数量</h2>
-                        <%= f.number_field :quantity, min: 0,max: productquantity, value: 1 %>
+                        <%= f.number_field :quantity, min: 0,max: productquantity %>
                         <%= f.submit 'この内容で更新する' %>
                     <% end %>
                     <hr>
-                    <h2>金額</h2>
-                    ¥ <%= cart_product.product.amount %>
-                    <h2>枚数</h2>
-                    <%= cart_product.quantity %> 枚
+                
+                    <h2>枚数：<%= cart_product.quantity %> 枚</h2>                    
                     <%# <h2>合計枚数</h2> %>
                     <% total_quantity = cart_product.quantity + total_quantity%>
-                    <h2>小計（税込）</h2>
-                    ¥ <%= cart_product.product.amount * cart_product.quantity %>
+                    <h2>小計：¥ <%= cart_product.product.amount * cart_product.quantity %>（税込）</h2>
+                    
                     <%# <h2>合計金額</h2> %>
                     <% total_price += cart_product.product.amount * cart_product.quantity %>
                 </div>
                 <hr>
                 <%= link_to "削除する", cart_product_path(cart_product), method: :delete, class: "btn btn-danger" %>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             <% end %>
         </div>
         <div class="col-sm-4">
-            <h2>合計枚数</h2>
-            <%= total_quantity %> 枚
-            <h2>合計（税込）</h2>
-            ¥ <%= total_price %>
-            </tr>
-            <h2>送料</h2>
-            <h2>+ ¥500</h2>
-            <h2>総計（税込）</h2>
-            ¥ <%= total_price + 500 %>
+            <div class="box-line">
+                <h2>合計枚数：<%= total_quantity %> 枚</h2>
+                <h2>合計：¥ <%= total_price %>（税込）</h2>
+                <h2>送料：+ ¥500</h2>
+                <hr>
+                <h2>総計：¥ <%= total_price + 500 %>（税込）</h2>
+                
+            </div>
+            <br>
+            <div class="button_wrapper">
+                <%= link_to "レジに進む", new_order_path, class: "btn btn-success" %>            
+            </div>
         </div>
-        <hr>
-        <div class="button_wrapper">
-        <%= link_to new_order_path, class: "center-block" do %>
-                <button type="button" class="btn btn-default">レジに進む</button>
-        </div>
-        <% end %>
     </div>  <%#rowの閉じタグ%>
 </div>  <%#containerの閉じタグ%>
