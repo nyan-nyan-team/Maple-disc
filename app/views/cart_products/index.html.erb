@@ -17,7 +17,7 @@
                     <h2><%= cart_product.product.title %></h2>
                     <hr>
                     <%# 在庫数の計算式です。 %>
-                    <% productquantity = cart_product.product.total_arrival_quantity - cart_product.product.total_order_detail_quantity %>
+                    <%= productquantity = cart_product.arrivals.sum(:quantity) - cart_product.order_details.sum(:quantity) %>
                     <h2>在庫数：<%= productquantity %>枚</h2>
                     <hr>
                     <h2>販売状況</h2>
