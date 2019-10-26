@@ -20,11 +20,4 @@ def create
     cart_product.save
     redirect_to cart_products_path
 end
-
-def correct_end_user
-    end_user = EndUser.find(params[:id])
-    if current_end_user != end_user
-    redirect_to end_user_path(current_end_user.id)
-    end
-end
 end
