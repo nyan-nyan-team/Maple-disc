@@ -26,6 +26,9 @@ FactoryBot.define do
             main_postal_code {Faker::Lorem.characters(number: 7)}
         end
     end
+
+    
+
 end
 
 

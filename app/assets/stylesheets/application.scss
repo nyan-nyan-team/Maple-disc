@@ -18,7 +18,7 @@
 
 
 
-//フォント　font-family: 'M PLUS Rounded 1c', sans-serif;
+//フォント・・・グーグルフォント使ってます。font-family: 'M PLUS Rounded 1c', sans-serif;
 
 
 
@@ -89,11 +89,20 @@ submit[type="cubmit"] {
     color: rgb(54, 255, 47);
 }
 
+.box-line {
+    border:thin solid rgb(179, 174, 167);
+    border-radius: 8%;
+    padding: 14px;
+}
+
 
 //-----------------中央寄せ----------------------
 //ボタン 中央寄せ
-.btn {
+.btn-default {
     border:thin solid rgb(179, 174, 167);
+    text-align: center;
+}
+.btn {
     text-align: center;
 }
 .btn:hover {
@@ -236,7 +245,7 @@ dl.searchbox dd{
     color:#FFF;
 }
 
-//--------------------------------------------
+//-------------------------------------------------------
 
 //-----------------------商品キラキラ-----------------------
 figure {
@@ -275,12 +284,7 @@ figure:hover::before {
     left: 125%;
     }
 }
-
-
-
-.haitmitsu {
-    width: 100%;
-}
+//-------------------------------------------------------
 
 //-------------------アーティストモーダル用-------------------
 
