@@ -51,10 +51,14 @@
             <h2>お届け先住所 : <%= @order.delivery_address %></h2>
 
             <hr>
-            <h2>配送ステータス : <%= @order.delivery_status %></h2>
+            <h2>配送ステータス変更</h2>
+            <%= form_for @order, url:admin_order_path(@order.id) do |form| %>
+                <%= form.select :delivery_status, ["受付", "商品準備中", "出荷済"], :include_blank => "選択してください。" %>
+            <%= form.submit "保存" %>
+            <% end %>
 
             <hr>
-            <h2>支払い方法 : <%= @payment %></h2>
+            <h2>支払い方法 : <%= @order.payment_method %></h2>
             <hr>
         </div>
         <div class="col-md-4"></div>

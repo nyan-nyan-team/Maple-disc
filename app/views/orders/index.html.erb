@@ -9,7 +9,7 @@
                 <div class="col-sm-3">
                     <figure>
                     <div class="card img-thumbnail px-3 py-4 center">
-                        <h2>配送ステータス:<%= @delivery_status %></h2>
+                        <h2>配送ステータス:<%= order.delivery_status %></h2>
                         <h2>購入日：<%= order.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
                         
                         <h2>お届け先：<h2>                        
@@ -24,8 +24,8 @@
                                     <h2 class="card-title">シングル/アルバム名：<%= detail.product.title %><h2>                                   
                                     <h2 class="card-title">アーティスト名：<%= detail.product.artist.artist_name %><h2>                                    
                                     <h2 class="card-title">レーベル名：<%= detail.product.label.label_name %><h2>                                                    
-                                    <h2 class="card-title">枚数：<%= detail.quantity %><h2>                                    
-                                    <h2 class="card-title">値段：<%= detail.purchase_price %><h2>                                    
+                                    <h2 class="card-title">枚数：<%= detail.quantity %>枚<h2>                                    
+                                    <h2 class="card-title">総計：¥<%= detail.purchase_price %><h2>                                    
                                 </div>
                         <br>
                     </div><!-- /.card -->
