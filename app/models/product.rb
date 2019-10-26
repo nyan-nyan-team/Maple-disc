@@ -24,6 +24,10 @@ class Product < ApplicationRecord
         total_order_detail_quantity
     end
 
+    def included_price
+        included_price = (amount * 1.1).floor(0)
+    end
+
     validates :title, presence: true
     # validates :explanation, presence: true
     # validates :amount, presence: true
