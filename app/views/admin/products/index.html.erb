@@ -30,7 +30,7 @@
                         <br>
                         
                         <div>在庫数 : 
-                            <%= productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                            <%= productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
                         </div>
                         <br>
                         
