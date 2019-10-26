@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     before_action :authenticate_end_user!
     
     def index
-        @orders = current_end_user.orders.page(params[:page]).per(4)
+        @orders = current_end_user.orders.page(params[:page]).per(8)
         @delivery_status = params[:delivery_status].to_i
         case @delivery_status
         when 0
@@ -18,10 +18,14 @@ class OrdersController < ApplicationController
         
     end
     def confirm
-        # @address_id = params[:address_id].to_i
+        if params[:address].nil?
+            flash[:address] = "お届け先住所を選択してください。"
+            render 'new'
+        end
         if params[:address].to_i != 0
             @address = Address.find(params[:address].to_i)
-            # @address = @address_id
+        else
+            @address = 0
         end
 
         @payment_num = params[:payment_method].to_i
@@ -33,6 +37,7 @@ class OrdersController < ApplicationController
         when 2
             @payment = '代引き'
         end
+
     end
     def create
         @order = current_end_user.orders.build(
@@ -65,6 +70,7 @@ class OrdersController < ApplicationController
         redirect_to order_path(@order.id)
     end
     def new
+
     end
 end
 

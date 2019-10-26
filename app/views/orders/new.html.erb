@@ -1,4 +1,7 @@
 <div class="container">
+<% if flash[:address] %>
+    <%= flash[:address] %>
+<% end %>
 <h1>カート内購入情報入力(お届け先住所選択、お支払い方法選択）</h1>
     <div class="row">
         <div class="col-sm-3">
@@ -29,6 +32,7 @@
                 <div>
                 <h2>お支払い方法の選択</h2>
                 <%= select_tag 'payment_method', options_for_select({銀行振込: 0, クレジットカード支払い: 1, 代引き: 2}, 1), include_blank: true, placeholder: '選択してください' %>
+                <%#= select current_end_user, :payment_method, ["銀行振込", "クレジットカード支払い", "代引き"], :include_blank => "選択してください。" %>
                 </div>
                 <br>
                 <hr>
