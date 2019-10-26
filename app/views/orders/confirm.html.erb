@@ -49,7 +49,7 @@
             <% end %>
             <hr>
             <%= form_tag orders_path do %>
-                <%= hidden_field_tag "address_id", @address_id %>
+                <%= hidden_field_tag "address_id", @address.id %>
                 <%= hidden_field_tag "payment_num", @payment_num %>
                 <%= submit_tag "購入確定" %>
             <% end %>
