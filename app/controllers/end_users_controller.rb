@@ -2,6 +2,7 @@ class EndUsersController < ApplicationController
     before_action :authenticate_end_user!
     before_action :correct_end_user, only: [:show, :edit, :update]
     
+    
 def show
     @end_user = EndUser.find(params[:id])
     @full_name = @end_user.last_name + @end_user.first_name
@@ -18,10 +19,9 @@ def edit
 end
 def update
     end_user = EndUser.find(params[:id])
-    if end_user.update(end_user_params)
-        flash[:end_user] = "マイページを編集しました。"
-        redirect_to end_user_path(end_user)
-    end
+    end_user.update(end_user_params)
+    flash[:end_user] = "マイページを編集しました。"
+    redirect_to end_user_path(end_user)
 end
 def create
 end

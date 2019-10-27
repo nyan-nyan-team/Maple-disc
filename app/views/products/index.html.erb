@@ -27,7 +27,11 @@
                                         <br>
                                         <h2 class="card-title">在庫数
                                         <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
+                                        <% if productquantity == 0 %>
+                                        <h2> 0枚</h2>
+                                        <% else %>
                                         <%= productquantity %>枚</h2>
+                                        <% end %>
                                         <br>
                                         <h2 class="card-title">販売状況<h2>
                                         <% if productquantity == 0 %>
