@@ -1,43 +1,40 @@
 <div class="container">
     <h1>購入履歴一覧</h1>
+    <hr>
     <br>
     <br>
     <div class="page-header">
         <div class="row">
             <% @orders.each do |order| %>
-            <% order.order_details.each do |detail| %> 
                 <div class="col-sm-3">
-                    <figure>
-                    <div class="card img-thumbnail px-3 py-4 center">
-                        <h2>配送ステータス:<%= order.delivery_status %></h2>
-                        <h2>購入日：<%= order.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
-                        
-                        <h2>お届け先：<h2>                        
-                        <h2>お届け先郵便番号：〒 <%= order.delivery_postal_code %></h2>                        
-                        <h2>お届け先住所：<%= order.delivery_address %></h2>                        
-                        <h2>お届け先お名前：<%= order.delivery_name %>様</h2>                        
-                        
-                        
-                            <img class="card-img-top">
-                            <%= attachment_image_tag detail.product, :image, :fill, 100, 100, format: 'jpeg', fallback: "default_product.jpg" , size:'100x100' %>
-                                <div class="card-body px-1 py-4">
-                                    <h2 class="card-title">シングル/アルバム名：<%= detail.product.title %><h2>                                   
-                                    <h2 class="card-title">アーティスト名：<%= detail.product.artist.artist_name %><h2>                                    
-                                    <h2 class="card-title">レーベル名：<%= detail.product.label.label_name %><h2>                                                    
-                                    <h2 class="card-title">枚数：<%= detail.quantity %>枚<h2>                                    
-                                    <h2 class="card-title">総計：¥<%= detail.purchase_price %><h2>                                    
-                                </div>
-                        <br>
-                    </div><!-- /.card -->
-                    </figure>
+                    <div class="card px-3 py-4 center">
+                        <h2>配送ステータス:<%= order.delivery_status %></h2>                    
+                        <h2>購入日：<%= order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
+                        <h2>お届け先：<%= order.delivery_name %></h2>
+                            <div class="card-body px-1 py-4">
+                                    <h2 class="card-title">シングル/アルバム名<h2>
+                                    <%= order.order_details.first.product.title %>             
+                                    <h2 class="card-title">枚数<h2>
+                                    <%= order.order_details.first.quantity %>枚
+                                    <h2 class="card-title">合計金額<h2>
+                                    ¥<%= order.order_details.first.purchase_price %>
+                                
+                            </div>
+                            <div class= "button-wrapper">
+                                <%= link_to "受注履歴詳細へ", order_path(order.id), class: 'btn' %>
+                            </div>
+                    </div>
+                    <br>
                 </div>
             <% end %>
-            <% end %>
-        </div><!-- /.row -->
+            <br> 
+        </div> <%#rowの閉じタグ%>
     </div>
 </div>  <%#containerの閉じタグ%>
+
 <div class="pagination">
 <%= paginate @orders %>
 </div>
+
 
 

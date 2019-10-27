@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     before_action :authenticate_end_user!
     
     def index
-        @orders = current_end_user.orders.page(params[:page]).per(8)
+        @orders = current_end_user.orders.page(params[:page]).per(16)
         @delivery_status = params[:delivery_status].to_i
         case @delivery_status
         when 0
@@ -15,7 +15,18 @@ class OrdersController < ApplicationController
         
     end
     def show
-        
+        @order = current_end_user.orders.find(params[:id])
+        @delivery_status = params[:delivery_status].to_i
+        case @delivery_status
+        when 0
+            @delivery_status = '受付'
+        when 1
+            @delivery_status = '商品準備中'
+        when 2
+            @delivery_status = '出荷済'
+        end
+    end
+    def finish
     end
     def confirm
         if params[:address].nil?
@@ -67,7 +78,7 @@ class OrdersController < ApplicationController
                 order_detail.save
                 cart_product.destroy
             end
-        redirect_to order_path(@order.id)
+        redirect_to finish_order_path
     end
     def new
 

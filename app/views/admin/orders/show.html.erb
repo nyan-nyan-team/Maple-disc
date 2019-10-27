@@ -1,6 +1,8 @@
 <div class= "container">
     <h1>受注履歴詳細</h1>
-    
+    <% if flash[:delivery_status] %>
+        <h1 class="alert alert-success"><%= flash[:delivery_status] %></h1>
+    <% end %>
     <hr>
     <br>
     <div class="row">
@@ -8,15 +10,30 @@
     </div>
 
         <div class="col-md-4">
-            <h2>受注日 : <%= @order.updated_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
+            <h2>受注日 : <%= @order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
             <% total_quantity = 0 %>
             <% @order.order_details.each do |detail| %>
-            <hr>
+            <br>
+            <br>
             <%= attachment_image_tag detail.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %> 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <% end %>
         </div>
         <div class="col-md-4">
-        <br>
+            <h2>配送ステータス変更</h2>
+            <%= form_for @order, url:admin_order_path(@order.id) do |form| %>
+                <%= form.select :delivery_status, ["受付", "商品準備中", "出荷済"], :include_blank => "選択してください。" %>
+            <%= form.submit "保存" %>
+            <% end %>
             <hr>
+            <% @order.order_details.each do |detail| %>
             <h2>シングル/アルバム名 : <%= detail.product.title %></h2>
             <hr>
             <h2>アーティスト名 : <%= detail.product.artist.artist_name %></h2>
@@ -27,9 +44,14 @@
             <hr>
             <h2>購入枚数 : <%= detail.quantity %></h2>
             <% total_quantity += detail.quantity %>
+            <hr>
+            <br>
         
             <% end %>
+            <br>
+            <br>
             <hr>
+            
             <h2>合計枚数 : <%= total_quantity %> 枚</h2>
 
             <hr>
@@ -51,15 +73,11 @@
             <h2>お届け先住所 : <%= @order.delivery_address %></h2>
 
             <hr>
-            <h2>配送ステータス変更</h2>
-            <%= form_for @order, url:admin_order_path(@order.id) do |form| %>
-                <%= form.select :delivery_status, ["受付", "商品準備中", "出荷済"], :include_blank => "選択してください。" %>
-            <%= form.submit "保存" %>
-            <% end %>
-
-            <hr>
             <h2>支払い方法 : <%= @order.payment_method %></h2>
             <hr>
+            <div class= "button-wrapper">
+                <%= link_to "受注履歴一覧へ戻る", admin_orders_path, class: 'btn btn-info' %>
+            </div>
         </div>
         <div class="col-md-4"></div>
     </div>

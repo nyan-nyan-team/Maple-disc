@@ -20,4 +20,5 @@ def create
     cart_product.save
     redirect_to cart_products_path
 end
+
 end

@@ -50,9 +50,9 @@
             <%= form_tag orders_path do %>
                 <% if params[:address].to_i != 0 %>
                     <%= hidden_field_tag "address_id", @address.id %>
-                 <% else %>
+                <% else %>
                     <%= hidden_field_tag "address_id", 0 %>
-                 <% end %>
+                <% end %>
                 <%= hidden_field_tag "payment_num", @payment_num %>
                 <%= submit_tag "購入確定" %>
             <% end %>
