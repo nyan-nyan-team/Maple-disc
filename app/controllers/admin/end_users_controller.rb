@@ -1,5 +1,5 @@
 class Admin::EndUsersController < Admin::Base
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
     PER = 2
 
 def index
@@ -27,7 +27,7 @@ def update
     if @enduser.update(end_user_params)
     redirect_to admin_end_user_path
     else 
-    redirect_to edit_admin_end_user_path(@endusers)
+        render :edit
     end
 end
 def destroy

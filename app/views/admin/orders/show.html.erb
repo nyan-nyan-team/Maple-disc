@@ -40,7 +40,7 @@
             <hr>
             <h2>レーベル名 : <%= detail.product.label.label_name %></h2>
             <hr>
-            <h2>値段 : <%= detail.purchase_price %> (税込)</h2>
+            <h2>値段 : <%= (detail.purchase_price * 1.1).floor(0) %> (税込)</h2>
             <hr>
             <h2>購入枚数 : <%= detail.quantity %></h2>
             <% total_quantity += detail.quantity %>
@@ -55,13 +55,13 @@
             <h2>合計枚数 : <%= total_quantity %> 枚</h2>
 
             <hr>
-            <h2>小計 : ¥<%= @order.purchase_price_total %> (税込)</h2>
+            <h2>小計 : ¥<%= (@order.purchase_price_total * 1.1).floor(0)%> (税込)</h2>
 
             <hr>
             <h2>送料 : ¥<%= @order.postage %></h2>
 
             <hr>
-            <h2>購入価格総計 : ¥<%= @order.purchase_price_total + 500 %>(税込)</h2>
+            <h2>購入価格総計 : ¥<%= (@order.purchase_price_total * 1.1).floor(0) + 500 %>(税込)</h2>
 
             <hr>
             <h2>購入者名 : <%= @order.delivery_name %></h2>

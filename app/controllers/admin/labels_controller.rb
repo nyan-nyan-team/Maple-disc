@@ -1,5 +1,5 @@
 class Admin::LabelsController < Admin::Base
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
 def new
     @labels = Label.all

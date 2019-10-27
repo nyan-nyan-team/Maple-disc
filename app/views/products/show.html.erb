@@ -9,6 +9,7 @@
                 <div class="col-md-4">
                     <%# 在庫数の計算式です。 %>
                     
+
                     <% productquantity = @product.arrivals.sum(:quantity) - @product.order_details.sum(:quantity) %>
                     
                     
@@ -56,6 +57,9 @@
                     <div>商品紹介:
                     <%= @product.explanation %>
                     </div>
+                    <hr>
+                    <br>
+                    
                 </div>
                 <div class="col-md-4">
                     <%= form_for(@cart_product, url: cart_products_path, method: :POST) do |product| %> 
@@ -64,6 +68,7 @@
                         <%= product.hidden_field :product_id, value: @product.id %>
                         <%= product.number_field :quantity, min: 1,max: productquantity, value: 1 %>
                     </div>
+                    <br>
 
                     <hr>
                     <div>
