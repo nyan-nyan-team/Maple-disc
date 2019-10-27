@@ -1,4 +1,5 @@
 class Admin::GenresController < Admin::Base
+    protect_from_forgery :expect => [:create, :destroy]
     #before_action :authenticate_admin!
 
 def new
@@ -6,9 +7,8 @@ def new
     @genre = Genre.new
 end
 def create
-    genre = Genre.new(genre_params)
-    genre.save
-    redirect_to new_admin_product_path
+    @genre = Genre.new(genre_name: params[:genre])
+    @genre.save
 end
 def edit
     @genre = Genre.find(params[:id])
@@ -20,9 +20,8 @@ def update
 end
 
 def destroy
-    genre = Genre.find(params[:id])
-    genre.destroy
-    redirect_to new_admin_product_path
+    @genre = Genre.find(params[:id])
+    @genre.destroy
 end
 
 private

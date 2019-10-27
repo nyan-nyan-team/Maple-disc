@@ -24,9 +24,9 @@
         </p>
         <h1>アーティスト追加フォーム</h1>
         <h2>追加済みアーティスト一覧</h2>
-        <div>
+        <div class="artist_wrapper">
             <% @artists.each do |artist| %>
-            <%= artist.artist_name %>
+            <span><%= artist.artist_name %></span>
             <%#= link_to '編集' , admin_artist_path(artist), method: PUT %>
             <%= link_to '削除' , admin_artist_path(artist), method: :delete %>
             <% end %>
@@ -36,9 +36,9 @@
         <br>
         <h2>アーティスト追加</h2>
         <div>
-            <%= form_for([:admin, @artist], url: admin_artists_path, method: :POST) do |f| %>
+            <%= form_for [:admin, @artist], url: admin_artists_path, method: :POST, remote: false do |f| %>
             <p><%= f.text_field :artist_name %></p>
-            <p><%= f.submit 'アーティストを追加する' %></p>
+            <p><%= f.submit 'アーティストを追加する', id: "artist_submit" %></p>
             <% end %>
         </div>
     </div>
@@ -56,11 +56,13 @@
         </p>
         <h1>ジャンル追加フォーム</h1>
         <h2>追加済みジャンル一覧</h2>
-        <div>
+        <div class="genre_wrapper">
             <% @genres.each do |genre| %>
-            <%= genre.genre_name %>
+            <span><%= genre.genre_name %>
             <%# <%= link_to '編集' , edit_admin_genre_path(genre) %>
-            <%= link_to '削除' , admin_genre_path(genre), method: :delete %>
+            <button type="button" name="削除" value="<%=genre.id%>" class="genre_delete">削除</button>
+            </span>
+            <%#= link_to '削除' , admin_genre_path(genre), method: :delete, id: "genre_delete", remote: true, data: {genre_id: genre.id} %>
             <% end %>
         </div>
         <br>
@@ -68,9 +70,9 @@
         <br>
         <h2>ジャンル追加</h2>
         <div>
-            <%= form_for([:admin, @genre], url: admin_genres_path, method: :POST) do |f| %>
+            <%= form_for [:admin, @genre], url: admin_genres_path, method: :POST, remote: false do |f| %>
             <p><%= f.text_field :genre_name %></p>
-            <p><%= f.submit 'ジャンルを追加する' %></p>
+            <p><%= f.submit 'ジャンルを追加する', id: "genre_submit" %></p>
             <% end %>
         </div>
     </div>
@@ -88,9 +90,9 @@
         </p>
         <h1>レーベル追加フォーム</h1>
         <h2>追加済みレーベル一覧</h2>
-        <div>
+        <div class="label_wrapper">
             <% @labels.each do |label| %>
-            <%= label.label_name %>
+            <span><%= label.label_name %></span>
             <%# <%= link_to '編集' , edit_admin_label_path(label) %>
             <%= link_to '削除' , admin_label_path(label), method: :delete %>
             <% end %>
@@ -100,9 +102,9 @@
         <br>
         <h2>レーベル追加</h2>
         <div>
-            <%= form_for([:admin, @label], url: admin_labels_path, method: :POST) do |f| %>
+            <%= form_for [:admin, @label], url: admin_labels_path, method: :POST, remote: false do |f| %>
             <p><%= f.text_field :label_name %></p>
-            <p><%= f.submit 'レーベルを追加する' %></p>
+            <p><%= f.submit 'レーベルを追加する', id: "label_submit" %></p>
             <% end %>
         </div>
     </div>

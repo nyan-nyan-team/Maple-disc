@@ -1,21 +1,21 @@
 class Admin::ArtistsController < Admin::Base
+    protect_from_forgery :expect => [:create]
     #before_action :authenticate_admin!
     
 def new
     @artists = Artist.all
     @artist = Artist.new
 end
+
 def edit
     @artist = Artist.find(params[:id])
 end
+
 def create
-    artist = Artist.new(artist_params)
-    if artist.save
-    redirect_to new_admin_product_path , notice:"アーティストを追加しました！"
-    else
-    render new_admin_product_path , notice:"追加に失敗しました。"
-    end
+    @artist = Artist.new(artist_name: params[:artist])
+    @artist.save
 end
+
 def update
     artist = Artist.find(params[:id])
     artist.update(artist_params)
