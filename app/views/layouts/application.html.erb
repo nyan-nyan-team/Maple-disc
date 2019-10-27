@@ -104,6 +104,7 @@
             </dl>
         </nav>
     </div>
+    <%# <meta name="token" content="{{ csrf_token() }}"> %>
 </header>
 <%# <div class="jumbotron jumbotron-fluid"></div> %>
 <br>
@@ -111,6 +112,7 @@
 <br>
 <br>
 <%= content_for?(:content) ? yield(:content) : yield %>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/562ca3c57a.js" crossorigin="anonymous"></script>

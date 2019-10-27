@@ -91,8 +91,16 @@ gem 'cocoon'
 gem 'pry-byebug'
 gem 'pry-rails'
 
+gem 'font-awesome-rails'
+gem 'tether-rails'
+gem 'popper_js'
+gem 'jquery'
+gem 'slim-rails'
+gem 'html2slim'
+
 gem 'database_cleaner'
 gem 'faker-japanese'
 gem 'gimei'
-gem 'font-awesome-rails'
+
 gem 'rails-i18n'
+

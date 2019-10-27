@@ -17,11 +17,11 @@ def new
     @disc = @product.discs.build
     @music = @disc.musics.build
     @arrival = Arrival.new
-    @artists = Artist.all
+    @artists = Artist.all.order(id: "DESC")
     @artist = Artist.new
-    @genres = Genre.all
+    @genres = Genre.all.order(id: "DESC")
     @genre = Genre.new
-    @labels = Label.all
+    @labels = Label.all.order(id: "DESC")
     @label = Label.new
 end
 def edit
