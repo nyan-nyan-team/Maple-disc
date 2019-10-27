@@ -1,10 +1,9 @@
 <div class="container">
 <h1>カート内商品編集</h1>
 <br>
-
-<%# if current_end_user.cart_products.quantity.nil? %>
-    <%# <h1 class="alert alert-success">商品を選択してください</h1> %>
-<%# end %>
+<% if current_end_user.cart_products.blank? %>
+    <h1 class="alert alert-success">商品を選択してください</h1>
+<% end %>
 <br>
     <div class="row">
         <div class="col-sm-2">

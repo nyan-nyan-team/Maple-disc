@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
     before_action :authenticate_end_user!
+    before_action :correct_end_user, only: [:confirm, :create]
+    before_action :prevent_get_access, only: [:confirm]
     
     def index
         @orders = current_end_user.orders.page(params[:page]).per(16)
@@ -28,7 +30,7 @@ class OrdersController < ApplicationController
     end
     def finish
     end
-    def confirm
+    def before_confirm
         if params[:address].nil?
             flash[:address] = "お届け先住所を選択してください。"
             render 'new'
@@ -48,7 +50,9 @@ class OrdersController < ApplicationController
         when 2
             @payment = '代引き'
         end
-
+        render :confirm
+    end
+    def confirm
     end
     def create
         @order = current_end_user.orders.build(
@@ -81,8 +85,19 @@ class OrdersController < ApplicationController
         redirect_to finish_order_path
     end
     def new
-
     end
+
+    private
+    def correct_end_user
+        end_user = current_end_user
+        if current_end_user != end_user
+        redirect_to product_path
+        end
+    end
+    def prevent_get_access
+        redirect_to products_path
+    end
+
 end
 
 

@@ -2,6 +2,7 @@ class EndUsersController < ApplicationController
     before_action :authenticate_end_user!
     before_action :correct_end_user, only: [:show, :edit, :update]
     
+    
 def show
     @end_user = EndUser.find(params[:id])
     @full_name = @end_user.last_name + @end_user.first_name
@@ -26,7 +27,6 @@ def update
         render :edit
     end
 
-    
 end
 def create
 end
