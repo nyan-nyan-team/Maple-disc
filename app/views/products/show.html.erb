@@ -9,24 +9,24 @@
                 <div class="col-md-4">
                     <%# 在庫数の計算式です。 %>
                     
-                    <% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
-
+                    <% productquantity = @product.arrivals.sum(:quantity) - @product.order_details.sum(:quantity) %>
+                    
                     
                     
                     <hr>
                     <div>商品名: <%= @product.title %></div>
 
                     <hr>
-                    <div>価格:¥ <%= @product.amount %></div>
+                    <div>価格:¥ <%= @product.included_price %></div>
 
                     <hr>
                     <div>在庫数: <%= productquantity %></div>
                     
                     <hr>
                     <div>販売状況: <% if productquantity == 0 %>
-                    売り切れ
+                    <h2 class="card-title soldout">売り切れ</h2>
                     <% else %>
-                    販売中
+                    <h2 class="card-title sale">販売中</h2>
                     <% end %>
                     </div>
                     

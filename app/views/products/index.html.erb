@@ -23,11 +23,15 @@
                                         <br>
                                         <%= product.artist.artist_name %>
                                         <br>
-                                        <h2 class="card-title">価格 | ¥<%= product.amount %></h2>
+                                        <h2 class="card-title">価格 | ¥<%= product.included_price %></h2>
                                         <br>
                                         <h2 class="card-title">在庫数
-                                        <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                        <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
+                                        <% if productquantity == 0 %>
+                                        <h2> 0枚</h2>
+                                        <% else %>
                                         <%= productquantity %>枚</h2>
+                                        <% end %>
                                         <br>
                                         <h2 class="card-title">販売状況<h2>
                                         <% if productquantity == 0 %>
@@ -58,10 +62,10 @@
                                     <br>
                                     <%= product.artist.artist_name %>
                                     <br>
-                                    <h2 class="card-title">価格 | ¥<%= product.amount %><h2>
+                                    <h2 class="card-title">価格 | ¥<%= product.included_price %><h2>
                                     <br>
                                     <h2 class="card-title">在庫数
-                                    <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                    <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
                                     <%= productquantity %>枚</h2>
                                     <br>
                                     <h2 class="card-title">販売状況<h2>

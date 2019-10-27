@@ -1,42 +1,44 @@
 <div class="container">
-
-<h1>カート内購入情報入力(お届け先住所選択、お支払い方法選択）</h1>
-<%= form_tag confirm_order_path do %>
-    <div>
-        <br>
-        <%= radio_button_tag 'address', 0 %>
-        <h2>登録お届け先住所</h2>
-        <h2>郵便番号</h2>
-        〒 <%= current_end_user.main_postal_code %>
-        <h2>住所</h2>
-        <%= current_end_user.main_address %>
-        <h2>お届け先お名前</h2>
-        <%= current_end_user.last_name + current_end_user.first_name %>様
-    </div>
-    <hr>
-<% current_end_user.addresses.each_with_index do |address, i| %>
-    <div>
-        <br>
-        <%= radio_button_tag 'address', address.id %>
-        <h2>登録お届け先住所<%= i + 1 %></h2>
-        <h2>郵便番号</h2>
-        〒 <%= address.delivery_postal_code %>
-        <h2>住所</h2>
-        <%= address.delivery_address %>
-        <h2>お届け先お名前</h2>
-        <%= address.delivery_name %>様
-    </div>
-    <hr>
-    <% end %>
-
-    <div>
-    <h2>お支払い方法の選択</h2>
-    <%= select_tag 'payment_method', options_for_select({銀行振込: 0, クレジットカード支払い: 1, 代引き: 2}, 1), include_blank: true, placeholder: '選択してください' %>
-    </div>
-
-    <hr>
-    <div class="button_wrapper">
-        <%= submit_tag '購入確認画面へ進む'%>
-    </div>
+<% if flash[:address] %>
+    <h1 class="alert alert-danger"><%= flash[:address] %></h1>
 <% end %>
+<h1>カート内購入情報入力(お届け先住所選択、お支払い方法選択）</h1>
+    <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-9">
+            <%= form_tag orders_confirm_path do %>
+                <div>
+                    <br>
+                    <%= radio_button_tag 'address', 0 %>
+                    <h2>登録お客様住所</h2>
+                    <h2>郵便番号：〒 <%= current_end_user.main_postal_code %></h2>
+                    <h2>住所：<%= current_end_user.main_address %></h2>                    
+                    <h2>お届け先お名前：<%= current_end_user.last_name + current_end_user.first_name %>様</h2>                    
+                </div>
+                <hr>
+            <% current_end_user.addresses.each_with_index do |address, i| %>
+                <div>
+                    <br>
+                    <%= radio_button_tag 'address', address.id %>
+                    <h2>登録お届け先住所<%= i + 1 %></h2>
+                    <h2>郵便番号： 〒 <%= address.delivery_postal_code %></h2>                
+                    <h2>住所：<%= address.delivery_address %></h2>                    
+                    <h2>お届け先お名前：<%= address.delivery_name %>様</h2>                   
+                </div>
+                <hr>
+                <% end %>
+                <br>
+                <div>
+                <h2>お支払い方法の選択</h2>
+                <%= select_tag 'payment_method', options_for_select({銀行振込: 0, クレジットカード支払い: 1, 代引き: 2}, 1), include_blank: true, placeholder: '選択してください' %>
+                <%#= select current_end_user, :payment_method, ["銀行振込", "クレジットカード支払い", "代引き"], :include_blank => "選択してください。" %>
+                </div>
+                <br>
+                <hr>
+                <br>               
+                <%= submit_tag '購入確認画面へ進む'%>                
+            <% end %>
+        </div>
+    <div>
 </div>

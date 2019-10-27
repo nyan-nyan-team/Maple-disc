@@ -1,6 +1,5 @@
 <div class="container">
     <h1>マイページ編集</h1>
-
     <%= form_for(@end_user) do |f| %>
         <table>
                 <tr>
@@ -58,10 +57,9 @@
     <% end %>
     <br>
     <br>
-    <%= link_to out_path(@end_user), class: "center-block" do %>
-        <div class="button_wrapper">
-            <button type="button" class="btn btn-danger">退会する</button>
-        </div>
-    <% end %>
+    <div class="button_wrapper">
+    <%= link_to "退会する", out_path(@end_user), class: "btn btn-danger" %>
+    </div>
+
 </div>
 

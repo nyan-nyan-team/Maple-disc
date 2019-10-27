@@ -1,56 +1,65 @@
+<div class="container">
+    <h1>商品詳細</h1>
+    <hr>
+    <br>
+    <br>
 
-<h2>商品詳細</h2>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div>
+            <%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'200x200' %>
+            </div>
 
-<div>
-<%= attachment_image_tag @product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'200x200' %>
-</div>
+            <h2>商品名：<%= @product.title %></h2>
+            <hr>
 
-<div>商品名</div>
-<%= @product.title %>
+            <h2>価格：<%= @product.amount %></h2>
+            <hr>
 
-<div>価格</div>
-<%= @product.amount %>
+            <h2>在庫数：
+            <%= productquantity = @product.arrivals.sum(:quantity) - @product.order_details.sum(:quantity) %></h2>
+            <hr>
 
-<div>在庫数</div>
-<% productquantity = @product.total_arrival_quantity - @product.total_order_detail_quantity %>
+            <h2>販売状況</h2>
+            <% if productquantity == 0 %>
+            <h2>売り切れ</h2>
+            <% else %>
+            <h2>販売中</h2>
+            <% end %>
+            <hr>
+            <h2>アーティスト：<%= @product.artist.artist_name %></h2>
+            <hr>
 
-<%= productquantity %>
+            <h2>レーベル：<%= @product.label.label_name %></h2>
+            <hr>
 
-<div>販売状況</div>
-<% if productquantity == 0 %>
-<div>売り切れ</div>
-<% else %>
-<div>販売中</div>
-<% end %>
-
-<div>アーティスト</div>
-<%= @product.artist.artist_name %>
-
-<div>レーベル</div>
-<%= @product.label.label_name %>
-
-<div>ジャンル</div>
-<%= @product.genre.genre_name %>
+            <h2>ジャンル：<%= @product.genre.genre_name %></h2>
+            <hr>
 
 
-<div>ディスク名</div>
-<% @product.discs.each do |disc| %> 
-<%= disc.disc_number %>
-<div>収録曲一覧</div>
-<% disc.musics.each do |music| %> 
-<%= music.music_name %> 
-<% end %> 
-<% end %> 
-
-<div>商品紹介</div>
-<div>
-<%= @product.explanation %>
-</div>
-
-<div>
-<%= link_to "商品の情報を編集する" , edit_admin_product_path(@product) %>
-</div>
-
-<div>
-<%= link_to "商品一覧へ" , admin_products_path %>
+            <h2>ディスク名</h2>
+            <% @product.discs.each do |disc| %> 
+            <%= disc.disc_number %>
+            <h2>収録曲一覧</h2>
+            <% disc.musics.each do |music| %> 
+            <%= music.music_name %> 
+            <% end %> 
+            <% end %> 
+            <hr>
+            <h2>商品紹介</h2>
+            <div>
+            <%= @product.explanation %>
+            </div>
+            <hr>
+            <div class="botton-wrapper">
+            <%= link_to "商品の情報を編集する" , edit_admin_product_path(@product), class: 'btn btn-default' %>
+            </div>
+            <hr>
+            <div class="botton-wrapper">
+            <%= link_to "商品一覧へ" , admin_products_path, class: 'btn btn-info' %>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
 </div>

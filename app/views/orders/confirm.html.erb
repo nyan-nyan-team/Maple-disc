@@ -1,58 +1,67 @@
 <div class="container">
-<h1>購入確認</h1>
-<div>
-    <% if params[:address].to_i != 0 %>
-    <h2>お届け先郵便番号</h2>
-    <%= @address.delivery_postal_code %>
-    <h2>お届け先住所</h2>
-    <%= @address.delivery_address %>
-    <h2>お届け先お名前</h2>
-    <%= @address.delivery_name %>
-    <% else %>
-    <h2>お届け先郵便番号</h2>
-    <%= current_end_user.main_postal_code %>
-    <h2>お届け先住所</h2>
-    <%= current_end_user.main_address %>
-    <h2>お届け先お名前</h2>
-    <%= current_end_user.last_name + current_end_user.first_name %>    
-    <% end %>
-</div>
-<hr>
+    <h1>購入確認</h1>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-5">
+            <% total_price = 0 %>
+            <% current_end_user.cart_products.each do |cart_product|%>
+                <%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
+                    <h2><%= cart_product.product.title %></h2>
+                    <hr>
+                    <h2>数量：<%= cart_product.quantity %></h2>
+                    <%# <h2>お支払い方法　each外で使ってます</h2> %>
+                    <% @payment %>
+                    <hr>
+                    <h2>小計：¥ <%= cart_product.product.amount * cart_product.quantity %>（税込）</h2>
+                    <%# <h2>商品総計　each外で使ってます</h2> %>
+                    <% total_price += cart_product.product.amount * cart_product.quantity %>
+                    <hr>
+                    <br>
+                    <br>
+            <% end %>
+        </div>
 
-<div>
-    <% total_price = 0 %>
-    <% current_end_user.cart_products.each do |cart_product|%>
-        <%= attachment_image_tag cart_product.product, :image, :fill, 100, 100, fallback: "default_product.jpg" , size:'100x100' %>
-            <h2>シングル/アルバム名</h2>
-            <%= cart_product.product.title %>
+        <div class="col-sm-5">
+            <h2>合計：¥ <%= total_price %>（税込）</h2>
+            <h2>送料：+ ¥500</h2>
+            <h2>お支払い総計：¥ <%= total_price + 500 %>（税込）</h2>
             <hr>
-                <h2>数量</h2>
-            <%= cart_product.quantity %>
-            <h2>お支払い方法</h2>
-            <%= @payment %>
+            <h2>お支払い方法：<%= @payment %></h2>
             <hr>
-            <h2>小計（税込）</h2>
-            ¥ <%= cart_product.product.amount * cart_product.quantity %>
-            <% total_price += cart_product.product.amount * cart_product.quantity %>
-    <% end %>
-</div>
+            <% if params[:address].to_i != 0 %>
+                <h2>お届け先郵便番号：〒 <%= @address.delivery_postal_code %></h2>
+                
+                <h2>お届け先住所：<%= @address.delivery_address %></h2>
+                
+                <h2>お届け先お名前：<%= @address.delivery_name %>様</h2>
+                
+            <% else %>
+            <h2>お届け先郵便番号：〒 <%= current_end_user.main_postal_code %></h2>
+                
+                <h2>お届け先住所：<%= current_end_user.main_address %></h2>
+                
+                <h2>お届け先お名前：<%= current_end_user.last_name + current_end_user.first_name %>様</h2>  
+                
+            <% end %>
+            <hr>
+            <%= form_tag orders_path do %>
+                <% if params[:address].to_i != 0 %>
+                    <%= hidden_field_tag "address_id", @address.id %>
+                <% else %>
+                    <%= hidden_field_tag "address_id", 0 %>
+                <% end %>
+                <%= hidden_field_tag "payment_num", @payment_num %>
+                <%= submit_tag "購入確定" %>
+            <% end %>
+            <br>
+            <%= link_to "戻る", new_order_path, class: "btn btn-default" %>
+            
+        </div>
 
-    <div class="col-sm-4">
-            <div>
-            <h2>合計（税込）</h2>
-            <%= total_price %>
-            </tr>
-            <h2>送料</h2>
-            <h2>+ ¥500</h2>
-            <h2>総計（税込）</h2>
-            ¥ <%= total_price + 500 %>
+        <div class="col-sm-1">
         </div>
     </div>
-    <hr>
-<%= form_tag orders_path do %>
-    <%= hidden_field_tag "address_id", @address_id %>
-    <%= hidden_field_tag "payment_num", @payment_num %>
-    <%= submit_tag "購入確定" %>
-<% end %>
-
 </div>

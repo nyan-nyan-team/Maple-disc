@@ -1,33 +1,43 @@
 
 FactoryBot.define do
-
     factory :end_user do
         sequence(:email) { |n| "example#{n}@test.com" }
         sequence(:first_name) { |n| "first_name#{n}" }
         sequence(:last_name) { |n| "last_name#{n}" }
         sequence(:first_name_kana) { |n| "first_name_kana#{n}" }
         sequence(:last_name_kana) { |n| "last_name_kana#{n}" }
-        sequence(:last_name_kana) { |n| "last_name_kana#{n}" }
         sequence(:main_postal_code) {|n| "main_postal_code#{n}" }
-
+        sequence(:main_address) { |n| "main_address#{n}" }
+        sequence(:phone_number) { |n| "phone_number#{n}" }
+        sequence(:password) { "11111111" }
+        sequence(:password_confirmation) { "11111111" }
 
         trait :no_first_name do
-            first_name {}
+            first_name{}
         end
 
         trait :no_last_name do
-            last_name {}
+            last_name{}
         end
         trait :no_first_name_kana do
-            no_first_name_kana {}
+            first_name_kana{}
         end
         trait :no_last_name_kana do
-            no_last_name_kana {}
+            last_name_kana{}
         end
-        trait :too_short_main_postal_code do
-            main_postal_code {Faker::Lorem.characters(number: 7)}
+        trait :no_main_postal_code do
+            main_postal_code{}
+        end
+        trait :no_main_address do
+            main_address{}
+        end
+        trait :no_phone_number do
+            phone_number{}
         end
     end
+
+    
+
 end
 
 

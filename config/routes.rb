@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show, :edit, :update, :destroy] do
     resources :order_details, only: [:index]
     end
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
 
     resources :products, only: [:index, :show, :new, :edit, :create, :update, :destroy]
     resources :arrivals, only: [:index, :new, :edit, :create, :update, :destroy]
@@ -30,10 +30,13 @@ Rails.application.routes.draw do
   resources :end_users, only: [:show, :edit, :destroy, :update] do 
     resources :addresses, only: [:create]
   end
+  post '/orders/confirm', to: 'orders#before_confirm'
+  get '/orders/confirm', to: 'orders#confirm', as: :confirm_order
+  get '/orders/finish', to: 'orders#finish', as: :finish_order
   resources :orders, only: [:index, :show, :new, :create]
   resources :order_details, only: [:index]
   resources :cart_products, only: [:index, :update, :create, :destroy]
   resources :products, only: [:index, :show]
   get  'out' => 'end_users#out'
-  post '/orders/confirm', to: 'orders#confirm', as: :confirm_order
+  
 end

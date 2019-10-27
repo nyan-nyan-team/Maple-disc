@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-    before_action :authenticate_end_user!
+    
     PER = 12
     
 def index

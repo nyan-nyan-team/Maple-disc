@@ -2,6 +2,19 @@ class EndUser < ApplicationRecord
   acts_as_paranoid
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :main_postal_code, presence: true
+  validates :main_address, presence: true
+  validates :phone_number, presence: true
+
+
+
+
+
+
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_many :addresses, dependent: :destroy
