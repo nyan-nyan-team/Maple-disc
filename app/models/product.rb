@@ -28,9 +28,9 @@ class Product < ApplicationRecord
         included_price = (amount * 1.1).floor(0)
     end
 
-    #validates :title, presence: true
-    #validates :explanation, presence: true
-    #validates :amount, presence: true
+    validates :title, presence: true
+    validates :explanation, presence: true
+    validates :amount, presence: true
     attachment :image
 
     has_many :discs, inverse_of: :product

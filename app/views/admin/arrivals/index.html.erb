@@ -11,9 +11,8 @@
                 <th></th>
             </tr>
         <% @arrivals.each do |arrival| %>
-
             <tr>
-                <td><%= arrival.product.title %></td>
+                <td><%= Product.with_deleted.find(arrival.product_id).title %></td>
                 <td><%= arrival.quantity %></td>
                 <td><%= arrival.arrival_time.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></td>
                 <td><%= link_to edit_admin_arrival_path(arrival) do %>
