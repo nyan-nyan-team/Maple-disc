@@ -33,6 +33,13 @@ RSpec.describe EndUser, "モデルに関するテスト", type: :model do
             it "main_postal_codeが空欄" do
                 expect(build(:end_user, :no_main_postal_code)).to_not be_valid
             end
+            it "main_addressが空欄" do
+                expect(build(:end_user, :no_main_address)).to_not be_valid
+            end
+            it "phone_numberが空欄" do
+                expect(build(:end_user, :no_phone_number)).to_not be_valid
+            end
+
         end
     end
 end
