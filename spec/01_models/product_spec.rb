@@ -28,6 +28,14 @@ RSpec.describe Product, "モデルに関するテスト", type: :model do
 
     describe '実際に保存してみる' do
         context '保存できる場合' do
+            it "画像なし" do
+                expect(create(:product)).to be_valid
+            end
+            it "画像あり" do
+                expect(create(:product, :create_with_image)).to be_valid
+            end
+
+
             it "label_idを入れて保存" do
                 label = create(:label)
                 expect(create(:product, label_id: label.id)).to be_valid

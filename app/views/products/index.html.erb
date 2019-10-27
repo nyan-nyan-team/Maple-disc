@@ -26,7 +26,7 @@
                                         <h2 class="card-title">価格 | ¥<%= product.included_price %></h2>
                                         <br>
                                         <h2 class="card-title">在庫数
-                                        <%= productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
+                                        <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
                                         <%= productquantity %>枚</h2>
                                         <br>
                                         <h2 class="card-title">販売状況<h2>
@@ -61,7 +61,7 @@
                                     <h2 class="card-title">価格 | ¥<%= product.included_price %><h2>
                                     <br>
                                     <h2 class="card-title">在庫数
-                                    <% productquantity = product.total_arrival_quantity - product.total_order_detail_quantity %>
+                                    <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
                                     <%= productquantity %>枚</h2>
                                     <br>
                                     <h2 class="card-title">販売状況<h2>

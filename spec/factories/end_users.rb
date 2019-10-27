@@ -7,6 +7,8 @@ FactoryBot.define do
         sequence(:first_name_kana) { |n| "first_name_kana#{n}" }
         sequence(:last_name_kana) { |n| "last_name_kana#{n}" }
         sequence(:main_postal_code) {|n| "main_postal_code#{n}" }
+        sequence(:main_address) { |n| "main_address#{n}" }
+        sequence(:phone_number) { |n| "phone_number#{n}" }
         sequence(:password) { "11111111" }
         sequence(:password_confirmation) { "11111111" }
 
@@ -25,6 +27,12 @@ FactoryBot.define do
         end
         trait :no_main_postal_code do
             main_postal_code{}
+        end
+        trait :no_main_address do
+            main_address{}
+        end
+        trait :no_phone_number do
+            phone_number{}
         end
     end
 
