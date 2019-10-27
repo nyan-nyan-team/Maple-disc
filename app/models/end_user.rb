@@ -9,7 +9,7 @@ class EndUser < ApplicationRecord
   validates :main_postal_code, presence: true
   validates :main_address, presence: true
   validates :phone_number, presence: true
-
+  
 
 
 

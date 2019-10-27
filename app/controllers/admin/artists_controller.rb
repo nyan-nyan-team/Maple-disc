@@ -1,5 +1,5 @@
 class Admin::ArtistsController < Admin::Base
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
     
 def new
     @artists = Artist.all

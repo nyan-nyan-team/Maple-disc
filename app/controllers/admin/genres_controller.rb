@@ -1,5 +1,5 @@
 class Admin::GenresController < Admin::Base
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
 def new
     @genres = Genre.all

@@ -17,11 +17,16 @@ def edit
     @newaddress = Address.new
 end
 def update
-    end_user = EndUser.find(params[:id])
-    if end_user.update(end_user_params)
+    @end_user = EndUser.find(params[:id])
+    if @end_user.update(end_user_params)
         flash[:end_user] = "マイページを編集しました。"
-        redirect_to end_user_path(end_user)
+        redirect_to end_user_path(@end_user)
+    else 
+        @newaddress = Address.new
+        render :edit
     end
+
+    
 end
 def create
 end

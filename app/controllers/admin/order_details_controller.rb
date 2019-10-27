@@ -1,6 +1,6 @@
 class Admin::OrderDetailsController < Admin::Base
 
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
     PER = 4
 
