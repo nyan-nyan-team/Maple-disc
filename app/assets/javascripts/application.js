@@ -72,6 +72,8 @@ $(function () {
 
 });
 
+//-----------------------------------------------artist_ajax_top-------------------------------------------
+
 $(function () {
     $('#artist_submit').off('click');
     $('#artist_submit').on('click', function(e){
@@ -99,6 +101,8 @@ $(function () {
     })
 });
 
+//---------------------------------------------artist_ajax_bottom------------------------------------------
+
 
 // $(function () {
 //     $(document).on('ajax:success', 'artist', function(e){
@@ -106,6 +110,46 @@ $(function () {
 //         $('.artist_wrapper').prepend('<p>' + e.detail[0] + '</p>');
 //     })
 // });
+
+
+
+// $(function () {
+//     $(document).on('ajax:success', 'form', function(e){
+//         $('#label_label_name').val('');
+//         $('.label_wrapper').prepend('<p>' + e.detail[0] + '</p>');
+//     })
+// });
+
+
+// $(function(){
+//     $('.genre_delete').on('click', function(e){
+//       e.preventDefault();
+//       e.stopPropagation();
+//       let href = $(this).attr('href');
+//       let genre_id = $(this)[0].dataset['genreId'];
+//       $.ajax({
+//         type: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         dataType: 'json',
+//         url: href,
+//         data: JSON.stringify({genre_id: genre_id}),
+//         success: function(res) {
+//           $(".row[data=" + genre_id + "]").empty();
+//           $(".row[data=" + genre_id + "]").html(
+//             `<span>削除</span>`
+//           );
+//           return false;
+//         },
+//         error: function(res) {
+//           return false;
+//         }
+//       })
+//     });
+//   });
+
+//-----------------------------------------------label_ajax_top-------------------------------------------
 
 $(function () {
     $('#genre_submit').off('click');
@@ -137,32 +181,26 @@ $(function () {
     })
 });
 
-
-
-// $(function () {
-//     $(document).on('ajax:success', 'form', function(e){
-//         $('#label_label_name').val('');
-//         $('.label_wrapper').prepend('<p>' + e.detail[0] + '</p>');
-//     })
-// });
-
 $(function () {
-    $('#label_submit').off('click');
-    $('#label_submit').on('click', function(e){
+    $('#genre_submit').off('click');
+    $('#genre_submit').on('click', function(e){
         e.preventDefault();
-        var label = $('#label_label_name').val();
-        console.log(label)
+            $(document).off('click',".genre_delete2" );
+
+        var genre = $('#genre_genre_name').val();
+        console.log(genre)
         $.ajax({
-            url:  "../labels",
+            url:  "../genres",
             type: 'POST',
             data: {
-                label: label
+                genre: genre
             },
             dataType: 'json',
           })
           .done(function(data){
               console.log(data)
-            $('.label_wrapper').prepend('<span>' + data.label_name + '</span><a ></a>');
+            $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
+            $('#genre_genre_name').val("");
           })
           .fail(function(data){
             console.log(data)
@@ -172,34 +210,6 @@ $(function () {
           })
     })
 });
-
-// $(function(){
-//     $('.genre_delete').on('click', function(e){
-//       e.preventDefault();
-//       e.stopPropagation();
-//       let href = $(this).attr('href');
-//       let genre_id = $(this)[0].dataset['genreId'];
-//       $.ajax({
-//         type: 'DELETE',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         dataType: 'json',
-//         url: href,
-//         data: JSON.stringify({genre_id: genre_id}),
-//         success: function(res) {
-//           $(".row[data=" + genre_id + "]").empty();
-//           $(".row[data=" + genre_id + "]").html(
-//             `<span>削除</span>`
-//           );
-//           return false;
-//         },
-//         error: function(res) {
-//           return false;
-//         }
-//       })
-//     });
-//   });
 
 $(function() {
     $('.genre_delete').off('click');
@@ -246,6 +256,123 @@ $(function($){
         })
     });
 });
+
+//---------------------------------------------genre_ajax_bottom------------------------------------------
+
+//-----------------------------------------------label_ajax_top-------------------------------------------
+
+$(function () {
+    $('#label_submit').off('click');
+    $('#label_submit').on('click', function(e){
+        e.preventDefault();
+            $(document).off('click',".label_delete2" );
+
+        var label = $('#label_label_name').val();
+        console.log(label)
+        $.ajax({
+            url:  "../labels",
+            type: 'POST',
+            data: {
+                label: label
+            },
+            dataType: 'json',
+          })
+          .done(function(data){
+              console.log(data)
+            $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
+            $('#label_label_name').val("");
+          })
+          .fail(function(data){
+            console.log(data)
+          })
+          .always(function(data){
+            $('.submit-btn').prop('disabled', false);　//ここで解除している
+          })
+    })
+});
+
+$(function () {
+    $('#label_submit').off('click');
+    $('#label_submit').on('click', function(e){
+        e.preventDefault();
+            $(document).off('click',".label_delete2" );
+
+        var label = $('#label_label_name').val();
+        console.log(label)
+        $.ajax({
+            url:  "../labels",
+            type: 'POST',
+            data: {
+                label: label
+            },
+            dataType: 'json',
+          })
+          .done(function(data){
+              console.log(data)
+            $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
+            $('#label_label_name').val("");
+          })
+          .fail(function(data){
+            console.log(data)
+          })
+          .always(function(data){
+            $('.submit-btn').prop('disabled', false);　//ここで解除している
+          })
+    })
+});
+
+$(function() {
+    $('.label_delete').off('click');
+    $(".label_delete").on('click', function(e) {
+        e.preventDefault();
+         var clickEle = $(this)
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var labelID = clickEle.val();
+        $.ajax({
+            url: '../labels/' + labelID,
+            type: 'DELETE',
+          data: {'id': labelID}, // DELETE リクエストだよ！と教えてあげる。
+          dataType: 'json'
+        ,
+        success: function(res) {
+            // 親要素のspanを削除
+            clickEle.parents('span').remove();
+        },
+        error: function(res) {
+            alert('エラー');
+        }
+    })
+    });
+});
+
+$(function($){
+    $(document).on('click',".label_delete2", function(e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var labelID = clickEle.val();
+        $.ajax({
+            url: '../labels/' + labelID,
+            type: 'DELETE',
+            data: {'id': labelID}, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function(res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+            },
+            error: function(res) {
+            }
+        })
+    });
+});
+
+
+
+
+
+
+//---------------------------------------------label_ajax_bottom------------------------------------------
 
 //   $.ajaxSetup({
 //     headers: {

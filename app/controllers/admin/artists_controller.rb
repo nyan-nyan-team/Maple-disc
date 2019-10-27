@@ -1,5 +1,5 @@
 class Admin::ArtistsController < Admin::Base
-    protect_from_forgery :expect => [:create]
+    protect_from_forgery :expect => [:create, :destroy]
     #before_action :authenticate_admin!
     
 def new
@@ -23,9 +23,8 @@ def update
 end
 
 def destroy
-    artist = Artist.find(params[:id])
-    artist.destroy
-    redirect_to new_admin_product_path
+    @artist = Artist.find(params[:id])
+    @artist.destroy
 end
 
 private

@@ -1,5 +1,5 @@
 class Admin::LabelsController < Admin::Base
-    protect_from_forgery :expect => [:create]
+    protect_from_forgery :expect => [:create, :destroy]
     #before_action :authenticate_admin!
 
 def new
@@ -23,9 +23,8 @@ def update
 end
 
 def destroy
-    label = Label.find(params[:id])
-    label.destroy
-    redirect_to new_admin_product_path
+    @label = Label.find(params[:id])
+    @label.destroy
 end
 
 private
