@@ -1,7 +1,13 @@
 <div class="container">
 
-<h1>----マイページ----</h1>
+<h1>マイページ</h1>
 <br>
+<% if flash[:end_user] %>
+    <h1 class="alert alert-success"><%= flash[:end_user] %></h1>
+<% end %>
+<% if flash[:end_user_address] %>
+    <h1 class="alert alert-success"><%= flash[:end_user_address] %></h1>
+<% end %>
 <br>
     <table>
         <tr>

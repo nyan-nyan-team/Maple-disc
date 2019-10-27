@@ -1,6 +1,10 @@
 <div class="container">
 <h1>カート内商品編集</h1>
 <br>
+
+<%# if current_end_user.cart_products.quantity.nil? %>
+    <%# <h1 class="alert alert-success">商品を選択してください</h1> %>
+<%# end %>
 <br>
     <div class="row">
         <div class="col-sm-2">
@@ -17,7 +21,7 @@
                     <h2><%= cart_product.product.title %></h2>
                     <hr>
                     <%# 在庫数の計算式です。 %>
-                    <%= productquantity = cart_product.arrivals.sum(:quantity) - cart_product.order_details.sum(:quantity) %>
+                    <% productquantity = cart_product.product.arrivals.sum(:quantity) - cart_product.product.order_details.sum(:quantity) %>
                     <h2>在庫数：<%= productquantity %>枚</h2>
                     <hr>
                     <h2>販売状況</h2>
@@ -65,7 +69,13 @@
             </div>
             <br>
             <div class="button_wrapper">
-                <%= link_to "レジに進む", new_order_path, class: "btn btn-success" %>            
+                <% if total_quantity >= 1 %>
+                    <%= link_to "レジに進む", new_order_path, class: "btn btn-success" %><br><br>
+                    <%= link_to "お買い物を続ける", products_path, class: "btn btn-info" %>
+                <% else %>
+                    <%= link_to "レジに進む", cart_products_path, class: "btn btn-success" %><br><br>
+                    <%= link_to "商品を選ぶ", products_path, class: "btn btn-info" %>
+                <% end %>
             </div>
         </div>
     </div>  <%#rowの閉じタグ%>

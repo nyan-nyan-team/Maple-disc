@@ -21,7 +21,9 @@
 //フォント・・・グーグルフォント使ってます。font-family: 'M PLUS Rounded 1c', sans-serif;
 
 
-
+// body{
+//     font-family: 'Wawati SC','Hannotate TC','Hannotate SC',YuGothic,'Yu Gothic','TsukuARdGothic-Regular','Lucida Grande','Noteworthy',sans-serif;
+// }
 
 //リセットCSS
 * {
@@ -63,7 +65,8 @@ a:hover {
 
 //カード
 .card {
-    margin : 0 auto;
+    // margin : 0 auto;
+    // margin-bottom:10px;
 }
 //ふわっとさせるアニメーション
 .effect div {

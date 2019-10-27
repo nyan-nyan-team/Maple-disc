@@ -9,8 +9,8 @@
                 <div class="col-md-4">
                     <%# 在庫数の計算式です。 %>
                     
-                    <%= productquantity = @product.arrivals.sum(:quantity) - @product.order_details.sum(:quantity) %>
-
+                    <%# productquantity = @product.arrivals.sum(:quantity) - @product.order_details.sum(:quantity) %>
+                    <% productquantity = 10 %>
                     
                     
                     <hr>

@@ -18,8 +18,10 @@ def edit
 end
 def update
     end_user = EndUser.find(params[:id])
-    end_user.update(end_user_params)
-    redirect_to end_user_path(end_user)
+    if end_user.update(end_user_params)
+        flash[:end_user] = "マイページを編集しました。"
+        redirect_to end_user_path(end_user)
+    end
 end
 def create
 end
