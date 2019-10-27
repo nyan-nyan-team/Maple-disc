@@ -30,7 +30,7 @@
                     <h2 class="card-title sale">販売中</h2>
                     <% end %>
                     <hr>
-                    <h2>金額：¥ <%= cart_product.product.amount %>（税込）</h2> 
+                    <h2>金額：¥ <%= (cart_product.product.amount * 1.1).floor(0) %>（税込）</h2> 
                     <hr>
                     <%= form_for cart_product, url: "/cart_products/#{cart_product.id}" ,method: :PUT do |f| %>
                         <h2>数量</h2>
@@ -42,10 +42,10 @@
                     <h2>枚数：<%= cart_product.quantity %> 枚</h2>                    
                     <%# <h2>合計枚数</h2> %>
                     <% total_quantity = cart_product.quantity + total_quantity%>
-                    <h2>小計：¥ <%= cart_product.product.amount * cart_product.quantity %>（税込）</h2>
+                    <h2>小計：¥ <%= (cart_product.product.amount * cart_product.quantity * 1.1).floor(0) %>（税込）</h2>
                     
                     <%# <h2>合計金額</h2> %>
-                    <% total_price += cart_product.product.amount * cart_product.quantity %>
+                    <% total_price += (cart_product.product.amount * cart_product.quantity * 1.1).floor(0) %>
                 </div>
                 <hr>
                 <%= link_to "削除する", cart_product_path(cart_product), method: :delete, class: "btn btn-danger" %>
@@ -63,7 +63,7 @@
                 <h2>合計：¥ <%= total_price %>（税込）</h2>
                 <h2>送料：+ ¥500</h2>
                 <hr>
-                <h2>総計：¥ <%= total_price + 500 %>（税込）</h2>
+                <h2>総計：¥ <%= total_price.floor(0) + 500 %>（税込）</h2>
                 
             </div>
             <br>

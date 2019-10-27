@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::Base
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
 PER = 8
 

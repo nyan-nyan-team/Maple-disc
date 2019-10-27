@@ -28,13 +28,6 @@ RSpec.describe Product, "モデルに関するテスト", type: :model do
 
     describe '実際に保存してみる' do
         context '保存できる場合' do
-            it "画像なし" do
-                expect(create(:product)).to be_valid
-            end
-            it "画像あり" do
-                expect(create(:product, :create_with_image)).to be_valid
-            end
-
 
             it "label_idを入れて保存" do
                 label = create(:label)
@@ -50,16 +43,7 @@ RSpec.describe Product, "モデルに関するテスト", type: :model do
             end
         end
         context '保存できない場合' do
-            it "label_idを保存していない" do
-                expect(build(:product)).to_not be_valid
-            end
-            it "genre_idを保存していない" do
-                expect(build(:product)).to_not be_valid
-            end
-            it "artist_idを保存していない" do
-                expect(build(:product)).to_not be_valid
-            end
-
+            
             it "titleが空欄" do
                 expect(build(:product, :no_title)).to_not be_valid
             end

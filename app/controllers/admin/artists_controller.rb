@@ -1,6 +1,6 @@
 class Admin::ArtistsController < Admin::Base
     protect_from_forgery :expect => [:create, :destroy]
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
     
 def new
     @artists = Artist.all

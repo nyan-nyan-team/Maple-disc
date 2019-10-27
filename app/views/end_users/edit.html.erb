@@ -1,5 +1,19 @@
 <div class="container">
+
+    <% if @end_user.errors.any? %>
+        <div class="alert alert-warning">
+            <ul>
+            <% @end_user.errors.full_messages.each do |message| %>
+            <li><%= "error:" + message %></li>
+            <br>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+
     <h1>マイページ編集</h1>
+    
     <%= form_for(@end_user) do |f| %>
         <table>
                 <tr>

@@ -19,9 +19,7 @@ FactoryBot.define do
         trait :no_amount do
             amount{}
         end
-        trait :create_with_image do
-            image {Refile::FileDouble.new("dummy", "logo.png", content_type: "image/png")}
-        end
+    
 
     end
 end

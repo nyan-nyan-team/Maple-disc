@@ -1,5 +1,5 @@
 class Admin::ArrivalsController < Admin::Base
-    #before_action :authenticate_admin!
+    before_action :authenticate_admin!
 
     PER = 5
 def index
@@ -27,7 +27,7 @@ def update
     if arrival.update(arrival_params)
         redirect_to admin_arrivals_path
     else
-        render
+        render :edit
     end
 end
 def destroy

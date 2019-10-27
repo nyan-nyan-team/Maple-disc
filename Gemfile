@@ -102,3 +102,5 @@ gem 'database_cleaner'
 gem 'faker-japanese'
 gem 'gimei'
 
+gem 'rails-i18n'
+
