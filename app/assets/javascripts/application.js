@@ -74,10 +74,13 @@ $(function () {
 
 //-----------------------------------------------artist_ajax_top-------------------------------------------
 
+
 $(function () {
     $('#artist_submit').off('click');
     $('#artist_submit').on('click', function(e){
         e.preventDefault();
+            $(document).off('click',".artist_delete2" );
+
         var artist = $('#artist_artist_name').val();
         console.log(artist)
         $.ajax({
@@ -90,7 +93,8 @@ $(function () {
           })
           .done(function(data){
               console.log(data)
-            $('.artist_wrapper').prepend('<span>' + data.artist_name + '</span>');
+            $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
+            $('#artist_artist_name').val("");
           })
           .fail(function(data){
             console.log(data)
@@ -100,6 +104,83 @@ $(function () {
           })
     })
 });
+
+$(function () {
+    $('#artist_submit').off('click');
+    $('#artist_submit').on('click', function(e){
+        e.preventDefault();
+            $(document).off('click',".artist_delete2" );
+
+        var artist = $('#artist_artist_name').val();
+        console.log(artist)
+        $.ajax({
+            url:  "../artists",
+            type: 'POST',
+            data: {
+                artist: artist
+            },
+            dataType: 'json',
+          })
+          .done(function(data){
+              console.log(data)
+            $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
+            $('#artist_artist_name').val("");
+          })
+          .fail(function(data){
+            console.log(data)
+          })
+          .always(function(data){
+            $('.submit-btn').prop('disabled', false);　//ここで解除している
+          })
+    })
+});
+
+$(function() {
+    $('.artist_delete').off('click');
+    $(".artist_delete").on('click', function(e) {
+        e.preventDefault();
+         var clickEle = $(this)
+        // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var artistID = clickEle.val();
+        $.ajax({
+            url: '../artists/' + artistID,
+            type: 'DELETE',
+          data: {'id': artistID}, // DELETE リクエストだよ！と教えてあげる。
+          dataType: 'json'
+        ,
+        success: function(res) {
+            // 親要素のspanを削除
+            clickEle.parents('span').remove();
+        },
+        error: function(res) {
+            alert('エラー');
+        }
+    })
+    });
+});
+
+$(function($){
+    $(document).on('click',".artist_delete2", function(e) {
+        e.preventDefault();
+        var clickEle = $(this)
+        // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
+        var artistID = clickEle.val();
+        $.ajax({
+            url: '../artists/' + artistID,
+            type: 'DELETE',
+            data: {'id': artistID}, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function(res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+            },
+            error: function(res) {
+            }
+        })
+    });
+});
+
 
 //---------------------------------------------artist_ajax_bottom------------------------------------------
 
@@ -149,7 +230,7 @@ $(function () {
 //     });
 //   });
 
-//-----------------------------------------------label_ajax_top-------------------------------------------
+//-----------------------------------------------genre_ajax_top-------------------------------------------
 
 $(function () {
     $('#genre_submit').off('click');

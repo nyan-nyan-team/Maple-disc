@@ -26,9 +26,10 @@
         <h2>追加済みアーティスト一覧</h2>
         <div class="artist_wrapper">
             <% @artists.each do |artist| %>
-            <span><%= artist.artist_name %></span>
+            <span><%= artist.artist_name %>
             <%#= link_to '編集' , admin_artist_path(artist), method: PUT %>
-            <%= link_to '削除' , admin_artist_path(artist), method: :delete %>
+            <button type="button" name="削除" value="<%=artist.id%>" class="artist_delete">削除</button>
+            </span>
             <% end %>
         </div>
         <br>
