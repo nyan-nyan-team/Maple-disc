@@ -12,7 +12,7 @@ def edit
 end
 
 def create
-    @artist = Artist.new(artist_name: params[:artist])
+    @artist = Artist.new(artist_params)
     @artist.save
 end
 

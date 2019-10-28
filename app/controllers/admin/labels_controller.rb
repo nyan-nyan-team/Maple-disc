@@ -12,7 +12,7 @@ def edit
 end
 
 def create
-    @label = Label.new(label_name: params[:label])
+    @label = Label.new(label_params)
     @label.save
 end
 
