@@ -99,6 +99,10 @@ $(function () {
                 console.log(data)
                 $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
                 $('#artist_artist_name').val("");
+                $('<option>').attr({
+                    value:data.id,
+                }).html(data.artist_name).appendTo('#product_artist_id');
+
             })
             .fail(function (data) {
                 console.log(data)
@@ -134,6 +138,9 @@ $(function () {
                 console.log(data)
                 $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
                 $('#artist_artist_name').val("");
+                $('<option>').attr({
+                    value:data.id,
+                }).html(data.artist_name).appendTo('#product_artist_id');
             })
             .fail(function (data) {
                 console.log(data)
@@ -143,7 +150,6 @@ $(function () {
             })
     })
 });
-
 $(function () {
     $('.artist_delete').off('click');
     $(".artist_delete").on('click', function (e) {
@@ -164,6 +170,9 @@ $(function () {
         success: function(res) {
             // 親要素のspanを削除
             clickEle.parents('span').remove();
+            console.log('delete='+artistID);
+
+            $('select#product_artist_id option[value='+artistID+']').remove();
         },
         error: function(res) {
             alert('エラー');
@@ -183,11 +192,14 @@ $(function ($) {
             url: '../artists/' + artistID,
             type: 'DELETE',
             data: { 'id': artistID }, // DELETE リクエストだよ！と教えてあげる。
-            dataType: 'json'
-            ,
+            dataType: 'json',
             success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
+                console.log('delete='+artistID);
+
+                $('select#product_artist_id option[value='+artistID+']').remove();
+
             },
             error: function (res) {
             }
@@ -266,6 +278,9 @@ $(function () {
                 console.log(data)
                 $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
                 $('#genre_genre_name').val("");
+                $('<option>').attr({
+                    value:data.id,
+                }).html(data.genre_name).appendTo('#product_genre_id');
             })
             .fail(function (data) {
                 console.log(data)
@@ -296,6 +311,10 @@ $(function () {
                 console.log(data)
                 $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
                 $('#genre_genre_name').val("");
+                $('<option>').attr({
+                    value:data.id,
+                }).html(data.genre_name).appendTo('#product_genre_id');
+
             })
             .fail(function (data) {
                 console.log(data)
@@ -324,6 +343,8 @@ $(function () {
         success: function(res) {
             // 親要素のspanを削除
             clickEle.parents('span').remove();
+            console.log('delete='+genreID);
+            $('select#product_genre_id option[value='+genreID+']').remove();
         },
         error: function(res) {
             alert('エラー');
@@ -348,6 +369,8 @@ $(function ($) {
             success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
+            console.log('delete='+genreID);
+            $('select#product_genre_id option[value='+genreID+']').remove();
             },
             error: function (res) {
             }
@@ -379,6 +402,10 @@ $(function () {
                 console.log(data)
                 $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
                 $('#label_label_name').val("");
+                $('<option>').attr({
+                    value:data.id,
+                }).html(data.label_name).appendTo('#product_label_id');
+
             })
             .fail(function (data) {
                 console.log(data)
@@ -409,6 +436,10 @@ $(function () {
                 console.log(data)
                 $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
                 $('#label_label_name').val("");
+                $('<option>').attr({
+                    value:data.id,
+                }).html(data.label_name).appendTo('#product_label_id');
+
             })
             .fail(function (data) {
                 console.log(data)
@@ -435,6 +466,8 @@ $(function () {
         success: function(res) {
             // 親要素のspanを削除
             clickEle.parents('span').remove();
+            console.log('delete='+labelID);
+            $('select#product_label_id option[value='+labelID+']').remove();
         },
         error: function(res) {
             alert('エラー');
@@ -460,6 +493,8 @@ $(function ($) {
             success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
+            console.log('delete='+labelID);
+            $('select#product_label_id option[value='+labelID+']').remove();
             },
             error: function (res) {
             }
