@@ -8,7 +8,7 @@ def new
 end
 
 def create
-    @genre = Genre.new(genre_name: params[:genre])
+    @genre = Genre.new(genre_params)
     @genre.save
 end
 

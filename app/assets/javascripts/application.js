@@ -78,16 +78,21 @@ $(function () {
     $('#artist_submit').off('click');
     $('#artist_submit').on('click', function (e) {
         e.preventDefault();
-        $(document).off('click', ".artist_delete2");
+
+            $(document).off('click',".artist_delete2" );
+        var params = $("#new_artist").serialize();
 
         var artist = $('#artist_artist_name').val();
         console.log(artist)
         $.ajax({
             url: "../artists",
             type: 'POST',
+            data: params,
+            /*
             data: {
                 artist: artist
             },
+            */
             dataType: 'json',
         })
             .done(function (data) {
@@ -108,16 +113,21 @@ $(function () {
     $('#artist_submit').off('click');
     $('#artist_submit').on('click', function (e) {
         e.preventDefault();
-        $(document).off('click', ".artist_delete2");
+
+            $(document).off('click',".artist_delete2" );
+            var params = $("#new_artist").serialize();
 
         var artist = $('#artist_artist_name').val();
         console.log(artist)
         $.ajax({
             url: "../artists",
             type: 'POST',
+            data: params,
+            /*
             data: {
                 artist: artist
             },
+            */
             dataType: 'json',
         })
             .done(function (data) {
@@ -138,23 +148,28 @@ $(function () {
     $('.artist_delete').off('click');
     $(".artist_delete").on('click', function (e) {
         e.preventDefault();
-        var clickEle = $(this)
+
+        var params = $("#new_artist").serialize();
+         var clickEle = $(this)
+
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var artistID = clickEle.val();
         $.ajax({
             url: '../artists/' + artistID,
             type: 'DELETE',
-            data: { 'id': artistID }, // DELETE リクエストだよ！と教えてあげる。
-            dataType: 'json'
-            ,
-            success: function (res) {
-                // 親要素のspanを削除
-                clickEle.parents('span').remove();
-            },
-            error: function (res) {
-                alert('エラー');
-            }
-        })
+
+          data: params, // DELETE リクエストだよ！と教えてあげる。
+          dataType: 'json'
+        ,
+        success: function(res) {
+            // 親要素のspanを削除
+            clickEle.parents('span').remove();
+        },
+        error: function(res) {
+            alert('エラー');
+        }
+    })
+
     });
 });
 
@@ -235,16 +250,16 @@ $(function () {
     $('#genre_submit').off('click');
     $('#genre_submit').on('click', function (e) {
         e.preventDefault();
-        $(document).off('click', ".genre_delete2");
 
-        var genre = $('#genre_genre_name').val();
+            $(document).off('click',".genre_delete2" );
+            var params = $("#new_genre").serialize();
+            var genre = $('#genre_genre_name').val();
+
         console.log(genre)
         $.ajax({
             url: "../genres",
             type: 'POST',
-            data: {
-                genre: genre
-            },
+            data: params,
             dataType: 'json',
         })
             .done(function (data) {
@@ -265,16 +280,16 @@ $(function () {
     $('#genre_submit').off('click');
     $('#genre_submit').on('click', function (e) {
         e.preventDefault();
-        $(document).off('click', ".genre_delete2");
 
-        var genre = $('#genre_genre_name').val();
+            $(document).off('click',".genre_delete2" );
+            var params = $("#new_genre").serialize();
+            var genre = $('#genre_genre_name').val();
+
         console.log(genre)
         $.ajax({
             url: "../genres",
             type: 'POST',
-            data: {
-                genre: genre
-            },
+            data: params,
             dataType: 'json',
         })
             .done(function (data) {
@@ -295,23 +310,26 @@ $(function () {
     $('.genre_delete').off('click');
     $(".genre_delete").on('click', function (e) {
         e.preventDefault();
-        var clickEle = $(this)
+
+        var params = $("#new_genre").serialize();
+         var clickEle = $(this)
+
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var genreID = clickEle.val();
         $.ajax({
             url: '../genres/' + genreID,
             type: 'DELETE',
-            data: { 'id': genreID }, // DELETE リクエストだよ！と教えてあげる。
-            dataType: 'json'
-            ,
-            success: function (res) {
-                // 親要素のspanを削除
-                clickEle.parents('span').remove();
-            },
-            error: function (res) {
-                alert('エラー');
-            }
-        })
+            data: params,
+            dataType: 'json',
+        success: function(res) {
+            // 親要素のspanを削除
+            clickEle.parents('span').remove();
+        },
+        error: function(res) {
+            alert('エラー');
+        }
+    })
+
     });
 });
 
@@ -345,16 +363,16 @@ $(function () {
     $('#label_submit').off('click');
     $('#label_submit').on('click', function (e) {
         e.preventDefault();
-        $(document).off('click', ".label_delete2");
 
-        var label = $('#label_label_name').val();
+            $(document).off('click',".label_delete2" );
+            var params = $("#new_label").serialize();
+            var label = $('#label_label_name').val();
+
         console.log(label)
         $.ajax({
             url: "../labels",
             type: 'POST',
-            data: {
-                label: label
-            },
+            data: params,
             dataType: 'json',
         })
             .done(function (data) {
@@ -375,16 +393,16 @@ $(function () {
     $('#label_submit').off('click');
     $('#label_submit').on('click', function (e) {
         e.preventDefault();
-        $(document).off('click', ".label_delete2");
 
-        var label = $('#label_label_name').val();
+            $(document).off('click',".label_delete2" );
+            var params = $("#new_label").serialize();
+            var label = $('#label_label_name').val();
+
         console.log(label)
         $.ajax({
             url: "../labels",
             type: 'POST',
-            data: {
-                label: label
-            },
+            data: params,
             dataType: 'json',
         })
             .done(function (data) {
@@ -405,36 +423,38 @@ $(function () {
     $('.label_delete').off('click');
     $(".label_delete").on('click', function (e) {
         e.preventDefault();
+        var params = $("#new_label").serialize();
         var clickEle = $(this)
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var labelID = clickEle.val();
         $.ajax({
             url: '../labels/' + labelID,
             type: 'DELETE',
-            data: { 'id': labelID }, // DELETE リクエストだよ！と教えてあげる。
-            dataType: 'json'
-            ,
-            success: function (res) {
-                // 親要素のspanを削除
-                clickEle.parents('span').remove();
-            },
-            error: function (res) {
-                alert('エラー');
-            }
-        })
+            data: params,
+            dataType: 'json',
+        success: function(res) {
+            // 親要素のspanを削除
+            clickEle.parents('span').remove();
+        },
+        error: function(res) {
+            alert('エラー');
+        }
+    })
+
     });
 });
 
 $(function ($) {
     $(document).on('click', ".label_delete2", function (e) {
         e.preventDefault();
+        var params = $("#new_label").serialize();
         var clickEle = $(this)
         // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var labelID = clickEle.val();
         $.ajax({
             url: '../labels/' + labelID,
             type: 'DELETE',
-            data: { 'id': labelID }, // DELETE リクエストだよ！と教えてあげる。
+            data: params, // DELETE リクエストだよ！と教えてあげる。
             dataType: 'json'
             ,
             success: function (res) {
