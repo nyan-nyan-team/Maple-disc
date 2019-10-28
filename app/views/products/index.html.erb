@@ -19,11 +19,11 @@
                                     <br>
                                     <hr>
                                     <div class="box">
-                                        <%= product.title %>
+                                        <h2><%= product.title %></h2>
                                         <br>
-                                        <%= product.artist.artist_name %>
+                                        <h2><%= product.artist.artist_name %></h2>
                                         <br>
-                                        <h2 class="card-title">価格 | ¥<%= product.included_price %></h2>
+                                        <h2 class="card-title">価格 | ¥<%= product.included_price %>(税込)</h2>
                                         <br>
                                         <h2 class="card-title">在庫数
                                         <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
@@ -58,11 +58,11 @@
                                 <br>
                                 <hr>
                                 <div class="box">
-                                    <%= product.title %>
+                                    <h2><%= product.title %></h2>
                                     <br>
-                                    <%= product.artist.artist_name %>
+                                    <h2><%= product.artist.artist_name %></h2>
                                     <br>
-                                    <h2 class="card-title">価格 | ¥<%= product.included_price %><h2>
+                                    <h2 class="card-title">価格 | ¥<%= product.included_price %>(税込)<h2>
                                     <br>
                                     <h2 class="card-title">在庫数
                                     <% productquantity = product.arrivals.sum(:quantity) - product.order_details.sum(:quantity) %>
