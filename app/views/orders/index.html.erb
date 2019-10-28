@@ -12,13 +12,13 @@
                         <h2>購入日：<%= order.created_at.strftime("%Y年%-m月%-d日 %-H時%-M分%-S秒") %></h2>
                         <h2>お届け先：<%= order.delivery_name %></h2>
                             <div class="card-body px-1 py-4">
-                                    <h2 class="card-title">シングル/アルバム名<h2>
-                                    <%= order.order_details.first.product.title %>             
-                                    <h2 class="card-title">枚数<h2>
-                                    <%= order.order_details.first.quantity %>枚
-                                    <h2 class="card-title">合計金額<h2>
-                                    ¥<%= order.order_details.first.purchase_price %>
-                                
+                                    <h2 class="card-title">シングル/アルバム名：
+                                    <%= order.order_details.first.product.title %></h2>           
+                                    <h2 class="card-title">枚数：
+                                    <%= order.order_details.first.quantity %>枚</h2>
+                                    <h2 class="card-title">合計金額：
+                                    ¥<%= (order.order_details.first.purchase_price * 1.1).floor(0) %>(税込)</h2>
+                                    
                             </div>
                             <div class= "button-wrapper">
                                 <%= link_to "受注履歴詳細へ", order_path(order.id), class: 'btn' %>

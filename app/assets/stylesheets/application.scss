@@ -29,6 +29,10 @@
 //     font-family: 'Wawati SC','Hannotate TC','Hannotate SC',YuGothic,'Yu Gothic','TsukuARdGothic-Regular','Lucida Grande','Noteworthy',sans-serif;
 // }
 
+body {
+    background: rgb(248, 243, 237);
+}
+
 //リセットCSS
 * {
     margin: 0;
@@ -196,7 +200,6 @@ header {
     background-image: url("header.png");
     background-size: cover;
     top: 0;
-
 }
 ul {
     display: flex;
@@ -208,10 +211,7 @@ ul {
     margin: auto;
     }
 }
-
 //----------------------------------------------
-
-
 
 //-------------------検索ボックス-------------------
 dl.searchbox {
