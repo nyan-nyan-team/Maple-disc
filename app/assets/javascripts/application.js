@@ -34,36 +34,35 @@ $(function () {
             }
         });
     });
-    
 
-    $('.artist_button').on('click', function(){
+    $('.artist_button').on('click', function () {
         $('.artist_modal_wrapper').show();
         $('.artist_modal').show();
         $('.create_artist_modal').show();
     })
-    $( '.fa_wrapper').on('click', function(){
+    $('.fa_wrapper').on('click', function () {
         $('.artist_modal_wrapper').hide();
         $('.artist_modal').hide();
         $('.artist_modal_content').hide();
     })
 
-    $('.genre_button').on('click',function(){
+    $('.genre_button').on('click', function () {
         $('.genre_modal_wrapper').show();
         $('.genre_modal').show();
         $('.create_genre_modal').show();
     })
-    $('.fa_wrapper').on('click', function(){
+    $('.fa_wrapper').on('click', function () {
         $('.genre_modal_wrapper').hide();
         $('.genre_modal').hide();
         $('.genre_modal_content').hide();
     })
 
-    $('.label_button').on('click', function(){
+    $('.label_button').on('click', function () {
         $('.label_modal_wrapper').show();
         $('.label_modal').show();
         $('.create_label_modal').show();
     })
-    $('.fa_wrapper').on('click', function(){
+    $('.fa_wrapper').on('click', function () {
         $('.label_modal_wrapper').hide();
         $('.label_modal').hide();
         $('.label_modal_content').hide();
@@ -77,90 +76,90 @@ $(function () {
 
 $(function () {
     $('#artist_submit').off('click');
-    $('#artist_submit').on('click', function(e){
+    $('#artist_submit').on('click', function (e) {
         e.preventDefault();
-            $(document).off('click',".artist_delete2" );
+        $(document).off('click', ".artist_delete2");
 
         var artist = $('#artist_artist_name').val();
         console.log(artist)
         $.ajax({
-            url:  "../artists",
+            url: "../artists",
             type: 'POST',
             data: {
                 artist: artist
             },
             dataType: 'json',
-          })
-          .done(function(data){
-              console.log(data)
-            $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
-            $('#artist_artist_name').val("");
-          })
-          .fail(function(data){
-            console.log(data)
-          })
-          .always(function(data){
-            $('.submit-btn').prop('disabled', false);　//ここで解除している
-          })
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
+                $('#artist_artist_name').val("");
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
     })
 });
 
 $(function () {
     $('#artist_submit').off('click');
-    $('#artist_submit').on('click', function(e){
+    $('#artist_submit').on('click', function (e) {
         e.preventDefault();
-            $(document).off('click',".artist_delete2" );
+        $(document).off('click', ".artist_delete2");
 
         var artist = $('#artist_artist_name').val();
         console.log(artist)
         $.ajax({
-            url:  "../artists",
+            url: "../artists",
             type: 'POST',
             data: {
                 artist: artist
             },
             dataType: 'json',
-          })
-          .done(function(data){
-              console.log(data)
-            $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
-            $('#artist_artist_name').val("");
-          })
-          .fail(function(data){
-            console.log(data)
-          })
-          .always(function(data){
-            $('.submit-btn').prop('disabled', false);　//ここで解除している
-          })
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
+                $('#artist_artist_name').val("");
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
     })
 });
 
-$(function() {
+$(function () {
     $('.artist_delete').off('click');
-    $(".artist_delete").on('click', function(e) {
+    $(".artist_delete").on('click', function (e) {
         e.preventDefault();
-         var clickEle = $(this)
+        var clickEle = $(this)
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var artistID = clickEle.val();
         $.ajax({
             url: '../artists/' + artistID,
             type: 'DELETE',
-          data: {'id': artistID}, // DELETE リクエストだよ！と教えてあげる。
-          dataType: 'json'
-        ,
-        success: function(res) {
-            // 親要素のspanを削除
-            clickEle.parents('span').remove();
-        },
-        error: function(res) {
-            alert('エラー');
-        }
-    })
+            data: { 'id': artistID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
     });
 });
 
-$(function($){
-    $(document).on('click',".artist_delete2", function(e) {
+$(function ($) {
+    $(document).on('click', ".artist_delete2", function (e) {
         e.preventDefault();
         var clickEle = $(this)
         // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
@@ -168,14 +167,14 @@ $(function($){
         $.ajax({
             url: '../artists/' + artistID,
             type: 'DELETE',
-            data: {'id': artistID}, // DELETE リクエストだよ！と教えてあげる。
+            data: { 'id': artistID }, // DELETE リクエストだよ！と教えてあげる。
             dataType: 'json'
             ,
-            success: function(res) {
+            success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
             },
-            error: function(res) {
+            error: function (res) {
             }
         })
     });
@@ -234,90 +233,90 @@ $(function($){
 
 $(function () {
     $('#genre_submit').off('click');
-    $('#genre_submit').on('click', function(e){
+    $('#genre_submit').on('click', function (e) {
         e.preventDefault();
-            $(document).off('click',".genre_delete2" );
+        $(document).off('click', ".genre_delete2");
 
         var genre = $('#genre_genre_name').val();
         console.log(genre)
         $.ajax({
-            url:  "../genres",
+            url: "../genres",
             type: 'POST',
             data: {
                 genre: genre
             },
             dataType: 'json',
-          })
-          .done(function(data){
-              console.log(data)
-            $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
-            $('#genre_genre_name').val("");
-          })
-          .fail(function(data){
-            console.log(data)
-          })
-          .always(function(data){
-            $('.submit-btn').prop('disabled', false);　//ここで解除している
-          })
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
+                $('#genre_genre_name').val("");
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
     })
 });
 
 $(function () {
     $('#genre_submit').off('click');
-    $('#genre_submit').on('click', function(e){
+    $('#genre_submit').on('click', function (e) {
         e.preventDefault();
-            $(document).off('click',".genre_delete2" );
+        $(document).off('click', ".genre_delete2");
 
         var genre = $('#genre_genre_name').val();
         console.log(genre)
         $.ajax({
-            url:  "../genres",
+            url: "../genres",
             type: 'POST',
             data: {
                 genre: genre
             },
             dataType: 'json',
-          })
-          .done(function(data){
-              console.log(data)
-            $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
-            $('#genre_genre_name').val("");
-          })
-          .fail(function(data){
-            console.log(data)
-          })
-          .always(function(data){
-            $('.submit-btn').prop('disabled', false);　//ここで解除している
-          })
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
+                $('#genre_genre_name').val("");
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
     })
 });
 
-$(function() {
+$(function () {
     $('.genre_delete').off('click');
-    $(".genre_delete").on('click', function(e) {
+    $(".genre_delete").on('click', function (e) {
         e.preventDefault();
-         var clickEle = $(this)
+        var clickEle = $(this)
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var genreID = clickEle.val();
         $.ajax({
             url: '../genres/' + genreID,
             type: 'DELETE',
-          data: {'id': genreID}, // DELETE リクエストだよ！と教えてあげる。
-          dataType: 'json'
-        ,
-        success: function(res) {
-            // 親要素のspanを削除
-            clickEle.parents('span').remove();
-        },
-        error: function(res) {
-            alert('エラー');
-        }
-    })
+            data: { 'id': genreID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
     });
 });
 
-$(function($){
-    $(document).on('click',".genre_delete2", function(e) {
+$(function ($) {
+    $(document).on('click', ".genre_delete2", function (e) {
         e.preventDefault();
         var clickEle = $(this)
         // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
@@ -325,14 +324,14 @@ $(function($){
         $.ajax({
             url: '../genres/' + genreID,
             type: 'DELETE',
-            data: {'id': genreID}, // DELETE リクエストだよ！と教えてあげる。
+            data: { 'id': genreID }, // DELETE リクエストだよ！と教えてあげる。
             dataType: 'json'
             ,
-            success: function(res) {
+            success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
             },
-            error: function(res) {
+            error: function (res) {
             }
         })
     });
@@ -344,90 +343,90 @@ $(function($){
 
 $(function () {
     $('#label_submit').off('click');
-    $('#label_submit').on('click', function(e){
+    $('#label_submit').on('click', function (e) {
         e.preventDefault();
-            $(document).off('click',".label_delete2" );
+        $(document).off('click', ".label_delete2");
 
         var label = $('#label_label_name').val();
         console.log(label)
         $.ajax({
-            url:  "../labels",
+            url: "../labels",
             type: 'POST',
             data: {
                 label: label
             },
             dataType: 'json',
-          })
-          .done(function(data){
-              console.log(data)
-            $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
-            $('#label_label_name').val("");
-          })
-          .fail(function(data){
-            console.log(data)
-          })
-          .always(function(data){
-            $('.submit-btn').prop('disabled', false);　//ここで解除している
-          })
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
+                $('#label_label_name').val("");
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
     })
 });
 
 $(function () {
     $('#label_submit').off('click');
-    $('#label_submit').on('click', function(e){
+    $('#label_submit').on('click', function (e) {
         e.preventDefault();
-            $(document).off('click',".label_delete2" );
+        $(document).off('click', ".label_delete2");
 
         var label = $('#label_label_name').val();
         console.log(label)
         $.ajax({
-            url:  "../labels",
+            url: "../labels",
             type: 'POST',
             data: {
                 label: label
             },
             dataType: 'json',
-          })
-          .done(function(data){
-              console.log(data)
-            $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
-            $('#label_label_name').val("");
-          })
-          .fail(function(data){
-            console.log(data)
-          })
-          .always(function(data){
-            $('.submit-btn').prop('disabled', false);　//ここで解除している
-          })
+        })
+            .done(function (data) {
+                console.log(data)
+                $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
+                $('#label_label_name').val("");
+            })
+            .fail(function (data) {
+                console.log(data)
+            })
+            .always(function (data) {
+                $('.submit-btn').prop('disabled', false);　//ここで解除している
+            })
     })
 });
 
-$(function() {
+$(function () {
     $('.label_delete').off('click');
-    $(".label_delete").on('click', function(e) {
+    $(".label_delete").on('click', function (e) {
         e.preventDefault();
-         var clickEle = $(this)
+        var clickEle = $(this)
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var labelID = clickEle.val();
         $.ajax({
             url: '../labels/' + labelID,
             type: 'DELETE',
-          data: {'id': labelID}, // DELETE リクエストだよ！と教えてあげる。
-          dataType: 'json'
-        ,
-        success: function(res) {
-            // 親要素のspanを削除
-            clickEle.parents('span').remove();
-        },
-        error: function(res) {
-            alert('エラー');
-        }
-    })
+            data: { 'id': labelID }, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
     });
 });
 
-$(function($){
-    $(document).on('click',".label_delete2", function(e) {
+$(function ($) {
+    $(document).on('click', ".label_delete2", function (e) {
         e.preventDefault();
         var clickEle = $(this)
         // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
@@ -435,14 +434,14 @@ $(function($){
         $.ajax({
             url: '../labels/' + labelID,
             type: 'DELETE',
-            data: {'id': labelID}, // DELETE リクエストだよ！と教えてあげる。
+            data: { 'id': labelID }, // DELETE リクエストだよ！と教えてあげる。
             dataType: 'json'
             ,
-            success: function(res) {
+            success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
             },
-            error: function(res) {
+            error: function (res) {
             }
         })
     });
@@ -460,4 +459,3 @@ $(function($){
 //       'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
 //     }
 //   });
-  

@@ -17,7 +17,7 @@
                                     <h2 class="card-title">枚数<h2>
                                     <%= order.order_details.first.quantity %>枚
                                     <h2 class="card-title">合計金額<h2>
-                                    ¥<%= order.order_details.first.purchase_price %>
+                                    ¥<%= (order.order_details.first.purchase_price * 1.1).floor(0) %>(税込)
                                 
                             </div>
                             <div class= "button-wrapper">
