@@ -1,16 +1,117 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>namespace - admin</title>
+<head>
+    <title>namespace - end_user</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=japanese" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/562ca3c57a.js" crossorigin="anonymous"></script>
+</head>
 <body>
-<% content_for :content do %>
-  <%= render 'layouts/admin/header' %>
-  <%= yield %>
-  <%= render 'layouts/admin/footer' %>
-<% end %>
-<%= render template: "layouts/application" %>
+
+<%# header %>
+<header>
+    <div class="container">
+        <nav>
+
+            <% if end_user_signed_in? %>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                    <span></span>            
+                    <%= link_to end_user_path(current_end_user.id) do %>
+                    <p>ようこそ、<br>
+                    <%= current_end_user.first_name %>さん</p>
+                    <% end %>
+                    </span>
+                </li>
+                <li class="nav-list-item">
+                    <span>
+                    <%= link_to "購入履歴" , orders_path %>
+                    </span>
+                </li>
+                <li class="nav-list-item">
+                    <div class="logo"><%= link_to image_tag("logo.png", width: 170, alt: "logo"), products_path, data: { "turbolinks" => "false" } %>
+                </li>
+                <li class="nav-list-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <%= link_to "カート" , cart_products_path %>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+                </span>
+                </li>
+            </ul>
+
+            <% elsif admin_signed_in? %>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "新規商品追加" , new_admin_product_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "販売商品一覧" , admin_products_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "入荷履歴" , admin_arrivals_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ユーザ情報" , admin_end_users_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "注文一覧" , admin_orders_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </span>
+                </li>
+            </ul>
+        
+            <% else %>
+            <ul class="nav-list">
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "新規登録", new_end_user_registration_path %>
+                </span>
+                </li>
+                <li class="nav-list-item">
+                    <div class="logo"><%= link_to image_tag("logo.png", width: 170, alt: "logo"), products_path, data: { "turbolinks" => "false" } %>
+                </li>
+                <li class="nav-list-item">
+                <span>
+                <%= link_to "ログイン", new_end_user_session_path %>
+                </span>
+                </li>
+            </ul>
+            <% end %>
+
+            <%# 検索機能実装場所 %>
+            <dl class="searchbox">
+                <%= search_form_for @q do |f|%>
+                <dt><%= f.text_field :title_cont, placeholder: "商品名" %></dt>
+                <dd><%= f.submit ("検索") , class: 'search-btn' %></dd>
+                <% end %>
+            </dl>
+        </nav>
+    </div>
+    <%# <meta name="token" content="{{ csrf_token() }}"> %>
+</header>
+<br>
+<br>
+<br>
+<br>
+<%= content_for?(:content) ? yield(:content) : yield %>
+
 </body>
 </html>
