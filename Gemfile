@@ -94,7 +94,7 @@ gem 'pry-rails'
 gem 'font-awesome-rails'
 gem 'tether-rails'
 gem 'popper_js'
-gem 'jquery'
+#gem 'jquery'
 gem 'slim-rails'
 gem 'html2slim'
 
@@ -104,3 +104,6 @@ gem 'gimei'
 
 gem 'rails-i18n'
 
+# group :production do
+#   gem 'mysql2'
+# end

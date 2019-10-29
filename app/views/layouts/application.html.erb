@@ -3,9 +3,10 @@
 <head>
     <title>namespace - end_user</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap&subset=japanese" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/562ca3c57a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -112,8 +113,5 @@
 <br>
 <%= content_for?(:content) ? yield(:content) : yield %>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/562ca3c57a.js" crossorigin="anonymous"></script>
 </body>
 </html>

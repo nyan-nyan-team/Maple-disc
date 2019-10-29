@@ -78,8 +78,8 @@ $(function () {
     $('#artist_submit').off('click');
     $('#artist_submit').on('click', function (e) {
         e.preventDefault();
-
-            $(document).off('click',".artist_delete2" );
+        console.log('artist_submit');
+        $(document).off('click', ".artist_delete2");
         var params = $("#new_artist").serialize();
 
         var artist = $('#artist_artist_name').val();
@@ -100,7 +100,7 @@ $(function () {
                 $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
                 $('#artist_artist_name').val("");
                 $('<option>').attr({
-                    value:data.id,
+                    value: data.id,
                 }).html(data.artist_name).appendTo('#product_artist_id');
 
             })
@@ -118,8 +118,8 @@ $(function () {
     $('#artist_submit').on('click', function (e) {
         e.preventDefault();
 
-            $(document).off('click',".artist_delete2" );
-            var params = $("#new_artist").serialize();
+        $(document).off('click', ".artist_delete2");
+        var params = $("#new_artist").serialize();
 
         var artist = $('#artist_artist_name').val();
         console.log(artist)
@@ -139,7 +139,7 @@ $(function () {
                 $('.artist_wrapper').prepend('<span>' + data.artist_name + '<button type="button" name="削除" value="' + data.id + '"class="artist_delete2">削除</button></span>');
                 $('#artist_artist_name').val("");
                 $('<option>').attr({
-                    value:data.id,
+                    value: data.id,
                 }).html(data.artist_name).appendTo('#product_artist_id');
             })
             .fail(function (data) {
@@ -156,7 +156,7 @@ $(function () {
         e.preventDefault();
 
         var params = $("#new_artist").serialize();
-         var clickEle = $(this)
+        var clickEle = $(this)
 
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var artistID = clickEle.val();
@@ -164,20 +164,20 @@ $(function () {
             url: '../artists/' + artistID,
             type: 'DELETE',
 
-          data: params, // DELETE リクエストだよ！と教えてあげる。
-          dataType: 'json'
-        ,
-        success: function(res) {
-            // 親要素のspanを削除
-            clickEle.parents('span').remove();
-            console.log('delete='+artistID);
+            data: params, // DELETE リクエストだよ！と教えてあげる。
+            dataType: 'json'
+            ,
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + artistID);
 
-            $('select#product_artist_id option[value='+artistID+']').remove();
-        },
-        error: function(res) {
-            alert('エラー');
-        }
-    })
+                $('select#product_artist_id option[value=' + artistID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
 
     });
 });
@@ -196,9 +196,9 @@ $(function ($) {
             success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
-                console.log('delete='+artistID);
+                console.log('delete=' + artistID);
 
-                $('select#product_artist_id option[value='+artistID+']').remove();
+                $('select#product_artist_id option[value=' + artistID + ']').remove();
 
             },
             error: function (res) {
@@ -263,9 +263,9 @@ $(function () {
     $('#genre_submit').on('click', function (e) {
         e.preventDefault();
 
-            $(document).off('click',".genre_delete2" );
-            var params = $("#new_genre").serialize();
-            var genre = $('#genre_genre_name').val();
+        $(document).off('click', ".genre_delete2");
+        var params = $("#new_genre").serialize();
+        var genre = $('#genre_genre_name').val();
 
         console.log(genre)
         $.ajax({
@@ -279,7 +279,7 @@ $(function () {
                 $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
                 $('#genre_genre_name').val("");
                 $('<option>').attr({
-                    value:data.id,
+                    value: data.id,
                 }).html(data.genre_name).appendTo('#product_genre_id');
             })
             .fail(function (data) {
@@ -296,9 +296,9 @@ $(function () {
     $('#genre_submit').on('click', function (e) {
         e.preventDefault();
 
-            $(document).off('click',".genre_delete2" );
-            var params = $("#new_genre").serialize();
-            var genre = $('#genre_genre_name').val();
+        $(document).off('click', ".genre_delete2");
+        var params = $("#new_genre").serialize();
+        var genre = $('#genre_genre_name').val();
 
         console.log(genre)
         $.ajax({
@@ -312,7 +312,7 @@ $(function () {
                 $('.genre_wrapper').prepend('<span>' + data.genre_name + '<button type="button" name="削除" value="' + data.id + '"class="genre_delete2">削除</button></span>');
                 $('#genre_genre_name').val("");
                 $('<option>').attr({
-                    value:data.id,
+                    value: data.id,
                 }).html(data.genre_name).appendTo('#product_genre_id');
 
             })
@@ -331,7 +331,7 @@ $(function () {
         e.preventDefault();
 
         var params = $("#new_genre").serialize();
-         var clickEle = $(this)
+        var clickEle = $(this)
 
         // // 削除ボタンにユーザーIDをカスタムデータとして埋め込。
         var genreID = clickEle.val();
@@ -340,16 +340,16 @@ $(function () {
             type: 'DELETE',
             data: params,
             dataType: 'json',
-        success: function(res) {
-            // 親要素のspanを削除
-            clickEle.parents('span').remove();
-            console.log('delete='+genreID);
-            $('select#product_genre_id option[value='+genreID+']').remove();
-        },
-        error: function(res) {
-            alert('エラー');
-        }
-    })
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + genreID);
+                $('select#product_genre_id option[value=' + genreID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
 
     });
 });
@@ -369,8 +369,8 @@ $(function ($) {
             success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
-            console.log('delete='+genreID);
-            $('select#product_genre_id option[value='+genreID+']').remove();
+                console.log('delete=' + genreID);
+                $('select#product_genre_id option[value=' + genreID + ']').remove();
             },
             error: function (res) {
             }
@@ -387,9 +387,9 @@ $(function () {
     $('#label_submit').on('click', function (e) {
         e.preventDefault();
 
-            $(document).off('click',".label_delete2" );
-            var params = $("#new_label").serialize();
-            var label = $('#label_label_name').val();
+        $(document).off('click', ".label_delete2");
+        var params = $("#new_label").serialize();
+        var label = $('#label_label_name').val();
 
         console.log(label)
         $.ajax({
@@ -403,7 +403,7 @@ $(function () {
                 $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
                 $('#label_label_name').val("");
                 $('<option>').attr({
-                    value:data.id,
+                    value: data.id,
                 }).html(data.label_name).appendTo('#product_label_id');
 
             })
@@ -421,9 +421,9 @@ $(function () {
     $('#label_submit').on('click', function (e) {
         e.preventDefault();
 
-            $(document).off('click',".label_delete2" );
-            var params = $("#new_label").serialize();
-            var label = $('#label_label_name').val();
+        $(document).off('click', ".label_delete2");
+        var params = $("#new_label").serialize();
+        var label = $('#label_label_name').val();
 
         console.log(label)
         $.ajax({
@@ -437,7 +437,7 @@ $(function () {
                 $('.label_wrapper').prepend('<span>' + data.label_name + '<button type="button" name="削除" value="' + data.id + '"class="label_delete2">削除</button></span>');
                 $('#label_label_name').val("");
                 $('<option>').attr({
-                    value:data.id,
+                    value: data.id,
                 }).html(data.label_name).appendTo('#product_label_id');
 
             })
@@ -463,16 +463,16 @@ $(function () {
             type: 'DELETE',
             data: params,
             dataType: 'json',
-        success: function(res) {
-            // 親要素のspanを削除
-            clickEle.parents('span').remove();
-            console.log('delete='+labelID);
-            $('select#product_label_id option[value='+labelID+']').remove();
-        },
-        error: function(res) {
-            alert('エラー');
-        }
-    })
+            success: function (res) {
+                // 親要素のspanを削除
+                clickEle.parents('span').remove();
+                console.log('delete=' + labelID);
+                $('select#product_label_id option[value=' + labelID + ']').remove();
+            },
+            error: function (res) {
+                alert('エラー');
+            }
+        })
 
     });
 });
@@ -493,8 +493,8 @@ $(function ($) {
             success: function (res) {
                 // 親要素のspanを削除
                 clickEle.parents('span').remove();
-            console.log('delete='+labelID);
-            $('select#product_label_id option[value='+labelID+']').remove();
+                console.log('delete=' + labelID);
+                $('select#product_label_id option[value=' + labelID + ']').remove();
             },
             error: function (res) {
             }
