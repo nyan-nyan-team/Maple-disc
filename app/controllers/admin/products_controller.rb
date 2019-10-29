@@ -31,8 +31,11 @@ end
 
 def create
     product = Product.new(product_params)
-    product.save
-    redirect_to admin_product_path(product)
+    if product.save
+        redirect_to admin_product_path(product)
+    else
+        redirect_to new_admin_product_path , notice:"商品の追加に失敗しました。"
+    end
 end
 
 def update
