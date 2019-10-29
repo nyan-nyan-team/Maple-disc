@@ -33,24 +33,25 @@ class OrdersController < ApplicationController
     def before_confirm
         if params[:address].nil?
             flash[:address] = "お届け先住所を選択してください。"
-            render 'new'
-        end
-        if params[:address].to_i != 0
-            @address = Address.find(params[:address].to_i)
+            redirect_to new_order_path
         else
-            @address = 0
-        end
+            if params[:address].to_i != 0
+                @address = Address.find(params[:address].to_i)
+            else
+                @address = 0
+            end
 
-        @payment_num = params[:payment_method].to_i
-        case @payment_num
-        when 0
-            @payment = '銀行振込'
-        when 1
-            @payment = 'クレジットカード支払い'
-        when 2
-            @payment = '代引き'
+            @payment_num = params[:payment_method].to_i
+            case @payment_num
+            when 0
+                @payment = '銀行振込'
+            when 1
+                @payment = 'クレジットカード支払い'
+            when 2
+                @payment = '代引き'
+            end
+            render :confirm
         end
-        render :confirm
     end
     def confirm
     end
