@@ -78,7 +78,7 @@ $(function () {
     $('#artist_submit').off('click');
     $('#artist_submit').on('click', function (e) {
         e.preventDefault();
-
+        console.log('artist_submit');
         $(document).off('click', ".artist_delete2");
         var params = $("#new_artist").serialize();
 
